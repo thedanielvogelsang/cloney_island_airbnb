@@ -9,10 +9,10 @@ class CreateListings < ActiveRecord::Migration[5.1]
       t.integer :beds
       t.float :price
       t.text :house_rules
-      t.references :property_type, index: true, foreign_key: true
-      t.references :bed_type, index: true, foreign_key: true
-      t.references :pet_type, index: true, foreign_key: true
-      t.references :room_type, index: true, foreign_key: true
+      t.text :property_type
+      t.text :bed_type
+      t.text :pet_type
+      t.text :room_type
       t.references :user, index: true, foreign_key: true
       t.references :cancellation, index: true, foreign_key: true
 
