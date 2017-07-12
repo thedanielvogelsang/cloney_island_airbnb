@@ -31,7 +31,7 @@ RSpec.describe "On Messages Show Page" do
     expect(page).to have_content(listing.prettyfy_address)
     expect(page).to have_content("Payment")
     expect(page).to have_content("$#{listing.price} x #{trip.duration} nights")
-    expect(page).to have_content("$#{trip.total_cost}")
+    expect(page).to have_content("$#{trip.total_price}")
   end
 
   it "hosts can read traveler messages" do
@@ -45,19 +45,16 @@ RSpec.describe "On Messages Show Page" do
   it "hosts can send traveler messages" do
     visit conversation_path(conversation)
 
-    expect(page).to have_css
+    expect(page).to have_css('.message_boxes')
     fill_in "Message", with: "Hey that sounds great!"
     click_button "Send Message"
 
     expect(current_path).to eq("/conversations/#{conversation.id}")
     expect(page).to have_content("Hey that sounds great!")
-    #Somehow test that the host's photo shows up
+    #Somehow test that the host's photo shows up or however we want the conversation designed
+  end
 end
 
-
-As an authenticated Host
-When a Traveler messages me
-I can read and reply
 As an authenticated Host
 When a Traveler requests a reservation
 I can send the Traveler messages
