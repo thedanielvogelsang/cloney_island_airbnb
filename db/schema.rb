@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712211244) do
+ActiveRecord::Schema.define(version: 20170712223305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20170712211244) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "listing_images", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "property_image_file_name"
+    t.string "property_image_content_type"
+    t.integer "property_image_file_size"
+    t.datetime "property_image_updated_at"
+    t.index ["listing_id"], name: "index_listing_images_on_listing_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.text "name"
     t.text "description"
@@ -42,10 +53,10 @@ ActiveRecord::Schema.define(version: 20170712211244) do
     t.integer "beds"
     t.float "price"
     t.text "house_rules"
-    t.text "property_type"
-    t.text "bed_type"
-    t.text "pet_type"
-    t.text "room_type"
+    t.integer "property_type"
+    t.integer "bed_type"
+    t.integer "pet_type"
+    t.integer "room_type"
     t.bigint "user_id"
     t.bigint "cancellation_id"
     t.datetime "created_at", null: false
@@ -88,6 +99,7 @@ ActiveRecord::Schema.define(version: 20170712211244) do
     t.index ["address_id"], name: "index_users_on_address_id"
   end
 
+  add_foreign_key "listing_images", "listings"
   add_foreign_key "listings", "addresses"
   add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "users"

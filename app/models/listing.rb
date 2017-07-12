@@ -6,4 +6,6 @@ class Listing < ApplicationRecord
   belongs_to :cancellation
   belongs_to :user
   belongs_to :address
+
+  has_many :listing_images
 end

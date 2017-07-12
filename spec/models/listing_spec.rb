@@ -21,5 +21,7 @@ RSpec.describe Listing, type: :model do
     it { should belong_to(:cancellation) }
     it { should belong_to(:user) }
     it { should belong_to(:address) }
+
+    it { should have_many(:listing_images) }
   end
 end
