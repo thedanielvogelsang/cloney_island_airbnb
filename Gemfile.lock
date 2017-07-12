@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 82cd3781b4bbfe20778fe5f9a6802d348cd5ee1a
+  specs:
+    paperclip (5.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
+
+GIT
   remote: https://github.com/thoughtbot/shoulda-matchers.git
   revision: f800d62525a65f9bf001ea984ae4926a92ff5b82
   branch: rails-5
@@ -66,6 +77,9 @@ GEM
       xpath (~> 2.0)
     case_transform (0.2)
       activesupport
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -115,6 +129,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
     multipart-post (2.0.0)
@@ -238,6 +253,7 @@ DEPENDENCIES
   haml
   html2haml
   listen (>= 3.0.5, < 3.2)
+  paperclip!
   pg (~> 0.18)
   pry
   pry-state

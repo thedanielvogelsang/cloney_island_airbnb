@@ -14,6 +14,11 @@ RSpec.describe User, type: :model do
 
     it {should validate_uniqueness_of(:email)}
     it {should validate_uniqueness_of(:phone_number)}
+
+    it { should have_attached_file(:profile_picture) }
+    it { should validate_attachment_content_type(:profile_picture).
+                allowing('image/png', 'image/jpeg', 'image/jpg').
+                rejecting('text/plain', 'text/xml', 'image/gif') }
   end
 
   describe 'relationships' do

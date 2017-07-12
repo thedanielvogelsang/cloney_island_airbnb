@@ -8,5 +8,6 @@ FactoryGirl.define do
     phone_number "404-333-2222"
     email "paul@simon.com"
     password_digest "password"
+    profile_picture { File.new("#{Rails.root}/lib/assets/baby_penguin.jpg") }
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712193242) do
+ActiveRecord::Schema.define(version: 20170712211244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,10 @@ ActiveRecord::Schema.define(version: 20170712193242) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id"
+    t.string "profile_picture_file_name"
+    t.string "profile_picture_content_type"
+    t.integer "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
     t.index ["address_id"], name: "index_users_on_address_id"
   end
 
