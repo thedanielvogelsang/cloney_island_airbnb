@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "On User Dashboard Page" do
   it "user can view message partial" do
+    skip
     host1 = create(:host_user_with_listings)
     host2 = create(:host_user_with_listings)
     traveler = create(:traveler_user)

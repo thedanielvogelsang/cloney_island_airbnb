@@ -1,14 +1,11 @@
 class Listing < ApplicationRecord
   validates :name, :description, :accomodates, :bathrooms, :bedrooms, :beds, :price, presence: true
-
+  validates :property_type, :bed_type, :room_type, :pet_type, presence: true
   validates :name, uniqueness: true
 
-  belongs_to :property_type
-  belongs_to :bed_type
-  belongs_to :room_type
-  belongs_to :pet_type
   belongs_to :cancellation
   belongs_to :user
+  belongs_to :address
 
   enum property_type: [:house, :apartment, :guesthouse, :boat, :treehouse]
   enum room_type: [:entire_home, :private_room, :shared_room]

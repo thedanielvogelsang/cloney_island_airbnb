@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712125634) do
+ActiveRecord::Schema.define(version: 20170712193242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bed_types", force: :cascade do |t|
-    t.text "name"
+  create_table "addresses", force: :cascade do |t|
+    t.text "street_address"
+    t.text "street_address_2"
+    t.text "city"
+    t.text "state"
+    t.text "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,42 +42,22 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.integer "beds"
     t.float "price"
     t.text "house_rules"
-    t.bigint "property_type_id"
-    t.bigint "bed_type_id"
-    t.bigint "pet_type_id"
-    t.bigint "room_type_id"
+    t.text "property_type"
+    t.text "bed_type"
+    t.text "pet_type"
+    t.text "room_type"
     t.bigint "user_id"
     t.bigint "cancellation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bed_type_id"], name: "index_listings_on_bed_type_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_listings_on_address_id"
     t.index ["cancellation_id"], name: "index_listings_on_cancellation_id"
-    t.index ["pet_type_id"], name: "index_listings_on_pet_type_id"
-    t.index ["property_type_id"], name: "index_listings_on_property_type_id"
-    t.index ["room_type_id"], name: "index_listings_on_room_type_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
-  end
-
-  create_table "pet_types", force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "property_types", force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "room_types", force: :cascade do |t|
-    t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,14 +80,14 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
-  add_foreign_key "listings", "bed_types"
+  add_foreign_key "listings", "addresses"
   add_foreign_key "listings", "cancellations"
-  add_foreign_key "listings", "pet_types"
-  add_foreign_key "listings", "property_types"
-  add_foreign_key "listings", "room_types"
   add_foreign_key "listings", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "users", "addresses"
 end
