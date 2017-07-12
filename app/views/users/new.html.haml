@@ -1,0 +1,21 @@
+.create-account-box
+  %h1 Create a New Account
+
+  =form_for @user do |f|
+    =f.label :email, required: true
+    =f.text_field :email
+    %br
+
+    =f.label :first_name, required: true
+    =f.text_field :first_name
+    %br
+
+    =f.label :last_name, required: true
+    =f.text_field :last_name
+    %br
+
+    =f.label :password, required: true
+    =f.password_field :password
+    %br
+
+    =f.submit "Sign Up"

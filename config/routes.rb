@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:new]
+  get '/search', to: 'search#index'
+
+  resources :users, only: [:new, :create]
 
 end

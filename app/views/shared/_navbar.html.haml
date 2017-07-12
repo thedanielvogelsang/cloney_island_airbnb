@@ -1,16 +1,17 @@
 .navbar-main
   .navbar-header
     =link_to image_tag("air_bnb_logo.png", :class => 'nav-logo'), root_path
-      %form_tag(search_path, method: :get) do
-        =text_field_tag(:post_title, params[:post_title])
-        =submit_tag "Search"
+    -form_tag search_path, method: :get do
+      =text_field_tag(:post_title, params[:post_title])
+      =submit_tag "Search"
     .navbar-user-types
-      = render "current_user_#{current_user.role}"
+      -# =render partial: "current_user_#{current_user.role}"
+      =render partial: "/shared/current_user_guest"
     .navbar-user-bottom
-      -if current_user.traveler?
-        =link_to "Dashboard", user_dashboard_path
-        =link_to "Inbox", user_messages_center_page_path
-        =link_to "Your Listing", user_listings_path
-        =link_to 'Your Trips', user_trips_path
-        =link_to 'Profile', user_profile_path
-        =link_to 'Account', user_account_path
+      -# -if current_user.traveler?
+      -#   =link_to "Dashboard", user_dashboard_path
+      -#   =link_to "Inbox", user_messages_center_page_path
+      -#   =link_to "Your Listing", user_listings_path
+      -#   =link_to 'Your Trips', user_trips_path
+      -#   =link_to 'Profile', user_profile_path
+      -#   =link_to 'Account', user_account_path
