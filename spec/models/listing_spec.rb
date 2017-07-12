@@ -20,5 +20,6 @@ RSpec.describe Listing, type: :model do
     it { should belong_to(:pet_type) }
     it { should belong_to(:cancellation) }
     it { should belong_to(:user) }
+    it { should belong_to(:address) }
   end
 end

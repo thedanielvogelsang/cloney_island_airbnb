@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712125634) do
+ActiveRecord::Schema.define(version: 20170712193242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.text "street_address"
+    t.text "street_address_2"
+    t.text "city"
+    t.text "state"
+    t.text "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bed_types", force: :cascade do |t|
     t.text "name"
@@ -46,6 +56,8 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.bigint "cancellation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_listings_on_address_id"
     t.index ["bed_type_id"], name: "index_listings_on_bed_type_id"
     t.index ["cancellation_id"], name: "index_listings_on_cancellation_id"
     t.index ["pet_type_id"], name: "index_listings_on_pet_type_id"
@@ -96,8 +108,11 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
+  add_foreign_key "listings", "addresses"
   add_foreign_key "listings", "bed_types"
   add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "pet_types"
@@ -106,4 +121,5 @@ ActiveRecord::Schema.define(version: 20170712125634) do
   add_foreign_key "listings", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "users", "addresses"
 end

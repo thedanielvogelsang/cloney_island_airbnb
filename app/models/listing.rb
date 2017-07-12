@@ -9,4 +9,5 @@ class Listing < ApplicationRecord
   belongs_to :pet_type
   belongs_to :cancellation
   belongs_to :user
+  belongs_to :address
 end
