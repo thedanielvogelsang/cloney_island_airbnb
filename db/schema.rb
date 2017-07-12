@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712125634) do
+ActiveRecord::Schema.define(version: 20170712191542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.text "street_address"
+    t.text "street_address_2"
+    t.bigint "city_id"
+    t.bigint "state_id"
+    t.bigint "zip_code_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_addresses_on_city_id"
+    t.index ["state_id"], name: "index_addresses_on_state_id"
+    t.index ["zip_code_id"], name: "index_addresses_on_zip_code_id"
+  end
 
   create_table "bed_types", force: :cascade do |t|
     t.text "name"
@@ -25,6 +38,12 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.text "name"
     t.text "refund"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,6 +97,12 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "states", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
@@ -98,6 +123,15 @@ ActiveRecord::Schema.define(version: 20170712125634) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "zip_codes", force: :cascade do |t|
+    t.text "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "states"
+  add_foreign_key "addresses", "zip_codes"
   add_foreign_key "listings", "bed_types"
   add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "pet_types"
