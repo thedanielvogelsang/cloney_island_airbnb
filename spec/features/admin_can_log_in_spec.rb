@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Admin can log in" do
   feature "as an admin I can log in" do
-    admin = create(:user, role: 4)
+    admin = create(:user, role: 3)
 
     visit login_path
 
