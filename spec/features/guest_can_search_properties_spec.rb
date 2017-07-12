@@ -6,6 +6,15 @@ RSpec.describe "Guest can search properties" do
       property = create(:property)
 
       visit root_path
+
+      within(".search_bar") do
+      expect(page).to have_field("city")
+      expect(page).to have_field("zipcode")
+      expect(page).to have_field("check_in")
+      expect(page).to have_field("check_out")
+      expect(page).to have_selector(:link_or_button, 'Search')
+    end
+
       fill_in "city", with: "#{property.city}"
       fill_in "state", with: "#{property.state}"
       click_on "Search"
@@ -24,6 +33,15 @@ RSpec.describe "Guest can search properties" do
     property = create(:property)
 
     visit root_path
+
+    within(".search_bar") do
+      expect(page).to have_field("city")
+      expect(page).to have_field("zipcode")
+      expect(page).to have_field("check_in")
+      expect(page).to have_field("check_out")
+      expect(page).to have_selector(:link_or_button, 'Search')
+    end
+
     fill_in "zipcode", with: "#{property.zipcode}"
     click_on "Search"
 
@@ -46,6 +64,14 @@ RSpec.describe "Guest can search properties" do
     property_availability = create(:property_availability, property: property_2, date: Date.tomorrow, reserved?: false)
 
     visit root_path
+
+    within(".search_bar") do
+      expect(page).to have_field("city")
+      expect(page).to have_field("zipcode")
+      expect(page).to have_field("check_in")
+      expect(page).to have_field("check_out")
+      expect(page).to have_selector(:link_or_button, 'Search')
+    end
 
     fill_in "Check In", with: "#{Date.today}"
     fill_in "Check Out", with: "#{Date.tomorrow}"
