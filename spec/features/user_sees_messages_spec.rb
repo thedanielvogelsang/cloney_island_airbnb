@@ -22,6 +22,8 @@ RSpec.describe "On Messages Show Page" do
   end
 
   it "hosts can read traveler messages" do
+    current_user = host.id
+
     listing = create(:listing_with_trip_and_conversation_with_messages, traveler_id: traveler.id, host_id: host.id)#????
     trip = listing.trips.first
     conversation = listing.conversations.first
@@ -69,6 +71,8 @@ RSpec.describe "On Messages Show Page" do
   end
 
   it "host can view traveler's profile with trip details" do
+    current_user = host.id
+
     listing = create(:listing_with_trip_and_conversation_with_messages, traveler_id: traveler.id, host_id: host.id)#????
     trip = listing.trips.first
     conversation = listing.conversations.first
