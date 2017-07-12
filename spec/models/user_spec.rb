@@ -25,4 +25,14 @@ RSpec.describe User, type: :model do
     it {should have_secure_password}
   end
 
+  it 'can create full name' do
+    user = create(:user)
+
+    first_name = user.first_name
+    last_name = user.last_name
+    full_name = user.full_name
+
+    expect(full_name).to eq(first_name + " " + last_name)
+  end
+
 end

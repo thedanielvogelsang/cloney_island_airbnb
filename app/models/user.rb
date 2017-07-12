@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :user_roles
 
   def full_name
-    first_name + last_name
+    first_name + " " + last_name
   end
 
 end
