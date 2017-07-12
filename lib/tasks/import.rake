@@ -17,7 +17,7 @@ namespace :import do
 
   puts "Ammenities loaded and seeded"
 
-  desc "Listing"
+  desc "Listings"
   task listings: :environment do
     100.times do |n|
       Listings.create!(image_link: ["https://a0.muscache.com/im/pictures/21162888/5a0f1151_original.jpg?aki_policy=xx_large", "https://a0.muscache.com/im/pictures/6722906/b4bc6418_original.jpg?aki_policy=xx_large", "https://a0.muscache.com/im/pictures/15273358/d7329e9a_original.jpg?aki_policy=xx_large", "https://a0.muscache.com/im/pictures/52149945/33130c63_original.jpg?aki_policy=xx_large"].rand,
@@ -45,29 +45,84 @@ namespace :import do
     task listing_ammenities: :environment do
       300.times do
         ListingAmmenities.create!(ammenity_id: [*1..11].rand,
-                                  listing_id: [*1..101].rand)
+        listing_id: [*1..101].rand)
       end
     end
 
     puts "Listing Ammenities loaded and seeded"
 
-    desc "Address"
-    task address: :environment do
-      Address.create!(type: "Kitchen")
-      Address.create!(type: "Essentials/Toiletries")
-      Address.create!(type: "Air Conditioning")
-      Address.create!(type: "Heating")
-      Address.create!(type: "Washer/Dryer")
-      Address.create!(type: "TV")
-      Address.create!(type: "Private Entrance")
-      Address.create!(type: "Living Room")
-      Address.create!(type: "Wifi")
-      Address.create!(type: "Hot Tub")
-      Address.create!(type: "Fire Extinguisher")
+    desc "Addresses"
+    task addresses: :environment do
+      300.times do
+        Address.create!(street_address: ["45 Horizon St", "622 Lincoln St", "987 Turkey Creek", "1242 Market St", "9861 4th Ave", "96543 Hwy 78"].rand,
+        street_address_2: ["", "", "Apt 3", "Unit 2"].rand,
+        city: ["Denver", "Santa Fe", "New York", "Boulder", "Telluride", "Pagosa Springs", "Durango"].rand,
+        state: ["CO", "UT", "AK", "NM", "AZ", "CA", "OR", "WA"].rand,
+        zip_code: ["80132", "90423", "83729", "74093", "82032", "93023"].rand)
+      end
     end
 
-    puts "Addresses loaded and seeded"
+    puts "Users loaded and seeded"
 
+    desc "Users"
+    task users: :environment do
+      1000.times do
+        User.create!(birthday:,
+        address_id: [*1..10].rand,
+        first_name: ["Bao", "Padraic", "Adam", "Will", "Ben"].rand,
+        last_name: ["Gunther", "Thomas", "Ross"].rand,
+        phone_number: ["303-484-9383", "399-483-9323", "970-484-9383", "720-484-9383", "309-484-9353", "303-344-1383"].rand,
+        email: ["email@email"],
+        password_digest: )
+      end
+    end
+
+    puts "Users loaded and seeded"
+
+    desc "Cancellations"
+    task cancellations: :environment do
+      10.times do
+        Cancellation.create!(name: [""],
+        refund: ,
+        description: )
+      end
+    end
+
+    puts "Cancellations loaded and seeded"
   end
+
+  desc "Roles"
+  task roles: :environment do
+    10.times do
+      Role.create!(name: ["guest", "traveler", "host", "admin"].rand)
+    end
+  end
+
+  puts "Roles loaded and seeded"
+
+  desc "User_Roles"
+  task user_roles: :environment do
+    10.times do
+      UserRole.create!(user_id: [*1..50].rand,
+      roles_id[*0..3].rand)
+    end
+  end
+
+  puts "User_Roles loaded and seeded"
+
+  desc "Trips"
+  task trips: :environment do
+    10.times do
+      Trip.create!(id_users:,
+      id_hosts:,
+      trip_status: ["listed", "unlisted"].rand,
+      start_date:,
+      end_date:,
+      num_guests:)
+    end
+  end
+
+  puts "Trips loaded and seeded"
+end
 
   For trips listed and unlisted
