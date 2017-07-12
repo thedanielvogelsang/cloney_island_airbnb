@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :user do
+    association :address, factory: :address
+
     birthday "2017-07-11 20:04:56"
     first_name "Paul"
     last_name "Simon"
