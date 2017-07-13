@@ -32,14 +32,44 @@ RSpec.describe User, type: :model do
     it {should have_secure_password}
   end
 
-  xit 'can create full name' do
-    user = create(:user)
+  describe 'user methods' do
+    it 'can create full name' do
+      user = create(:user)
+      full_name = user.full_name
 
-    first_name = user.first_name
-    last_name = user.last_name
-    full_name = user.full_name
+      expect(full_name).to eq(user.first_name + " " + user.last_name)
+    end
 
-    expect(full_name).to eq(first_name + " " + last_name)
+    it 'check for admin role' do
+      role = create(:role, name: "admin")
+      user = create(:user)
+      other_user = create(:user)
+      user.roles << role
+
+      expect(user.admin?).to be(true)
+      expect(other_user.admin?).to be(false)
+    end
+
+    it 'check for host role' do
+      role = create(:role, name: "host")
+      user = create(:user)
+      other_user = create(:user)
+      user.roles << role
+
+      expect(user.host?).to be(true)
+      expect(other_user.host?).to be(false)
+    end
+
+    it 'check for traveler role' do
+      role = create(:role, name: "traveler")
+      user = create(:user)
+      other_user = create(:user)
+      user.roles << role
+
+      expect(user.traveler?).to be(true)
+      expect(other_user.traveler?).to be(false)
+    end
   end
+
 
 end

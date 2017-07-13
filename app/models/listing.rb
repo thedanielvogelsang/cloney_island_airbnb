@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :address
 
-  has_many :listing_images
+  has_many :listing_images, dependent: :destroy
   has_many :listing_amenities
   has_many :amenities, through: :listing_amenities
 
@@ -16,4 +16,6 @@ class Listing < ApplicationRecord
   enum bed_type: [:king, :queen, :double, :twin, :single, :couch]
   enum pet_type: [:no_pets, :cat, :dog, :cat_and_dog, :misc]
   enum status: [:unlisted, :listed]
+
+  accepts_nested_attributes_for :listing_images, :reject_if => lambda { |t| t['listing_image'].nil? }
 end
