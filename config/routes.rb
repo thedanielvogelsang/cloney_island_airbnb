@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :listings, only: [:index]
 
   namespace :users do
-    resources :dashboard, only: [:index]
+    resources :dashboard, only: [:index, :show]
   end
 
 end
