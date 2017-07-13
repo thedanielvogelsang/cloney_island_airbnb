@@ -16,7 +16,7 @@ namespace :import do
     puts "Amenities loaded and seeded"
   end
 
-  
+
 
   desc "Listings" #How do we assure that the host id we generate is a user that is actually a host?
   task listings: :environment do
@@ -41,7 +41,7 @@ namespace :import do
     puts "Listings loaded and seeded"
   end
 
-    
+
 
     desc "Listing Amenities Join"
     task listing_amenities: :environment do
@@ -52,7 +52,7 @@ namespace :import do
       puts "Listing Amenities loaded and seeded"
     end
 
-    
+
 
     desc "Addresses"
     task addresses: :environment do
@@ -66,7 +66,7 @@ namespace :import do
       puts "Addresses loaded and seeded"
     end
 
-    
+
 
     desc "Users"
     task users: :environment do
@@ -82,7 +82,7 @@ namespace :import do
       puts "Users loaded and seeded"
     end
 
-    
+
 
     # desc "Cancellations"
     # task cancellations: :environment do
@@ -104,18 +104,18 @@ namespace :import do
     puts "Roles loaded and seeded"
   end
 
-  
+
 
   desc "User_Roles"
   task user_roles: :environment do
     10.times do
       UserRole.create!(user_id: [*1..1000].rand,
-      roles_id[*0..3].rand)
+      roles_id: [*0..3].rand)
     end
     puts "User_Roles loaded and seeded"
   end
 
-  
+
 
   desc "Trips" #I think we need to build in a way to insure that the host_id selected is actually a host??
   task trips: :environment do
@@ -129,8 +129,8 @@ namespace :import do
     end
     puts "Trips loaded and seeded"
   end
-  
-  
+
+
   desc "Imports all seed data"
   task :all => [:amenities, :listings, :listing_amenities, :addresses, :users, :roles, :user_roles, :trips]
 end

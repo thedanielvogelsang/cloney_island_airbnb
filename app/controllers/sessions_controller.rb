@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.first_name}"
-      redirect_to return_path
+      redirect_to users_dashboard_index_path
     else
       flash[:login_error] = "The email or password you entered is invalid"
       render :new
