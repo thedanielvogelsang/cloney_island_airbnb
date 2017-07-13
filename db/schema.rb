@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713042952) do
+ActiveRecord::Schema.define(version: 20170713171656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20170713042952) do
     t.datetime "updated_at", null: false
     t.index ["amenity_id"], name: "index_listing_amenities_on_amenity_id"
     t.index ["listing_id"], name: "index_listing_amenities_on_listing_id"
+  end
+
+  create_table "listing_images", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "property_image_file_name"
+    t.string "property_image_content_type"
+    t.integer "property_image_file_size"
+    t.datetime "property_image_updated_at"
+    t.index ["listing_id"], name: "index_listing_images_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -104,7 +115,7 @@ ActiveRecord::Schema.define(version: 20170713042952) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "birthday"
+    t.date "birthday"
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
@@ -112,11 +123,16 @@ ActiveRecord::Schema.define(version: 20170713042952) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_picture_file_name"
+    t.string "profile_picture_content_type"
+    t.integer "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
   end
 
   add_foreign_key "addresses", "users"
   add_foreign_key "listing_amenities", "amenities"
   add_foreign_key "listing_amenities", "listings"
+  add_foreign_key "listing_images", "listings"
   add_foreign_key "listings", "addresses"
   add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "users"
