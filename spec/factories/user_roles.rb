@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user_role do
-    user nil
-    role nil
+    association :user, factory: :user
+    association :role, factory: :role
   end
 end

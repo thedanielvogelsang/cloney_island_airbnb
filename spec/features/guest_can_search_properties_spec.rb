@@ -1,13 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "Guest can search properties" do
-  context "guests can search and view properties by specifications" do
-    scenario "guest can search by city"
-      property = create(:property)
+RSpec.feature "Guest can search properties", type: :feature do
+  scenario "guests can search by city" do
+    property = create(:property)
 
-      visit root_path
+    visit root_path
 
-      within(".search_bar") do
+    within(".search_bar") do
       expect(page).to have_field("city")
       expect(page).to have_field("zipcode")
       expect(page).to have_field("check_in")
@@ -15,21 +14,21 @@ RSpec.describe "Guest can search properties" do
       expect(page).to have_selector(:link_or_button, 'Search')
     end
 
-      fill_in "city", with: "#{property.city}"
-      fill_in "state", with: "#{property.state}"
-      click_on "Search"
+    fill_in "city", with: "#{property.city}"
+    fill_in "state", with: "#{property.state}"
+    click_on "Search"
 
-      expect(current_path).to eq(properties_path)
+    expect(current_path).to eq(properties_path)
 
-      within(".results") do
-        expect(page).to have_content(property.name)
-        expect(page).to have_css("img[src*='#{property.image_url}']")
-        expect(page).to have_selector('#markers img', count: 1)
-      end
+    within(".results") do
+      expect(page).to have_content(property.name)
+      expect(page).to have_css("img[src*='#{property.image_url}']")
+      expect(page).to have_selector('#markers img', count: 1)
+    end
   end
 
-  scenario "guest can search by zipcode" do
-    guest = create(:user, role: 0)
+  scenario "can search by zipcode" do
+    create(:user, role: 0)
     property = create(:property)
 
     visit root_path
@@ -55,7 +54,7 @@ RSpec.describe "Guest can search properties" do
   end
 
   scenario "guest can search by dates" do
-    guest = create(:user, role: 0)
+    create(:user, role: 0)
     property_1 = create(:property)
     property_2 = create(:property)
     property_availability = create(:property_availability, property: property_1, date: Date.today, reserved?: false)

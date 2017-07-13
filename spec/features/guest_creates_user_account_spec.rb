@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Guest can become user" do
-  feature "guest can become a user by registering" do
-
+RSpec.feature "Guest can become user", type: :feature do
+  scenario "guest registers successfully" do
     visit root_path
 
     click on "Sign Up"
@@ -18,7 +17,7 @@ RSpec.describe "Guest can become user" do
     fill_in :email, with: "paint_with_squirrels@bobross.com"
     fill_in :phone_number, with: "303-867-5309"
     fill_in :birthday, with: "05-16-1990"
-    fill_in :image_url, with: "https://fakeimage.jpg"
+    # fill_in :image_url, with: "https://fakeimage.jpg"
     fill_in :password, with: "paint"
     fill_in :password_confirmation, with: "paint"
     click_on "Sign up"

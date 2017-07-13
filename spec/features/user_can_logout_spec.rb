@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Logged in user can log out" do
+RSpec.feature "Logged in user can log out", type: :feature do
   scenario "user sees the visitor options page" do
     user = create(:user)
 

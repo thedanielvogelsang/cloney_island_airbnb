@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Admin can change property status" do
-  feature "as an admin I can change property status from pending to active" do
+RSpec.feature "Admin can change property status", type: :feature do
+  scenario "change status from pending to active" do
     admin = create(:user, role: 3)
     property = create(:property, status: 0)
 

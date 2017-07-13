@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "User can edit profile" do
-  feature "user can edit profile information" do
+RSpec.feature "User can edit profile", type: :feature do
+  scenario "user makes changes successfully" do
     user = create(:user, name: "Ben", phone_number: 3038379093)
     login(user)
 
