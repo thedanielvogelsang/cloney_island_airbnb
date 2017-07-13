@@ -1,0 +1,14 @@
+.message_index
+  .message_header Messages
+  .message_list
+    - @conversations[0..4].each do |conversation|
+      = conversation.traveler.image
+      = conversation.traveler.name
+      = conversation.updated_at
+      = conversation.messages.last.shorten
+      = conversation.listing.address.city_and_state
+      = conversation.trip.display_duration
+      ??????
+      \#{conversation.trip.confirmation}
+      \#{conversation.trip.total_price}
+    %div %= link_to "All messages", conversation_path
