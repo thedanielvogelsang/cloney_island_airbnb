@@ -121,6 +121,9 @@ namespace :import do
       num_guests: [1..4].rand)
     end
   end
-
+  
   puts "Trips loaded and seeded"
+  
+  desc "Imports all seed data"
+  task :all => [:amenities, :listings, :listing_amenities, :addresses, :users, :roles, :user_roles, :trips]
 end
