@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :listings
   has_many :user_roles
   has_many :roles, through: :user_roles
-
+  has_many :addresses
+  
   def full_name
     first_name + " " + last_name
   end

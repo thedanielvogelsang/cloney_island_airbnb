@@ -23,7 +23,8 @@ namespace :import do
       street_address_2: Faker::Address.secondary_address,
       city: Faker::Address.city,
       state: ["CO", "UT", "AK", "NM", "AZ", "CA", "OR", "WA", "TX", "TN", "IN", "IA"].sample,
-      zip_code: Faker::Address.zip_code)
+      zip_code: Faker::Address.zip_code, 
+      user_id: [*1..1000].sample)
     end
     puts "Addresses loaded and seeded"
   end
@@ -32,7 +33,6 @@ namespace :import do
   task users: :environment do
     1000.times do
       User.create!(birthday: Faker::Date.birthday(18, 97),
-      address_id: [*1..300].sample,
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       phone_number: "#{Faker::PhoneNumber.area_code} - #{Faker::PhoneNumber.exchange_code} - #{Faker::PhoneNumber.unique.subscriber_number}",
@@ -123,5 +123,5 @@ namespace :import do
   end
   
   desc "Imports all seed data"
-  task :all => [:addresses, :users, :cancellations, :listings, :amenities, :listing_amenities, :roles, :user_roles, :trips]
+  task :all => [:users, :addresses, :cancellations, :listings, :amenities, :listing_amenities, :roles, :user_roles, :trips]
 end
