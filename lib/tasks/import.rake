@@ -68,7 +68,8 @@ namespace :import do
                       pet_type: [0, 1, 2, 3, 4].sample,
                       price: [100, 200, 300, 400, 500, 600].sample,
                       house_rules: ["No Smoking", "No Teenagers", "Hippies Use Back Door"].sample,
-                      cancellation_id: [1, 2, 3].sample)
+                      cancellation_id: [1, 2, 3].sample, 
+                      status: ["unlisted", "listed"].sample)
     end
     puts "Listings loaded and seeded"
   end
@@ -113,7 +114,7 @@ namespace :import do
     1000.times do
       Trip.create!(user_id: [*1..990].sample,
                   host_id: [*1..500].sample,
-                  trip_status: ["unlisted", "listed"].sample,
+                  trip_status: ["requested", "pending", "accepted", "paid"].sample,
                   start_date: Faker::Date.between(1.days.from_now, 3.days.from_now),
                   end_date: Faker::Date.between(4.days.from_now, 6.days.from_now),
                   num_guests: [*1..4].sample)
