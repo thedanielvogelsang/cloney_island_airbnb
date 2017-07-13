@@ -1,7 +1,7 @@
 namespace :import do
   desc "Imports all seed data"
   task :all => [:regenerate, :roles, :users, :addresses, :cancellations, :listings, :amenities, :trips]
-  
+
   desc "wipes database before seeding"
   task :regenerate do
     Rails.env = "development"
@@ -114,7 +114,6 @@ namespace :import do
     puts "Listings loaded and seeded"
   end
 
-<<<<<<< HEAD
   desc "Listing Image"
   task listing_images: :environment do
     500.times do
@@ -158,8 +157,6 @@ namespace :import do
     end
     puts "User_Roles loaded and seeded"
   end
-=======
->>>>>>> development
 
   desc "Trips"
   task trips: :environment do
