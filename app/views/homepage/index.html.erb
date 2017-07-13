@@ -1,7 +1,7 @@
 <div class="homepage-listings-box">
-  <div class="">
-    <h3>Listings</h3>
+  <div class="list-items">
+    <h3>Featured Listings</h3>
     <h2><%= link_to "See all >", listings_path %></h2>
+    <%= render partial: "search/vertical_listing_card" %>
   </div>
-  <%= render partial: "search/vertical_listing_card" %>
 </div>

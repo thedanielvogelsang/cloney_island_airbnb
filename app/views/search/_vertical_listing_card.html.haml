@@ -1,13 +1,13 @@
-%section.listings.cards.vertical_cards
+.listings.cards.vertical_cards
   = @listings.each do |listing|
-    .card.vertical_card.listing_#{listing.id}
+    .card.vertical_card.listing
       .card_image.vertical_card_image
-        =link_to image_tag(listing.image_url), listing_path(listing)
+        -# =link_to image_tag(listing.listing_images.property_image_file_name.url), listing_path(listing)
       .card_price.vertical_card_price
         %h5= listing.price
       .card_title.verticle_card_title
-        %h5= listing.title
+        %h5= listing.name
       .card_room_type.verticle_card_room_type
-        %p= "#{listing.room_type} | #{listing.bed_count}"
+        %p= "#{listing.room_type} | #{listing.beds} beds"
       .card_review.verticle_card_review
-        %p= listing.average_rating
+        -# %p= listing.average_rating

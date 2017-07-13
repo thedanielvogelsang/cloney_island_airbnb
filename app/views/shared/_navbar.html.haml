@@ -2,12 +2,9 @@
   =link_to image_tag("air_bnb_logo.png", :class => 'nav-logo'), root_path
   .search-bar
     %input{type: "text", name: "search", placeholder: "Search.."}
-  -# -form_tag search_path, method: :get do
-  -#   =text_field_tag(:post_title, params[:post_title])
-  -#   =submit_tag "Search"
   .navbar-user-types
     -# =render partial: "current_user_#{current_user.role}"
-    =render partial: "/shared/current_user_guest"
+    -# =render partial: "/shared/current_user_guest"
   .navbar-user-bottom
     -# -if current_user.traveler?
       .navbar-bottom-links
@@ -17,4 +14,3 @@
     -#   =link_to 'Your Trips', user_trips_path
     -#   =link_to 'Profile', user_profile_path
     -#   =link_to 'Account', user_account_path
-
