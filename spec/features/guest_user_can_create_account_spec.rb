@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a guest user' do
 
-  it 'can create an account' do
+  xit 'can create an account' do
     visit '/'
 
     within('.navbar-user-types') do
