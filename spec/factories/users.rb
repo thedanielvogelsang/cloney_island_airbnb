@@ -8,6 +8,6 @@ FactoryGirl.define do
     phone_number "404-333-2222"
     email "paul@simon.com"
     password "password"
-
+    
   end
 end
