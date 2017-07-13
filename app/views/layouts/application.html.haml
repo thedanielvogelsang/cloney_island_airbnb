@@ -22,15 +22,16 @@
             =link_to "Sign out", logout_path
             -if user.admin?
               =link_to "Admin Dashboard", "#" #admin_dashboard_path
+            -if current_user.traveler?
+              .navbar-user-bottom
+                =link_to "Dashboard", user_dashboard_path
+                -# =link_to "Inbox", user_messages_center_page_path
+                -# =link_to "Your Listing", user_listings_path
+                -# =link_to 'Your Trips', user_trips_path
+                -# =link_to 'Profile', user_profile_path
+                -# =link_to 'Account', user_account_path
           - else
             =link_to "Sign up", new_user_path
             =link_to "Log In", login_path
-        .navbar-user-bottom
-          -if current_user.traveler?
-            =link_to "Dashboard", user_dashboard_path
-            =link_to "Inbox", user_messages_center_page_path
-            =link_to "Your Listing", user_listings_path
-            =link_to 'Your Trips', user_trips_path
-            =link_to 'Profile', user_profile_path
-            =link_to 'Account', user_account_path
+
     = yield
