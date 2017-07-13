@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Role, type: :model do
+RSpec.describe Amenity, type: :model do
   describe 'attributes' do
     it { should validate_presence_of(:name) }
 
@@ -8,7 +8,7 @@ RSpec.describe Role, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many(:user_roles) }
-    it { should have_many(:users) }
-  end  
+    it { should have_many(:listing_amenities) }
+    it { should have_many(:listings) }
+  end
 end

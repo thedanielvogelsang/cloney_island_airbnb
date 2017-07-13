@@ -26,6 +26,7 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 group :development, :test do
   gem 'pry'
   gem 'pry-state'
+  gem 'launchy'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'factory_girl_rails'
   gem 'capybara'

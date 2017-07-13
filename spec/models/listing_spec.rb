@@ -23,5 +23,7 @@ RSpec.describe Listing, type: :model do
     it { should belong_to(:address) }
 
     it { should have_many(:listing_images) }
+    it { should have_many(:listing_amenities) }
+    it { should have_many(:amenities) }
   end
 end
