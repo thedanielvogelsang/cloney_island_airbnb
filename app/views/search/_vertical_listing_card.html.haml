@@ -1,6 +1,6 @@
 %section.listings.cards.vertical_cards
   = @listings.each do |listing|
-    .card.vertical_card.listing_#{listing.id}
+    .card.vertical_card.listing
       .card_image.vertical_card_image
         =link_to image_tag(listing.image_url), listing_path(listing)
       .card_price.vertical_card_price
