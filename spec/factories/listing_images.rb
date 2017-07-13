@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user_role do
+  factory :listing_image do
     
   end
 end

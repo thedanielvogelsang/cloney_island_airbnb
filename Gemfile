@@ -20,6 +20,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'active_model_serializers'
 gem 'faker'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # gem 'twilio-ruby'
 
 group :development, :test do

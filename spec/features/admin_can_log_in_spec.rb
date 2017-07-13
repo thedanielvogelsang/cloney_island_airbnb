@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Admin can log in" do
-  feature "as an admin I can log in" do
+RSpec.feature "Admin can log in", type: :feature do
+  scenario "admin logs in successfully" do
+    skip
     admin = create(:user, role: 3)
 
     visit login_path

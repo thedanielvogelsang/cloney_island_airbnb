@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "As a user with an account" do
-    it "can log in" do
+RSpec.feature "As a user with an account", type: :feature do
+    scenario "user can log in" do
+      skip
       user = create(:user)
       visit login_path
       click_on 'Log In'
