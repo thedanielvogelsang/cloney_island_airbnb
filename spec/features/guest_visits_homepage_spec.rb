@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a guest user' do
   it 'can create visit homepage and view listings' do
+    skip
     visit '/'
 
     expect(current_path).to eq("/")
