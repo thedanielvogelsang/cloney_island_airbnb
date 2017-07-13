@@ -1,20 +1,20 @@
 namespace :import do
 
-  desc "Amenities"
-  task amenities: :environment do
-    Amenity.create!(type: "Kitchen")
-    Amenity.create!(type: "Essentials/Toiletries")
-    Amenity.create!(type: "Air Conditioning")
-    Amenity.create!(type: "Heating")
-    Amenity.create!(type: "Washer/Dryer")
-    Amenity.create!(type: "TV")
-    Amenity.create!(type: "Private Entrance")
-    Amenity.create!(type: "Living Room")
-    Amenity.create!(type: "Wifi")
-    Amenity.create!(type: "Hot Tub")
-    Amenity.create!(type: "Fire Extinguisher")
-    puts "Amenities loaded and seeded"
-  end
+  # desc "Amenities"
+  # task amenities: :environment do
+  #   Amenity.create!(type: "Kitchen")
+  #   Amenity.create!(type: "Essentials/Toiletries")
+  #   Amenity.create!(type: "Air Conditioning")
+  #   Amenity.create!(type: "Heating")
+  #   Amenity.create!(type: "Washer/Dryer")
+  #   Amenity.create!(type: "TV")
+  #   Amenity.create!(type: "Private Entrance")
+  #   Amenity.create!(type: "Living Room")
+  #   Amenity.create!(type: "Wifi")
+  #   Amenity.create!(type: "Hot Tub")
+  #   Amenity.create!(type: "Fire Extinguisher")
+  #   puts "Amenities loaded and seeded"
+  # end
 
   desc "Listings"
   task listings: :environment do
@@ -39,14 +39,14 @@ namespace :import do
     puts "Listings loaded and seeded"
   end
 
-  desc "Listing Amenities Join"
-  task listing_amenities: :environment do
-    300.times do
-      ListingAmenity.create!(amenity_id: [*1..11].sample,
-      listing_id: [*1..100].sample)
-    end
-    puts "Listing Amenities loaded and seeded"
-  end 
+  # desc "Listing Amenities Join"
+  # task listing_amenities: :environment do
+  #   300.times do
+  #     ListingAmenity.create!(amenity_id: [*1..11].sample,
+  #     listing_id: [*1..100].sample)
+  #   end
+  #   puts "Listing Amenities loaded and seeded"
+  # end 
 
   desc "Addresses"
   task addresses: :environment do
@@ -108,18 +108,18 @@ namespace :import do
     puts "User_Roles loaded and seeded"
   end
 
-  desc "Trips" #I think we need to build in a way to insure that the host_id selected is actually a host??
-  task trips: :environment do
-    10.times do
-      Trip.create!(user_id: [*1..500].sample,
-      host_id: [*1..500].sample,
-      trip_status: ["listed", "unlisted"].sample,
-      start_date: Faker::Date.between(1.days.from_now, 3.days.from_now),
-      end_date: Faker::Date.between(4.days.from_now, 6.days.from_now),
-      num_guests: [*1..4].sample)
-    end
-    puts "Trips loaded and seeded"
-  end
+  # desc "Trips" #I think we need to build in a way to insure that the host_id selected is actually a host??
+  # task trips: :environment do
+  #   10.times do
+  #     Trip.create!(user_id: [*1..500].sample,
+  #     host_id: [*1..500].sample,
+  #     trip_status: ["listed", "unlisted"].sample,
+  #     start_date: Faker::Date.between(1.days.from_now, 3.days.from_now),
+  #     end_date: Faker::Date.between(4.days.from_now, 6.days.from_now),
+  #     num_guests: [*1..4].sample)
+  #   end
+  #   puts "Trips loaded and seeded"
+  # end
   
   desc "Imports all seed data"
   task :all => [:amenities, :listings, :listing_amenities, :addresses, :users, :roles, :user_roles, :trips, :cancellations]
