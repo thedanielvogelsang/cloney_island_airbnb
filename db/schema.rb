@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20170713171742) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "birthday"
+    t.date "birthday"
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
