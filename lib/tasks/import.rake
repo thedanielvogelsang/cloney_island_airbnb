@@ -94,9 +94,17 @@ namespace :import do
 
   desc "User_Roles"
   task user_roles: :environment do
-    10.times do
-      UserRole.create!(user_id: [*1..1000].rand,
-      role_id: [*0..3].rand)
+    990.times do |n|  #creates 990 traveler users
+      UserRole.create!(user_id: n+1,
+      role_id: 1)
+    end
+    500.times do |n|  #creates 500 host users that are also travelers
+      UserRole.create!(user_id: n+1,
+      role_id: 2)
+    end
+    10.times do |n|  #creates 10 admin users that are neither hosts nor travelers
+      UserRole.create!(user_id: n+991,
+      role_id: 2)
     end
     puts "User_Roles loaded and seeded"
   end
