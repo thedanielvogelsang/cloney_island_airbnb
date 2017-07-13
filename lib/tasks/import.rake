@@ -1,21 +1,21 @@
 namespace :import do
 
-  desc "Ammenities"
-  task ammenities: :environment do
-    Ammenities.create!(type: "Kitchen")
-    Ammenities.create!(type: "Essentials/Toiletries")
-    Ammenities.create!(type: "Air Conditioning")
-    Ammenities.create!(type: "Heating")
-    Ammenities.create!(type: "Washer/Dryer")
-    Ammenities.create!(type: "TV")
-    Ammenities.create!(type: "Private Entrance")
-    Ammenities.create!(type: "Living Room")
-    Ammenities.create!(type: "Wifi")
-    Ammenities.create!(type: "Hot Tub")
-    Ammenities.create!(type: "Fire Extinguisher")
+  desc "Amenities"
+  task amenities: :environment do
+    Amenities.create!(type: "Kitchen")
+    Amenities.create!(type: "Essentials/Toiletries")
+    Amenities.create!(type: "Air Conditioning")
+    Amenities.create!(type: "Heating")
+    Amenities.create!(type: "Washer/Dryer")
+    Amenities.create!(type: "TV")
+    Amenities.create!(type: "Private Entrance")
+    Amenities.create!(type: "Living Room")
+    Amenities.create!(type: "Wifi")
+    Amenities.create!(type: "Hot Tub")
+    Amenities.create!(type: "Fire Extinguisher")
   end
 
-  puts "Ammenities loaded and seeded"
+  puts "Amenities loaded and seeded"
 
   desc "Listings" #How do we assure that the host id we generate is a user that is actually a host?
   task listings: :environment do
@@ -41,15 +41,15 @@ namespace :import do
 
     puts "Listings loaded and seeded"
 
-    desc "Listing Ammenities Join"
-    task listing_ammenities: :environment do
+    desc "Listing Amenities Join"
+    task listing_amenities: :environment do
       300.times do
-        ListingAmmenities.create!(ammenity_id: [*1..11].rand,
+        ListingAmenities.create!(amenity_id: [*1..11].rand,
         listing_id: [*1..100].rand)
       end
     end
 
-    puts "Listing Ammenities loaded and seeded"
+    puts "Listing Amenities loaded and seeded"
 
     desc "Addresses"
     task addresses: :environment do
