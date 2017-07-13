@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170713031439) do
   end
 
   create_table "amenities", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

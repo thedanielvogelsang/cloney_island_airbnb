@@ -2,17 +2,17 @@ namespace :import do
 
   desc "Amenities"
   task amenities: :environment do
-    Amenity.create!(type: "Kitchen")
-    Amenity.create!(type: "Essentials/Toiletries")
-    Amenity.create!(type: "Air Conditioning")
-    Amenity.create!(type: "Heating")
-    Amenity.create!(type: "Washer/Dryer")
-    Amenity.create!(type: "TV")
-    Amenity.create!(type: "Private Entrance")
-    Amenity.create!(type: "Living Room")
-    Amenity.create!(type: "Wifi")
-    Amenity.create!(type: "Hot Tub")
-    Amenity.create!(type: "Fire Extinguisher")
+    Amenity.create!(name: "Kitchen")
+    Amenity.create!(name: "Essentials/Toiletries")
+    Amenity.create!(name: "Air Conditioning")
+    Amenity.create!(name: "Heating")
+    Amenity.create!(name: "Washer/Dryer")
+    Amenity.create!(name: "TV")
+    Amenity.create!(name: "Private Entrance")
+    Amenity.create!(name: "Living Room")
+    Amenity.create!(name: "Wifi")
+    Amenity.create!(name: "Hot Tub")
+    Amenity.create!(name: "Fire Extinguisher")
     puts "Amenities loaded and seeded"
   end
 
