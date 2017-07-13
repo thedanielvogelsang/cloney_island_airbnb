@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Logged in user can log out", type: :feature do
   scenario "user sees the visitor options page" do
+    skip
     user = create(:user)
 
     visit root_path

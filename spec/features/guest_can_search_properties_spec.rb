@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
+    skip
     property = create(:property)
 
     visit root_path
@@ -28,6 +29,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "can search by zipcode" do
+    skip
     create(:user, role: 0)
     property = create(:property)
 
@@ -54,6 +56,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guest can search by dates" do
+    skip
     create(:user, role: 0)
     property_1 = create(:property)
     property_2 = create(:property)
