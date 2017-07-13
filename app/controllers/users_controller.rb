@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.roles << Role.find_by(name: "traveler")
+      binding.pry
       session[:user_id] = @user.id
       redirect_to users_dashboard_index_path
     else
