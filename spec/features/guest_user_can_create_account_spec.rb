@@ -7,10 +7,10 @@ RSpec.describe 'As a guest user' do
 
     within('.navbar-user-types') do
       click_on "Sign Up"
-      expect(current_path).to eq(new_user_path)
     end
 
     expect(current_path).to eq(new_user_path)
+
     fill_in "Email", with: "d@d.com"
     fill_in "Password", with: "password"
     fill_in "Phone number", with: "555-555-5555"

@@ -23,7 +23,7 @@ namespace :import do
       street_address_2: Faker::Address.secondary_address,
       city: Faker::Address.city,
       state: ["CO", "UT", "AK", "NM", "AZ", "CA", "OR", "WA", "TX", "TN", "IN", "IA"].sample,
-      zip_code: Faker::Address.zip_code, 
+      zip_code: Faker::Address.zip_code,
       user_id: [*1..1000].sample)
     end
     puts "Addresses loaded and seeded"
@@ -68,7 +68,7 @@ namespace :import do
                       pet_type: [0, 1, 2, 3, 4].sample,
                       price: [100, 200, 300, 400, 500, 600].sample,
                       house_rules: ["No Smoking", "No Teenagers", "Hippies Use Back Door"].sample,
-                      cancellation_id: [1, 2, 3].sample, 
+                      cancellation_id: [1, 2, 3].sample,
                       status: ["unlisted", "listed"].sample)
     end
     puts "Listings loaded and seeded"
@@ -81,7 +81,7 @@ namespace :import do
       listing_id: [*1..100].sample)
     end
     puts "Listing Amenities loaded and seeded"
-  end 
+  end
 
   desc "Roles"
   task roles: :environment do
@@ -121,7 +121,7 @@ namespace :import do
     end
     puts "Trips loaded and seeded"
   end
-  
+
   desc "Imports all seed data"
   task :all => [:users, :addresses, :cancellations, :listings, :amenities, :listing_amenities, :roles, :user_roles, :trips]
 end
