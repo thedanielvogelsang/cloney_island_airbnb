@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170713031439) do
     t.integer "room_type"
     t.bigint "user_id"
     t.bigint "cancellation_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id"
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 20170713031439) do
   create_table "trips", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "host_id"
-    t.integer "trip_status"
+    t.integer "trip_status", default: 0
     t.date "start_date"
     t.date "end_date"
     t.integer "num_guests"
