@@ -13,9 +13,10 @@ namespace :import do
     Amenities.create!(type: "Wifi")
     Amenities.create!(type: "Hot Tub")
     Amenities.create!(type: "Fire Extinguisher")
+    puts "Amenities loaded and seeded"
   end
 
-  puts "Amenities loaded and seeded"
+  
 
   desc "Listings" #How do we assure that the host id we generate is a user that is actually a host?
   task listings: :environment do
@@ -36,10 +37,11 @@ namespace :import do
       price: [100, 200, 300, 400, 500, 600].rand,
       house_rules: ["No Smoking", "No Teenagers", "Hippies Use Back Door"].rand,
       cancellation_type: [1, 2, 3].rand)
-      end
     end
-
     puts "Listings loaded and seeded"
+  end
+
+    
 
     desc "Listing Amenities Join"
     task listing_amenities: :environment do
@@ -47,9 +49,10 @@ namespace :import do
         ListingAmenities.create!(amenity_id: [*1..11].rand,
         listing_id: [*1..100].rand)
       end
+      puts "Listing Amenities loaded and seeded"
     end
 
-    puts "Listing Amenities loaded and seeded"
+    
 
     desc "Addresses"
     task addresses: :environment do
@@ -60,9 +63,10 @@ namespace :import do
         state: ["CO", "UT", "AK", "NM", "AZ", "CA", "OR", "WA", "TX", "TN", "IN", "IA"].rand,
         zip_code: Faker::Address.zip_code)
       end
+      puts "Addresses loaded and seeded"
     end
 
-    puts "Users loaded and seeded"
+    
 
     desc "Users"
     task users: :environment do
@@ -75,9 +79,10 @@ namespace :import do
         email:  Faker::Internet.unique.email,
         password: "password")
       end
+      puts "Users loaded and seeded"
     end
 
-    puts "Users loaded and seeded"
+    
 
     # desc "Cancellations"
     # task cancellations: :environment do
@@ -96,9 +101,10 @@ namespace :import do
     10.times do
       Role.create!(name: ["guest", "traveler", "host", "admin"].rand)
     end
+    puts "Roles loaded and seeded"
   end
 
-  puts "Roles loaded and seeded"
+  
 
   desc "User_Roles"
   task user_roles: :environment do
@@ -106,9 +112,10 @@ namespace :import do
       UserRole.create!(user_id: [*1..1000].rand,
       roles_id[*0..3].rand)
     end
+    puts "User_Roles loaded and seeded"
   end
 
-  puts "User_Roles loaded and seeded"
+  
 
   desc "Trips" #I think we need to build in a way to insure that the host_id selected is actually a host??
   task trips: :environment do
@@ -120,9 +127,9 @@ namespace :import do
       end_date: Faker::Date.between(4.days.from_now, 6.days.from_now),
       num_guests: [1..4].rand)
     end
+    puts "Trips loaded and seeded"
   end
   
-  puts "Trips loaded and seeded"
   
   desc "Imports all seed data"
   task :all => [:amenities, :listings, :listing_amenities, :addresses, :users, :roles, :user_roles, :trips]
