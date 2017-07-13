@@ -6,16 +6,15 @@ RSpec.describe "Logged in user can log out" do
 
     visit root_path
 
-    click_link "Login"
-    fill_in "Username", with: user.username
+    click_on "Sign in"
+    fill_in "Email", with: user.email
     fill_in "Password", with: user.password
-    click_button "Login"
+    click_on "Sign in"
 
-    expect(page).to have_content("#{user.username}")
+    #expect(page).to have_content("#{user.username}")
+    click_on "Sign out"
 
-    click_on "Logout"
-
-    expect(page).to have_link "Login", href: login_path
-    expect(page).to_not have_content("Logout")
+    expect(page).to have_link "Sign in", href: login_path
+    expect(page).to_not have_content("Sign out")
   end
 end
