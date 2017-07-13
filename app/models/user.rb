@@ -10,9 +10,21 @@ class User < ApplicationRecord
   has_many :listings
   has_many :user_roles
   has_many :roles, through: :user_roles
-  
+
   def full_name
     first_name + " " + last_name
+  end
+
+  def admin?
+    roles.exists?(name: "admin")
+  end
+
+  def host?
+    roles.exists?(name: "host")
+  end
+
+  def traveler?
+    roles.exists?(name: "traveler")
   end
 
 end
