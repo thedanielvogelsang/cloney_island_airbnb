@@ -1,0 +1,11 @@
+<div class="homepage-listings-box">
+  <div class="">
+    <h3>Listings</h3>
+    <h2><%= link_to "See all >", listings_path %></h2>
+  </div>
+  <div class="homepage-listings">
+    <% @listings.each do |listing| %>
+      <%= listing.listing_image.first.image_url %>
+    <% end %>
+  </div>
+</div>
