@@ -96,7 +96,6 @@ namespace :import do
 
   desc "Roles"
   task roles: :environment do
-    Role.create!(name: "guest")
     Role.create!(name: "traveler")
     Role.create!(name: "host")
     Role.create!(name: "admin")

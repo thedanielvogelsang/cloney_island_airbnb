@@ -1,18 +1,20 @@
 require 'rails_helper'
 
-RSpec.feature "Admin can change property status", type: :feature do
-  xscenario "change status from pending to active" do
-    role = create(:role, name: 'admin')
-    admin = create(:user)
-    admin.roles << role
-    user = create(:user)
-    listing = create(:listing, user_id: user.id)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+RSpec.feature "Host can change property status", type: :feature do
+  scenario "change status from unlisted to listed" do
+    role = create(:role, name: 'host')
+    host = create(:user)
+    host.roles << role
 
-    visit admin_dashboard_path(admin)
+    listing = create(:listing)
+    listing.user = host
+    binding.pry
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
+
+    visit host_dashboard_path(host)
     click_on "View All Properties"
 
-    expect(current_path).to eq(admin_properties_path)
+    expect(current_path).to eq(host_properties_path)
 
     within(".pending_properties") do
       expect(page).to have_content(listing.name)
@@ -20,5 +22,19 @@ RSpec.feature "Admin can change property status", type: :feature do
     end
 
     expect(listing.status).to eq(1)
+  end
+
+  xit "traveler cannot change listing status" do
+    user = create(:user)
+    role = create(:role, name: 'traveler')
+
+
+  end
+
+  xit "traveler cannot see an unlisted listing" do
+    user = create(:user)
+    role = create(:role, name: 'traveler')
+
+
   end
 end
