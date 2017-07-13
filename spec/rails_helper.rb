@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/dsl'
+require "paperclip/matchers"
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -36,6 +37,7 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Paperclip::Shoulda::Matchers
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

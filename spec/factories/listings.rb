@@ -4,7 +4,6 @@ FactoryGirl.define do
     association :cancellation, factory: :cancellation
     association :user, factory: :user
 
-    image_link 'https://a0.muscache.com/im/pictures/21162888/5a0f1151_original.jpg?aki_policy=xx_large'
     name 'Best Place on Earth'
     description 'Place new description here'
     accomodates 3
@@ -17,5 +16,6 @@ FactoryGirl.define do
     bed_type 'king'
     pet_type 'cat_and_dog'
     room_type 'entire_home'
+    status 0
   end
 end
