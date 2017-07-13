@@ -1,0 +1,27 @@
+%p 
+  = "Name: #{@listing.name}"
+%p 
+  = "Description: #{@listing.description}"
+%p 
+  = "Accomadates: #{@listing.accomodates}"
+%p 
+  = "Bathrooms: #{@listing.bathrooms}"
+%p 
+  = "Beds: #{@listing.beds}"
+%p 
+  = "Price: #{@listing.price}"
+%p 
+  = "House Rules: #{@listing.house_rules}"
+%p 
+  = "Property Type: #{@listing.property_type}"
+%p 
+  = "Bed Type: #{@listing.bed_type}"
+%p 
+  = "Pet Type: #{@listing.pet_type}"
+%p 
+  = "Room Type: #{@listing.room_type}"
+%br
+- @listing.listing_images.each do |image|
+  %p 
+    = image_tag image.property_image
+  %br
