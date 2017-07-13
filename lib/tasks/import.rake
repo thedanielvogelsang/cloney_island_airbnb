@@ -118,49 +118,6 @@ namespace :import do
     puts "Listings loaded and seeded"
   end
 
-  desc "Listing Image"
-  task listing_images: :environment do
-    500.times do
-      ListingImage.create!(property_image: ["https://a0.muscache.com/im/pictures/21162888/5a0f1151_original.jpg?aki_policy=xx_large", "https://a0.muscache.com/im/pictures/6722906/b4bc6418_original.jpg?aki_policy=xx_large", "https://a0.muscache.com/im/pictures/15273358/d7329e9a_original.jpg?aki_policy=xx_large", "https://a0.muscache.com/im/pictures/52149945/33130c63_original.jpg?aki_policy=xx_large"].sample,
-                           listing_id: [*1..100].sample
-      )
-    end
-    puts "Listing Images loaded and seed"
-  end
-
-  desc "Listing Amenities Join"
-  task listing_amenities: :environment do
-    300.times do
-      ListingAmenity.create!(amenity_id: [*1..11].sample,
-      listing_id: [*1..100].sample)
-    end
-    puts "Listing Amenities loaded and seeded"
-  end
-
-  desc "Roles"
-  task roles: :environment do
-    Role.create!(name: "traveler")
-    Role.create!(name: "host")
-    Role.create!(name: "admin")
-    puts "Roles loaded and seeded"
-  end
-
-  desc "User_Roles"
-  task user_roles: :environment do
-    990.times do |n|  #creates 990 traveler users
-      UserRole.create!(user_id: n+1,
-      role_id: 1)
-    end
-    500.times do |n|  #creates 500 host users that are also travelers
-      UserRole.create!(user_id: n+1,
-      role_id: 2)
-    end
-    10.times do |n|  #creates 10 admin users that are neither hosts nor travelers
-      UserRole.create!(user_id: n+991,
-      role_id: 3)
-    end
-    puts "User_Roles loaded and seeded"
-  end
 
   desc "Trips"
   task trips: :environment do
