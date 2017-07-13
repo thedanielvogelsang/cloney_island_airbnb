@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-  validates :name, :description, :accomodates, :bathrooms, :bedrooms, :beds, :price, presence: true
+  validates :name, :description, :accomodates, :bathrooms, :bedrooms, :beds, :price, :status, presence: true
   validates :property_type, :bed_type, :room_type, :pet_type, presence: true
   validates :name, uniqueness: true
 
