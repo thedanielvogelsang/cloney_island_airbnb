@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712193242) do
+ActiveRecord::Schema.define(version: 20170713042952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20170712193242) do
     t.text "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "amenities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cancellations", force: :cascade do |t|
@@ -31,6 +39,15 @@ ActiveRecord::Schema.define(version: 20170712193242) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "listing_amenities", force: :cascade do |t|
+    t.bigint "amenity_id"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amenity_id"], name: "index_listing_amenities_on_amenity_id"
+    t.index ["listing_id"], name: "index_listing_amenities_on_listing_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -48,9 +65,11 @@ ActiveRecord::Schema.define(version: 20170712193242) do
     t.integer "room_type"
     t.bigint "user_id"
     t.bigint "cancellation_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id"
+    t.string "image_link"
     t.index ["address_id"], name: "index_listings_on_address_id"
     t.index ["cancellation_id"], name: "index_listings_on_cancellation_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
@@ -60,6 +79,19 @@ ActiveRecord::Schema.define(version: 20170712193242) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "host_id"
+    t.integer "trip_status", default: 0
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "num_guests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["host_id"], name: "index_trips_on_host_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -80,14 +112,16 @@ ActiveRecord::Schema.define(version: 20170712193242) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "listing_amenities", "amenities"
+  add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listings", "addresses"
   add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "users"
+  add_foreign_key "trips", "users"
+  add_foreign_key "trips", "users", column: "host_id"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
-  add_foreign_key "users", "addresses"
 end
