@@ -122,5 +122,5 @@ namespace :import do
   # end
   
   desc "Imports all seed data"
-  task :all => [:amenities, :listings, :listing_amenities, :addresses, :users, :roles, :user_roles, :trips, :cancellations]
+  task :all => [:listings, :addresses, :users, :roles, :user_roles, :cancellations] #need to add once uncommented => :amenities, :listing_amenities, :trips
 end
