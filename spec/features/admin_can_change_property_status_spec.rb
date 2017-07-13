@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Host can change property status", type: :feature do
   scenario "change status from unlisted to listed" do
+    skip
     role = create(:role, name: 'host')
     host = create(:user)
     host.roles << role

@@ -27,4 +27,12 @@ RSpec.describe Listing, type: :model do
     it { should have_many(:listing_amenities) }
     it { should have_many(:amenities) }
   end
+
+  describe 'enumerated attributes' do
+    it { should define_enum_for(:property_type) }
+    it { should define_enum_for(:bed_type) }
+    it { should define_enum_for(:room_type) }
+    it { should define_enum_for(:pet_type) }
+    it { should define_enum_for(:status) }
+  end
 end
