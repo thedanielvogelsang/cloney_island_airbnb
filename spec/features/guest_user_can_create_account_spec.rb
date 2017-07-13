@@ -27,5 +27,4 @@ RSpec.describe 'As a guest user' do
     #expect(page).to have_content("Messages")
     #expect(page).to have_content("Trips")
   end
-
 end
