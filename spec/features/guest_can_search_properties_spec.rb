@@ -44,33 +44,43 @@ RSpec.feature "Guest can search properties", type: :feature do
 
   scenario "guest can search by dates" do
     listing = create(:listing)
-    create(:user, role: 0)
-    property_availability = create(:property_availability, property: property_1, date: Date.today, reserved?: false)
-    property_availability = create(:property_availability, property: property_1, date: Date.tomorrow, reserved?: true)
-    property_availability = create(:property_availability, property: property_2, date: Date.today, reserved?: false)
-    property_availability = create(:property_availability, property: property_2, date: Date.tomorrow, reserved?: false)
+    user = create(:user)
+    host = create(:user)
+    trip = Trip.create!(user_id: user.id,
+    host_id: host.id,
+    trip_status: 0,
+    num_guests: 3,
+    start_date: Date.today,
+    end_date: Date.tomorrow,
+    listing_id: listing.id)
 
     visit root_path
 
-    within(".search_bar") do
-      expect(page).to have_field("city")
-      expect(page).to have_field("zipcode")
-      expect(page).to have_field("check_in")
-      expect(page).to have_field("check_out")
-      expect(page).to have_selector(:link_or_button, 'Search')
-    end
-
-    fill_in "Check In", with: "#{Date.today}"
-    fill_in "Check Out", with: "#{Date.tomorrow}"
+    fill_in "check_in", with: "#{Date.today + 3}"
+    fill_in "check_out", with: "#{Date.today + 5}"
     click_on "Search"
 
-    expect(current_path).to eq(properties_path)
+    expect(current_path).to_not have_content(listing.name)
+  end
 
-    within(".results") do
-      expect(page).to have_content(property_2.name)
-      expect(page).to_not have_content(property_1.name)
-      expect(page).to have_css("img[src*='#{property_2.image_url}']")
-      expect(page).to have_selector('#markers img', count: 1)
-    end
+  scenario "guest can search by dates sad path" do
+    listing = create(:listing)
+    user = create(:user)
+    host = create(:user)
+    trip = Trip.create!(user_id: user.id,
+    host_id: host.id,
+    trip_status: 0,
+    num_guests: 3,
+    start_date: Date.today,
+    end_date: Date.tomorrow,
+    listing_id: listing.id)
+
+    visit root_path
+
+    fill_in "check_in", with: "#{Date.today}"
+    fill_in "check_out", with: "#{Date.tomorrow}"
+    click_on "Search"
+
+    expect(current_path).to_not have_content(listing.name)
   end
 end
