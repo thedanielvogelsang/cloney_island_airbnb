@@ -1,7 +1,17 @@
-.homepage-listing-box {
-
+.homepage-listings-box {
+    border: solid 1px #000;
+    display: flex;
+    justify-content: space-between;
 }
 
-.list-items {
-
+#a {
+  width: 20%;
+  border: solid 1px #000;
 }
+
+#map {
+  float: right;
+  width: 50%;
+  height: 2000px;
+  background-color: grey;
+ }
