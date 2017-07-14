@@ -7,5 +7,4 @@ class Search < ApplicationRecord
       listings = Listing.find_by_sql("SELECT * FROM listings JOIN addresses ON listings.address_id = addresses.id WHERE addresses.zip_code = '#{params['zipcode']}'")
     end
   end
-
 end
