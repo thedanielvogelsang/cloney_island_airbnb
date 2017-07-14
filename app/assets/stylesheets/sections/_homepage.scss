@@ -1,17 +1,16 @@
 .homepage-listings-box {
-    border: solid 1px #000;
-    display: flex;
-    justify-content: space-between;
-}
 
-#a {
-  width: 20%;
-  border: solid 1px #000;
 }
 
 #map {
   float: right;
-  width: 50%;
-  height: 2000px;
+  width: 35%;
+  height: 1100px;
   background-color: grey;
+ }
+
+ h2 select {
+
+   display: inline-block;
+  //  float: right;
  }
