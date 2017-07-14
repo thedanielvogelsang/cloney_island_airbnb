@@ -1,5 +1,5 @@
 class HomepageController < ApplicationController
   def index
-    @listings = []
+    @listings = Listing.limit(4).order("RANDOM()")
   end
 end
