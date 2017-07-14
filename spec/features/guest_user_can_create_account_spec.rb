@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe 'As a guest user' do
 
   it 'can create an account' do
+    user = create(:user)
+    create(:role)
+
     visit '/'
 
     within('.navbar-user-types') do
@@ -11,11 +14,15 @@ RSpec.describe 'As a guest user' do
 
     expect(current_path).to eq(new_user_path)
 
-    fill_in "Email", with: "d@d.com"
-    fill_in "First name", with: "Puff"
-    fill_in "Last name", with: "Magic Dragon"
-    fill_in "Phone number", with: "555-555-5555"
-    fill_in "Birthday", with: "2017-07-11"
+    fill_in "Email", with: "t@tty.com"
+    fill_in "First name", with: user.first_name
+    fill_in "Last name", with: user.last_name
+    fill_in "Phone number", with: "444-332-5032"
+    select "2012", from: "user_birthday_1i"
+    select "March", from: "user_birthday_2i"
+    select "14", from: "user_birthday_3i"
+    #select "option_name_here", :from => "organizationSelect"
+    #fill_in "Birthday", with: user.birthday
     fill_in "Password", with: "password"
 
     within(".create-account-box") do
@@ -24,7 +31,7 @@ RSpec.describe 'As a guest user' do
 
     expect(current_path).to eq(users_dashboard_index_path)
     expect(page).not_to have_content("Sign Up")
-    expect(page).to have_content("Sign out")
+    expect(page).to have_content("Sign Out")
     expect(page).to have_content("Messages")
     expect(page).to have_content("Trips")
   end
