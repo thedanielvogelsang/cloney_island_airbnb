@@ -7,7 +7,7 @@ RSpec.feature "Admin can log in", type: :feature do
 
     visit login_path
 
-    click on "Log In"
+    click on "Sign In"
 
     expect(current_path).to eq(new_user_session_path)
 
@@ -17,6 +17,6 @@ RSpec.feature "Admin can log in", type: :feature do
     expect(current_path).to eq(root_path)
     expect(flash[:success]).to match(/You have successfully been logged in!/)
     expect(page).to have_content("Admin Dashboard")
-    expect(page).to have_content("Logout")
+    expect(page).to have_content("Sign Out")
   end
 end

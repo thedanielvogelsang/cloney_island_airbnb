@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
-    skip
-    property = create(:property)
+    listing = create(:listing)
 
     visit root_path
 
@@ -19,7 +18,7 @@ RSpec.feature "Guest can search properties", type: :feature do
     fill_in "state", with: "#{property.state}"
     click_on "Search"
 
-    expect(current_path).to eq(properties_path)
+    expect(current_path).to eq(listings_path)
 
     within(".results") do
       expect(page).to have_content(property.name)

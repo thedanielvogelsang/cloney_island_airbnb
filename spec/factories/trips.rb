@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :trip do
     user
     host
+    listing
 
     trip_status 1
     start_date "2017-07-12"

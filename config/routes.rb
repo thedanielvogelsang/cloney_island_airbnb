@@ -3,15 +3,14 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
 
   get '/search', to: 'search#index'
 
   resources :users, only: [:new, :create]
   resources :listings, only: [:index, :show]
 
-  namespace :users do
+  namespace :user do
     resources :dashboard, only: [:index, :show]
   end
-
 end

@@ -7,5 +7,32 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = render partial: "./shared/navbar"
+    .navbar-main
+      .navbar-header
+        =link_to image_tag("air_bnb_logo.png", :class => 'nav-logo'), root_path
+        -form_tag search_path, method: :get do
+          =text_field_tag(:post_title, params[:post_title])
+          =submit_tag "Search"
+        = render "shared/search_partial"
+        .navbar-user-types
+          =link_to "Become a Host", login_path #needs specific host sign up
+          =link_to "Help", "#" #needs help stuff
+          - if current_user
+            =link_to "Messages", "#" #needs Messages path
+            =link_to "Trips", "#" #needs trips path
+            =link_to "Sign Out", logout_path
+            -if current_user.admin?
+              =link_to "Admin Dashboard", "#" #admin_dashboard_path
+            -if current_user.traveler?
+              .navbar-user-bottom
+                =link_to "Dashboard", users_dashboard_index_path
+                -# =link_to "Inbox", user_messages_center_page_path
+                -# =link_to "Your Listing", user_listings_path
+                -# =link_to 'Your Trips', user_trips_path
+                -# =link_to 'Profile', user_profile_path
+                -# =link_to 'Account', user_account_path
+          - else
+            =link_to "Sign Up", new_user_path
+            =link_to "Sign In", login_path
+
     = yield
