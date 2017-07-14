@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :user_roles
   has_many :roles, through: :user_roles
   has_many :addresses
-  has_many :trips
 
   def full_name
     first_name + " " + last_name
