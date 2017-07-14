@@ -1,6 +1,7 @@
 class Hosts::ListingsController < ApplicationController
   def new
-    binding.pry
+    user = User.find(params[:user_id])
+    @listing = user.listings.new
   end
 
   def create
