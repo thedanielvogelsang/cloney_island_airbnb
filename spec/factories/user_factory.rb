@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:host] do
     first_name "Paul"
     last_name "Simon"
     sequence(:phone_number) do |n|

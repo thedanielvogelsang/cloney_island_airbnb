@@ -27,5 +27,4 @@ class User < ApplicationRecord
   def traveler?
     roles.exists?(name: "traveler")
   end
-
 end
