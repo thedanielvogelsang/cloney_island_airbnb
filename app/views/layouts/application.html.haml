@@ -13,6 +13,7 @@
         -form_tag search_path, method: :get do
           =text_field_tag(:post_title, params[:post_title])
           =submit_tag "Search"
+        = render "shared/search_partial"
         .navbar-user-types
           =link_to "Become a Host", login_path #needs specific host sign up
           =link_to "Help", "#" #needs help stuff
