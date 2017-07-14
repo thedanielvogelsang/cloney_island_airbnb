@@ -135,11 +135,10 @@ namespace :import do
   desc "Trips"
   task trips: :environment do
     listings = Listing.all
-    listing = listings.sample
-    listing_accomodates = listing.accomodates
     users = User.all
     #hosts = User.joins(:user_roles, :roles).where(roles: {name: "host"}).uniq
     users.each do |user|
+      listing = listings.sample
       #host = hosts.sample
       trip = Trip.create!(
         listing_id: listing.id,
@@ -148,7 +147,7 @@ namespace :import do
         trip_status: ["requested", "pending", "accepted", "paid"].sample,
         start_date: Faker::Date.between(1.days.from_now, 3.days.from_now),
         end_date: Faker::Date.between(4.days.from_now, 6.days.from_now),
-        num_guests: [*1..listing_accomodates].sample
+        num_guests: [*1..listing.accomodates].sample
       )
       puts "Trip #{trip.id} created!"
     end
