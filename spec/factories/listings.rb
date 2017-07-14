@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :listing do
-    # association :address, factory: :address
-    # association :cancellation, factory: :cancellation
     user
     address
     cancellation

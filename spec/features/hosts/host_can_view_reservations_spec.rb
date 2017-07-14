@@ -12,6 +12,7 @@ RSpec.feature "Host can view their reservations", type: :feature do
     
     traveler = create(:user)
     traveler.roles << role2
+
     trip1 = create(:trip, host_id: host.id)
     trip2 = create(:trip, host_id: host.id)
     trip3 = create(:trip, host_id: traveler.id)
@@ -22,7 +23,7 @@ RSpec.feature "Host can view their reservations", type: :feature do
 
     #expect(current_path).to eq '/host_dashboard'
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
 
     # visit host_dashboard_path(host) <-- i think i want it to be an index
     visit host_dashboard_path
