@@ -35,8 +35,28 @@ RSpec.feature "Host can view their reservations", type: :feature do
 
     expect(page).to have_selector(".reservation", count: 2)
 
-    expect(page).to have_content 'listing.address'
-    expect(page).to have_content 'listing.name'
+    expect(page).to have_content listing.address
+    expect(page).to have_content listing.name
+    expect(page).to have_content listing.city
+    expect(page).to have_content listing.state
+    expect(page).to have_content listing.zipcode
+    expect(page).to have_content trip1.trip_status
+    expect(page).to have_content trip1.start_date
+    expect(page).to have_content trip1.end_date
+    expect(page).to have_content trip1.user
+    expect(page).to have_content trip2.trip_status
+    expect(page).to have_content trip2.start_date
+    expect(page).to have_content trip2.end_date
+    expect(page).to have_content trip2.user
+
+    expect(page).to have_content 'Message History'
+  end
+
+  xscenario "host clicks to view reservation" do
+  end
+  xscenario "clicks link to view own listings" do
+  end
+  xscenario "clicks link to create listing" do
   end
 end
 

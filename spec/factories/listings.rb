@@ -6,7 +6,9 @@ FactoryGirl.define do
     address
     cancellation
 
-    name 'Best Place on Earth'
+    sequence(:name) do |n|
+      "Best Place on Earth #{n}"
+    end
     description 'Place new description here'
     accomodates 3
     bathrooms 3
