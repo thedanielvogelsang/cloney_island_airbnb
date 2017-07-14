@@ -1,7 +1,7 @@
 namespace :import do
   desc "Imports all seed data"
   task :all => [:regenerate, :roles, :users, :addresses, :cancellations, :amenities, :listings, :listing_images, :trips]
-  
+
   desc "wipes database before seeding"
   task :regenerate do
     Rails.env = "development"
@@ -134,17 +134,20 @@ namespace :import do
 
   desc "Trips"
   task trips: :environment do
+    listings = Listing.all
     users = User.all
-    hosts = User.joins(:user_roles, :roles).where(roles: {name: "host"}).uniq
+    #hosts = User.joins(:user_roles, :roles).where(roles: {name: "host"}).uniq
     users.each do |user|
-      host = hosts.sample
+      listing = listings.sample
+      #host = hosts.sample
       trip = Trip.create!(
+        listing_id: listing.id,
         user_id: user.id,
-        host_id: host.id,
+        host_id: listing.user_id,
         trip_status: ["requested", "pending", "accepted", "paid"].sample,
         start_date: Faker::Date.between(1.days.from_now, 3.days.from_now),
         end_date: Faker::Date.between(4.days.from_now, 6.days.from_now),
-        num_guests: [*1..4].sample
+        num_guests: [*1..listing.accomodates].sample
       )
       puts "Trip #{trip.id} created!"
     end
