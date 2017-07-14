@@ -18,7 +18,7 @@ RSpec.feature "Guest can search properties", type: :feature do
     fill_in "state", with: "#{property.state}"
     click_on "Search"
 
-    expect(current_path).to eq(properties_path)
+    expect(current_path).to eq(listings_path)
 
     within(".results") do
       expect(page).to have_content(property.name)
