@@ -40,17 +40,17 @@ RSpec.feature "Host can view their reservations", type: :feature do
   end
 end
 
-As an authenticated Host
-When I click on listings
-And I click on “Your Reservations”
-Then I should be on “/host/listings/reservations”
-And I should see add new reservation button
-And I should see my reservations image(s)
-And the image should link to the listing's show page
-And I should see the property title with a link
-And I should see the property location, updated_at
-And I should see an "unlisted" button and preview "button"
-And I should see my listed properties description(s)
-And I should see my listed properties location(s)
-And I should see dropdown for unlisted/listed option
-And I should see button for link to “listings/preview”
+# As an authenticated Host
+# When I click on listings
+# And I click on “Your Reservations”
+# Then I should be on “/host/listings/reservations”
+# And I should see add new reservation button
+# And I should see my reservations image(s)
+# And the image should link to the listing's show page
+# And I should see the property title with a link
+# And I should see the property location, updated_at
+# And I should see an "unlisted" button and preview "button"
+# And I should see my listed properties description(s)
+# And I should see my listed properties location(s)
+# And I should see dropdown for unlisted/listed option
+# And I should see button for link to “listings/preview”
