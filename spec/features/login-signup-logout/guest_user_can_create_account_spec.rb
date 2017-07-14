@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'As a guest user' do
 
   it 'can create an account' do
-    user = create(:user)
+    user = build(:user)
     create(:role)
 
     visit '/'
@@ -29,7 +29,9 @@ RSpec.describe 'As a guest user' do
       click_on "Sign Up"
     end
 
-    expect(current_path).to eq(users_dashboard_index_path)
+    user = User.find_by(phone_number: "444-332-5032")
+
+    expect(current_path).to eq(user_dashboard_index_path(user))
     expect(page).not_to have_content("Sign Up")
     expect(page).to have_content("Sign Out")
     expect(page).to have_content("Messages")
