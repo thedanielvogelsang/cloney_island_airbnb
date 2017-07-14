@@ -9,7 +9,7 @@ FactoryGirl.define do
       "paul#{n}@email.com"
     end
     password "password"
-    birthday "2017-07-11"
+    birthday "2014-03-10"
     profile_picture { File.new("#{Rails.root}/lib/assets/baby_penguin.jpg") }
   end
 end
