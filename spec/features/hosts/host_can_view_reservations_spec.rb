@@ -26,7 +26,7 @@ RSpec.feature "Host can view their reservations", type: :feature do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
 
     # visit host_dashboard_path(host) <-- i think i want it to be an index
-    visit host_dashboard_path
+    visit host_dashboard_path(host)
 
     expect(page).to have_content 'All Reservations'
     expect(page).to have_content 'Status'
