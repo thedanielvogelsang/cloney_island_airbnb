@@ -13,7 +13,7 @@ RSpec.feature "As a user with an account", type: :feature do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
       click_button 'Sign In'
-      expect(current_path).to eq(users_dashboard_index_path)
+      expect(current_path).to eq(user_dashboard_index_path(user))
       expect(page).not_to have_content("Sign Up")
       expect(page).to have_content("Sign Out")
       expect(page).to have_content("Messages")
