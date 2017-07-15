@@ -48,5 +48,4 @@ class Search < ApplicationRecord
     def self.find_attribute(params, attribute)
       params[attribute] if Address.all.pluck(attribute.to_sym).include?(params[attribute])
     end
-
 end
