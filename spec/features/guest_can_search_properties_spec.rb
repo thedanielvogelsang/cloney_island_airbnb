@@ -36,9 +36,7 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     expect(current_path).to eq(search_path)
 
-    within(".results") do
       expect(page).to have_content(listing.name)
-    end
   end
 
   scenario "guest can search by dates" do
