@@ -24,13 +24,13 @@ RSpec.feature "Guest can search properties", type: :feature do
       expect(page).to have_content(listing.name)
   end
 
-  scenario "guests can search by zipcode" do
+  scenario "guests can search by zip_code" do
     listing = create(:listing)
     create(:listing_image, listing_id: listing.id)
 
     visit root_path
 
-    fill_in "zipcode", with: "#{listing.address.zip_code}"
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
     click_on "Search"
 
     expect(current_path).to eq(search_path)
