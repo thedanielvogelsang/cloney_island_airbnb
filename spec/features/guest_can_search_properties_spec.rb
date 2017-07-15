@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
+    skip
     listing = create(:listing)
 
     visit root_path

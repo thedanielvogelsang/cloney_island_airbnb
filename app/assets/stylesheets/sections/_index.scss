@@ -1,0 +1,23 @@
+@import 'base';
+
+.listings.cards.vertical_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .card_image.vertical_card_image {
+    background-color: $light;
+    border-radius: 4px;
+    box-shadow: 0 14px 45px 0 rgba(0, 0, 0, 0.10), 0 10px 18px rgba(0, 0, 0, 0.10);
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    margin: 80px;
+    width: 180px;
+
+  }
+}
+
+h5, p {
+  text-align: center;
+}

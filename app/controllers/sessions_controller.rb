@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    redirect_to root_path if current_user
     @user = User.new
   end
 
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.first_name}"
-      redirect_to users_dashboard_index_path
+      redirect_to user_dashboard_index_path(@user)
     else
       flash[:login_error] = "The email or password you entered is invalid"
       render :new
