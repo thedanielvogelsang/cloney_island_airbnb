@@ -1,7 +1,16 @@
-.homepage-listing-box {
+.homepage-listings-box {
 
 }
 
-.list-items {
+#map {
+  float: right;
+  width: 35%;
+  height: 1100px;
+  background-color: grey;
+ }
 
-}
+ h2 select {
+
+   display: inline-block;
+   float: left;
+ }
