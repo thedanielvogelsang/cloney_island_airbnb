@@ -1,0 +1,37 @@
+%table{:class => "table reservation-history"}
+  %thead
+    %tr
+      %td
+        %h3
+          %strong All Reservations
+      %td
+      %td
+      %td
+  %tbody
+    %tr{:class => "trip-headers" }
+      %td
+        %h4
+          %strong Status
+      %td
+        %h4
+          %strong Dates and Locations
+      %td
+        %h4
+          %strong Guest
+      %td
+        %h4
+          %strong Details
+    - @trips.each do |trip|
+      %tr{:class => "trip trip-#{trip.id}"}
+        %td= trip.trip_status
+        %td
+          %p= "#{trip.start_date} - #{trip.end_date}"
+          %p= trip.listing.name
+          %p= "#{trip.listing.address.street_address} #{trip.listing.address.street_address_2}"
+          %p= "#{trip.listing.address.city}, #{trip.listing.address.state} #{trip.listing.address.zip_code}"
+        %td
+          = image_tag trip.user.profile_picture, :class => "trip-guest-pic"
+          %p.trip-guest= trip.user.first_name
+        %td
+          %p= number_to_currency(trip.listing.price * (trip.end_date - trip.start_date))
+          %p= link_to 'Message History', '/' #placeholder until messages are implemented
