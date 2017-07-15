@@ -2,7 +2,8 @@ class Search < ApplicationRecord
 
   def self.return_search(params)
     listings = find_listings(params)
-    params['check_in'].empty? || params['check_out'].empty? ? listings : listings_available(listings, params)
+    listings_by_accomodations = check_accomodations(listings, params)
+    available_listings = check_availability(listings_by_accomodations, params)
   end
 
   private
@@ -16,7 +17,7 @@ class Search < ApplicationRecord
     end
 
     def self.listings_available(listings, params)
-      available_listings = listings.map do |listing|
+      listings.map do |listing|
         listing unless existing_trips_overlap_request(listing, params)
       end
     end
@@ -30,11 +31,20 @@ class Search < ApplicationRecord
       end
     end
 
+    def self.check_availability(listings, params)
+      params['check_in'].empty? || params['check_out'].empty? ? listings : listings_available(listings, params)
+    end
+
     def self.overlaps(trip, start_date, end_date)
       (trip.start_date - end_date) * (start_date - trip.end_date) >= 0
+    end
+
+    def self.check_accomodations(listings, params)
+      binding.pry
     end
 
     def self.find_attribute(params, attribute)
       params[attribute] if Address.all.pluck(attribute.to_sym).include?(params[attribute])
     end
+
 end

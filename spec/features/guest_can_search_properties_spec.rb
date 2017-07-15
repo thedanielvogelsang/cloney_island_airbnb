@@ -21,7 +21,7 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     expect(current_path).to eq(search_path)
 
-      expect(page).to have_content(listing.name)
+    expect(page).to have_content(listing.name)
   end
 
   scenario "guests can search by zip_code" do
@@ -85,5 +85,39 @@ RSpec.feature "Guest can search properties", type: :feature do
     click_on "Search"
 
     expect(current_path).to_not have_content(listing.name)
+  end
+
+  scenario "guests can search by number of accomodations" do
+    listing = create(:listing, accomodates: 4)
+    create(:listing_image, listing_id: listing.id)
+
+    visit root_path
+
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
+    fill_in "num_guests", with: 3
+    click_on "Search"
+
+    expect(current_path).to eq(search_path)
+
+    within(".results") do
+      expect(page).to have_content(listing.name)
+    end
+  end
+
+  scenario "guests can search by number of accomodations sad path" do
+    listing = create(:listing, accomodates: 4)
+    create(:listing_image, listing_id: listing.id)
+
+    visit root_path
+
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
+    fill_in "num_guests", with: 5
+    click_on "Search"
+
+    expect(current_path).to eq(search_path)
+
+    within(".results") do
+      expect(page).to have_content(listing.name)
+    end
   end
 end
