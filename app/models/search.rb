@@ -10,7 +10,7 @@ class Search < ApplicationRecord
 
     def self.find_listings(params)
       if params['zip_code'].empty?
-        Listing.find_by_sql(["SELECT * FROM listings JOIN addresses ON listings.address_id = addresses.id WHERE addresses.city LIKE ? AND addresses.state = ?", find_attribute(params, 'city'), find_attribute(params, 'state')])
+        Listing.find_by_sql(["SELECT * FROM listings JOIN addresses ON listings.address_id = addresses.id WHERE listings.status = 1 AND addresses.city LIKE ? AND addresses.state = ?", find_attribute(params, 'city'), find_attribute(params, 'state')])
       else
         Listing.find_by_sql(["SELECT * FROM listings JOIN addresses ON listings.address_id = addresses.id WHERE addresses.zip_code = ?", find_attribute(params, 'zip_code')])
       end
