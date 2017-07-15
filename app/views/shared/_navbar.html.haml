@@ -1,7 +1,7 @@
 .navbar-header
   =link_to image_tag("air_bnb_logo.png", :class => 'nav-logo'), root_path
-  .search-bar
-    %input{type: "text", name: "search", placeholder: "Search.."}
+  -# .search-bar
+  -#   %input{type: "text", name: "search", placeholder: "Search.."}
   .navbar-user-types
     -# =render partial: "current_user_#{current_user.role}" 
     =render partial: "/shared/current_user_traveler"

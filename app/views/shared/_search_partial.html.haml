@@ -1,0 +1,19 @@
+-# <div class="navbar-search">
+-#     <form action="/listings" method="get">
+-#       <div class="search_bar">
+-#         <input name="city" placeholder="City..." type="text"></input>
+-#         <input name="state" placeholder="State..." type="text"></input>
+-#         <input name="zipcode" placeholder="Zipcode..." type="text"></input>
+-#         <input name="check_in" placeholder="Check In..." type="text"></input>
+-#         <input name="check_out" placeholder="Check Out..." type="text"></input>
+-#         <input type="submit" value="Search">
+-#       </div>
+-#   </form>
+-# </div>
+
+.navbar-search
+  = form_tag(listings_path, method: "get", id: "search") do
+    = text_field_tag(:search_city, params[:search_city], placeholder: "City")
+    = text_field_tag(:search_state, params[:search_state], placeholder: "State")
+    = text_field_tag(:search_zip, params[:search_zip], placeholder: "Zip Code")
+    = submit_tag("Search", name: nil)

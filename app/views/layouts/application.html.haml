@@ -10,9 +10,6 @@
     .navbar-main
       .navbar-header
         =link_to image_tag("air_bnb_logo.png", :class => 'nav-logo'), root_path
-        -form_tag search_path, method: :get do
-          =text_field_tag(:post_title, params[:post_title])
-          =submit_tag "Search"
         = render "shared/search_partial"
         .navbar-user-types
           =link_to "Become a Host", login_path #needs specific host sign up

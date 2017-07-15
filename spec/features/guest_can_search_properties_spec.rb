@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
-    skip
     listing = create(:listing)
 
     visit root_path
@@ -29,6 +28,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guests can search by zipcode" do
+    skip
     listing = create(:listing)
 
     visit root_path
@@ -44,6 +44,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guest can search by dates" do
+    skip
     listing = create(:listing)
     user = create(:user)
     host = create(:user)
@@ -65,6 +66,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guest can search by dates sad path" do
+    skip
     listing = create(:listing)
     user = create(:user)
     host = create(:user)
