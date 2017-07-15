@@ -13,10 +13,12 @@ RSpec.feature "Host can view their reservations", type: :feature do
     
     traveler = create(:user, first_name: 'Traveler name')
     traveler.roles << role2
+    another_traveler = create(:user, first_name: 'Another Traveler')
+    another_traveler.roles << role2
 
-    trip1 = create(:trip, host_id: host.id, listing_id: listing.id)
-    trip2 = create(:trip, host_id: host.id, listing_id: listing.id)
-    trip3 = create(:trip, host_id: other_host.id)
+    trip1 = create(:trip, host_id: host.id, listing_id: listing.id, user_id: traveler.id)
+    trip2 = create(:trip, host_id: host.id, listing_id: listing.id, user_id: another_traveler.id)
+    trip3 = create(:trip, host_id: other_host.id, user_id: traveler.id)
 
     #visit '/'
 
@@ -45,16 +47,19 @@ RSpec.feature "Host can view their reservations", type: :feature do
     expect(page).to have_content trip1.trip_status
     expect(page).to have_content trip1.start_date
     expect(page).to have_content trip1.end_date
-    expect(page).to have_content trip1.user.first_name
+    expect(page).to have_content traveler.first_name
     expect(page).to have_content trip2.trip_status
     expect(page).to have_content trip2.start_date
     expect(page).to have_content trip2.end_date
-    expect(page).to have_content trip2.user.first_name
+    expect(page).to have_content another_traveler.first_name
 
     expect(page).to have_content 'Message History'
   end
 
   xscenario "host clicks to view reservation" do
+  end
+
+  xscenario "someone who's not a host can't see host link and can't visit the page through url" do
   end
   xscenario "clicks link to view own listings" do
   end

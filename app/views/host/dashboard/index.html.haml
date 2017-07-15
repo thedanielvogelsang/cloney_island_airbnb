@@ -24,5 +24,9 @@
           %p= trip.listing.name
           %p= "#{trip.listing.address.street_address} #{trip.listing.address.street_address_2}"
           %p= "#{trip.listing.address.city}, #{trip.listing.address.state} #{trip.listing.address.zip_code}"
-        %td= trip.user.first_name
-        %td= number_to_currency(trip.listing.price * (trip.start_date - trip.end_date))
+        %td
+          = image_tag trip.user.profile_picture
+          %p= trip.user.first_name
+        %td
+          %p= number_to_currency(trip.listing.price * (trip.end_date - trip.start_date))
+          %p= link_to 'Message History', '/' #placeholder until messages are implemented
