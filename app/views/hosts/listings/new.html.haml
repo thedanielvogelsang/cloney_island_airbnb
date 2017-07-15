@@ -1,7 +1,7 @@
 %h1 Create a New Listing
 %br
 .new_listing_container
-  = form_for(@listing) do |f|
+  = form_for @listing, as: :host, url: user_hosts_listings_path(@listing.user), method: :post do |f|
     %p
       = f.label :name
       = f.text_field :name
@@ -28,16 +28,22 @@
       = f.number_field :price, in: 0..1000
     %p
       = f.label :property_type
-      = f.select :property_type, [["house", 0], ["apartment", 1], ["guesthouse", 2], ["boat", 3], ["treehouse", 4]]
+      = f.select :property_type, [["House", :house], ["Apartment", :apartment], ["Guesthouse", :guesthouse], ["Boat", :boat], ["Treehouse", :treehouse]]
     %p
       = f.label :bed_type
-      = f.select :bed_type, [["king", 0], ["queen", 1], ["double", 2], ["twin", 3], ["single", 4], ["couch", 5]]
+      = f.select :bed_type, [["King", :king], ["Queen", :queen], ["Double", :double], ["Twin", :twin], ["Single", :single], ["Counch", :couch]]
     %p
       = f.label :room_type
-      = f.select :room_type, [["entire home", 0], ["private room", 1], ["shared room", 2]]
+      = f.select :room_type, [["Entire Home", :entire_home], ["Private Room", :private_room], ["Shared Room", :shared_room]]
     %p
       = f.label :pet_type
-      = f.select :pet_type, [["no pets", 0], ["cat", 1], ["dog", 2], ["cat and dog", 3], ["misc", 4]]
+      = f.select :pet_type, [["No Pets", :no_pets], ["Cat(s)", :cat], ["Dog(s)", :dog], ["Cat(s) and Dog(s)", :cat_and_god], ["MISC", :misc]]
+    %br
+    .cancellation_form
+      = f.fields_for :cancellation do |cancellation_form|
+        %p 
+          = cancellation_form.label :name
+          = cancellation_form.select :name, [["Flexible", "Flexible"],["Moderate", "Moderate"],["Strict", "Strict"]]
     %br
     .address_form
       = f.fields_for :address do |address_form|
