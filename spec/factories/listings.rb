@@ -20,4 +20,6 @@ FactoryGirl.define do
     room_type 'entire_home'
     status 0
   end
+
+  
 end

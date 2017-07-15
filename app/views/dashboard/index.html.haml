@@ -1,13 +1,14 @@
 %h1 User Dashboard
-%p 
-  = "First Name: #{@user.first_name}"
-%p 
-  = "Last Name: #{@user.last_name}"
-%p 
-  = "Phone Number: #{@user.phone_number}"
-%p 
-  = "Birthday: #{@user.birthday}"
-%p 
-  = "Email: #{@user.email}"
-%br
 = image_tag @user.profile_picture
+%br
+= link_to "Edit Profile", edit_user_path(@user)
+%p
+  = "First Name: #{@user.first_name}"
+%p
+  = "Last Name: #{@user.last_name}"
+%p
+  = "Phone Number: #{@user.phone_number}"
+%p
+  = "Birthday: #{@user.birthday}"
+%p
+  = "Email: #{@user.email}"
