@@ -15,6 +15,6 @@ Rails.application.routes.draw do
 
   namespace :host do
     resources :listings, only: [:new, :create]
-    resources :dashboard, only: [:show]
+    resources :dashboard, only: [:index]
   end
 end

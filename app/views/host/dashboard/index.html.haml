@@ -1,0 +1,28 @@
+%table{:class => "table table-striped reservation-history"}
+  %thead
+    %tr
+      %td
+        %h3 All Reservations
+      %td
+      %td
+      %td
+  %tbody
+    %tr
+      %td
+        %h4 Status
+      %td
+        %h4 Dates and Locations
+      %td
+        %h4 Guest
+      %td
+        %h4 Details
+    - @trips.each do |trip|
+      %tr{:class => "trip trip-#{trip.id}"}
+        %td= trip.trip_status
+        %td
+          %p= "#{trip.start_date} - #{trip.end_date}"
+          %p= trip.listing.name
+          %p= "#{trip.listing.address.street_address} #{trip.listing.address.street_address_2}"
+          %p= "#{trip.listing.address.city}, #{trip.listing.address.state} #{trip.listing.address.zip_code}"
+        %td= trip.user.first_name
+        %td= number_to_currency(trip.listing.price * (trip.start_date - trip.end_date))
