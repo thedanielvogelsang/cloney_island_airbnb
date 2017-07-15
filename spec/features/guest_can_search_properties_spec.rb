@@ -9,7 +9,7 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     within(".search_bar") do
       expect(page).to have_field("city")
-      expect(page).to have_field("zipcode")
+      expect(page).to have_field("zip_code")
       expect(page).to have_field("check_in")
       expect(page).to have_field("check_out")
       expect(page).to have_selector(:link_or_button, 'Search')
