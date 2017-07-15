@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
     listing = create(:listing)
+    create(:listing_image, listing_id: listing.id)
 
     visit root_path
 
@@ -20,13 +21,13 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     expect(current_path).to eq(search_path)
 
-    within(".results") do
       expect(page).to have_content(listing.name)
-    end
   end
 
   scenario "guests can search by zip_code" do
     listing = create(:listing)
+    create(:listing_image, listing_id: listing.id)
+
 
     visit root_path
 
@@ -42,6 +43,8 @@ RSpec.feature "Guest can search properties", type: :feature do
 
   scenario "guest can search by dates" do
     listing = create(:listing)
+    create(:listing_image, listing_id: listing.id)
+
     user = create(:user)
     host = create(:user)
     trip = Trip.create!(user_id: user.id,
@@ -63,6 +66,8 @@ RSpec.feature "Guest can search properties", type: :feature do
 
   scenario "guest can search by dates sad path" do
     listing = create(:listing)
+    create(:listing_image, listing_id: listing.id)
+
     user = create(:user)
     host = create(:user)
     trip = Trip.create!(user_id: user.id,
