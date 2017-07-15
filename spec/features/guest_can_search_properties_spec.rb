@@ -8,7 +8,7 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     within(".search_bar") do
       expect(page).to have_field("city")
-      expect(page).to have_field("zipcode")
+      expect(page).to have_field("zip_code")
       expect(page).to have_field("check_in")
       expect(page).to have_field("check_out")
       expect(page).to have_selector(:link_or_button, 'Search')
@@ -27,12 +27,12 @@ RSpec.feature "Guest can search properties", type: :feature do
     end
   end
 
-  scenario "guests can search by zipcode" do
+  scenario "guests can search by zip_code" do
     listing = create(:listing)
 
     visit root_path
 
-    fill_in "zipcode", with: "#{listing.address.zip_code}"
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
     click_on "Search"
 
     expect(current_path).to eq(search_path)
