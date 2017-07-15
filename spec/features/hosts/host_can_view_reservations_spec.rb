@@ -16,7 +16,7 @@ RSpec.feature "Host can view their reservations", type: :feature do
     another_traveler = create(:user, first_name: 'Another Traveler')
     another_traveler.roles << role2
 
-    trip1 = create(:trip, host_id: host.id, listing_id: listing.id, user_id: traveler.id)
+    trip1 = create(:trip, host_id: host.id, user_id: traveler.id)
     trip2 = create(:trip, host_id: host.id, listing_id: listing.id, user_id: another_traveler.id)
     trip3 = create(:trip, host_id: other_host.id, user_id: traveler.id)
 
