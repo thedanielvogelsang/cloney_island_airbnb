@@ -2,20 +2,20 @@ require 'rails_helper'
 
 RSpec.feature "User can edit profile", type: :feature do
   scenario "user makes changes successfully" do
-    skip
-    user = create(:user, name: "Ben", phone_number: 3038379093)
-    login(user)
+    user = create(:user, first_name: "Ben", phone_number: "ben_ross.com")
 
-    visit dashboard_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    click on "Edit Profile"
+    visit user_dashboard_index_path(user)
+
+    click_on "Edit Profile"
 
     expect(current_path).to eq(edit_user_path(user))
 
-    fill_in :email, with: "New name"
-    fill_in :phone_number, with: 1234567899
+    fill_in "First name", with: "New name"
+    fill_in "Email", with: "new_email.com"
 
-    click_on "Submit"
+    click_on "Save"
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("New name")
@@ -23,8 +23,8 @@ RSpec.feature "User can edit profile", type: :feature do
     click_on "View Profile"
 
     expect(page).to have_content("New name")
-    expect(page).to have_content(1234567899)
+    expect(page).to have_content("new_email")
     expect(page).to_not have_content("Ben")
-    expect(page).to_not have_content(1234567899)
+    expect(page).to_not have_content("ben_ross.com")
   end
 end
