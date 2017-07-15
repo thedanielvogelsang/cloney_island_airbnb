@@ -117,7 +117,7 @@ RSpec.feature "Guest can search properties", type: :feature do
     expect(current_path).to eq(search_path)
 
     within(".results") do
-      expect(page).to have_content(listing.name)
+      expect(page).to_not have_content(listing.name)
     end
   end
 end

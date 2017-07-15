@@ -40,7 +40,9 @@ class Search < ApplicationRecord
     end
 
     def self.check_accomodations(listings, params)
-      binding.pry
+      listings.select do |listing|
+        listing.accomodates >= params['num_guests'].to_i
+      end
     end
 
     def self.find_attribute(params, attribute)
