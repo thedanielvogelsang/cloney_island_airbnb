@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
-    skip
     listing = create(:listing)
 
     visit root_path
@@ -23,8 +22,6 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     within(".results") do
       expect(page).to have_content(listing.name)
-      #expect(page).to have_css("img[src*='#{listing.image_url}']")
-      #expect(page).to have_selector('#markers img', count: 1)
     end
   end
 
