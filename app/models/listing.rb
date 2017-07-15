@@ -19,4 +19,14 @@ class Listing < ApplicationRecord
   enum status: [:unlisted, :listed]
 
   accepts_nested_attributes_for :listing_images, :reject_if => lambda { |t| t['listing_image'].nil? }
+
+  def self.search_city(params)
+    city = params[:search_city].downcase
+    state = params[:search_state].downcase
+    joins(:address).where("LOWER(addresses.city) LIKE ? AND LOWER(addresses.state) LIKE ?", city, state)
+  end
+  
+  def self.search_zip(params)
+    joins(:address).where("addresses.zip_code LIKE ?", params[:search_zip])
+  end
 end

@@ -52,10 +52,9 @@ namespace :import do
     users.each do |user|
       address = Address.create!(
         street_address: Faker::Address.street_address,
-        street_address_2: Faker::Address.secondary_address,
-        city: Faker::Address.city,
-        state: ["CO", "UT", "AK", "NM", "AZ", "CA", "OR", "WA", "TX", "TN", "IN", "IA"].sample,
-        zip_code: Faker::Address.zip_code,
+        city: "Denver",
+        state: "CO",
+        zip_code: "80202",
         user_id: user.id
         )
       puts "Address #{address.id} created!"
