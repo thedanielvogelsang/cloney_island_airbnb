@@ -1,7 +1,7 @@
 class Hosts::ListingsController < ApplicationController
   def new
-    user = User.find(params[:user_id])
-    @listing = user.listings.new
+    host = User.find(params[:user_id])
+    @listing = host.listings.new
   end
 
   def create

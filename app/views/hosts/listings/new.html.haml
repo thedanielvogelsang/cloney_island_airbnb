@@ -26,6 +26,18 @@
     %p
       = f.label :price
       = f.number_field :price, in: 0..1000
+    %p
+      = f.label :property_type
+      = f.select :property_type, [["house", 0], ["apartment", 1], ["guesthouse", 2], ["boat", 3], ["treehouse", 4]]
+    %p
+      = f.label :bed_type
+      = f.select :bed_type, [["king", 0], ["queen", 1], ["double", 2], ["twin", 3], ["single", 4], ["couch", 5]]
+    %p
+      = f.label :room_type
+      = f.select :room_type, [["entire home", 0], ["private room", 1], ["shared room", 2]]
+    %p
+      = f.label :pet_type
+      = f.select :pet_type, [["no pets", 0], ["cat", 1], ["dog", 2], ["cat and dog", 3], ["misc", 4]]
     %p 
       = f.submit "Create"
     %br
