@@ -28,10 +28,11 @@ This project was developed by a group of 5 developers over a 10 day sprint. The 
 
   * Clone this repo.
   * cd into it
-  * ```bundle```
+  * ```bundle install```
+  * ```rake db:schema:load```
   *```rake import:all```
   *```rails server```
-  * visit ```localhost:30000```
+  * visit ```localhost:3000```
 
 ### Visit Online
 
