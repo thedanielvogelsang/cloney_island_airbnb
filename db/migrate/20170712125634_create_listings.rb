@@ -14,7 +14,6 @@ class CreateListings < ActiveRecord::Migration[5.1]
       t.integer :pet_type
       t.integer :room_type
       t.references :user, index: true, foreign_key: true
-      t.references :cancellation, index: true, foreign_key: true
       t.integer :status, default: 0
 
       t.timestamps

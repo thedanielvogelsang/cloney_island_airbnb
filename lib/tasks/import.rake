@@ -109,7 +109,7 @@ namespace :import do
         pet_type: [0, 1, 2, 3, 4].sample,
         price: [100, 200, 300, 400, 500, 600].sample,
         house_rules: ["No Smoking", "No Teenagers", "Hippies Use Back Door"].sample,
-        cancellation: [0, 1, 2].sample,
+        cancellation_policy: [0, 1, 2].sample,
         status: ["unlisted", "listed"].sample
         )
       5.times do

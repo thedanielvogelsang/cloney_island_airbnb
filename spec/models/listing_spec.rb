@@ -14,12 +14,12 @@ RSpec.describe Listing, type: :model do
     it { should validate_presence_of(:room_type) }
     it { should validate_presence_of(:pet_type) }
     it { should validate_presence_of(:status) }
+    it { should validate_presence_of(:cancellation_policy) }
 
     it { should validate_uniqueness_of(:name) }
   end
 
   describe 'relationships' do
-    it { should belong_to(:cancellation) }
     it { should belong_to(:user) }
     it { should belong_to(:address) }
 
@@ -35,5 +35,6 @@ RSpec.describe Listing, type: :model do
     it { should define_enum_for(:room_type) }
     it { should define_enum_for(:pet_type) }
     it { should define_enum_for(:status) }
+    it { should define_enum_for(:cancellation_policy) }
   end
 end

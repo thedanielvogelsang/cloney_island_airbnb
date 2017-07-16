@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170716152343) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id"
-    t.string "cancellation_policy"
+    t.integer "cancellation_policy", default: 0
     t.index ["address_id"], name: "index_listings_on_address_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end

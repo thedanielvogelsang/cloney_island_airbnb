@@ -8,7 +8,7 @@ RSpec.feature "Host can do the following with listings", type: :feature do
     host.roles << [host_role, traveler_role]
 
     visit new_user_hosts_listing_path(host)
-    binding.pry
+    # binding.pry
 
     "end"
   end
