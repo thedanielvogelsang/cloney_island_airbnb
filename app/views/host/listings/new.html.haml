@@ -1,7 +1,7 @@
 %h1 Create a New Listing
 %br
 .new_listing_container
-  = form_for @listing, as: :host, url: user_hosts_listings_path(@listing.user), method: :post do |f|
+  = form_for @listing, as: :host, url: user_host_listings_path(@listing.user), method: :post do |f|
     %p
       = f.label :name
       = f.text_field :name

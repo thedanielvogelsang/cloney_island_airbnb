@@ -1,4 +1,4 @@
-class Hosts::ListingsController < ApplicationController
+class Host::ListingsController < ApplicationController
   def new
     host = User.find(params[:user_id])
     @listing = host.listings.new
