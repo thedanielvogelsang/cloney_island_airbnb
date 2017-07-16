@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :listing do
     user
-    address
     cancellation
 
     sequence(:name) do |n|
       "Best Place on Earth #{n}"
     end
     description 'Place new description here'
+    address '123 Billygoat Rd. Evergreen, CO 80411'
     accomodates 3
     bathrooms 3
     bedrooms 2
@@ -21,5 +21,5 @@ FactoryGirl.define do
     status 0
   end
 
-  
+
 end

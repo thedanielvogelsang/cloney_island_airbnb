@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714143525) do
+ActiveRecord::Schema.define(version: 20170716172954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "addresses", force: :cascade do |t|
-    t.text "street_address"
-    t.text "street_address_2"
-    t.text "city"
-    t.text "state"
-    t.text "zip_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
 
   create_table "amenities", force: :cascade do |t|
     t.string "name"
@@ -79,8 +67,7 @@ ActiveRecord::Schema.define(version: 20170714143525) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_listings_on_address_id"
+    t.string "address"
     t.index ["cancellation_id"], name: "index_listings_on_cancellation_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -130,11 +117,9 @@ ActiveRecord::Schema.define(version: 20170714143525) do
     t.datetime "profile_picture_updated_at"
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "listing_amenities", "amenities"
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listing_images", "listings"
-  add_foreign_key "listings", "addresses"
   add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "users"
   add_foreign_key "trips", "listings"
