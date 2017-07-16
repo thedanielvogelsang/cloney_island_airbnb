@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email])
+    # @user = User.find_by(email: params[:session][:email])
+    user = User.from_omniauth(env["omniauth.auth"])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.first_name}"
