@@ -11,11 +11,12 @@ Rails.application.routes.draw do
 
   resources :listings, only: [:index, :show]
 
-  resources :users, only: [:new, :create] do
+  resources :users, only: [:new, :create, :edit, :update] do
     resources :dashboard, only: [:index]
-  end
 
-  namespace :host do
-    resources :listings, only: [:new, :create]
+    namespace :host do
+      resources :listings, only: [:new, :create]
+      resources :dashboard, only: [:index]
+    end
   end
 end

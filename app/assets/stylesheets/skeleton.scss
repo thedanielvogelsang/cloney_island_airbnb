@@ -28,3 +28,57 @@ body {
 .hidden {
   color: $background;
 }
+
+tbody {
+}
+
+thead tr {
+  background: #edefed;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.reservation-history {
+  min-width: 744px;
+}
+
+tr.trip.td {
+  border-bottom: 1pt #edefed;
+}
+
+.reservation-history img {
+  width: 60px;
+}
+
+.reservation-history p {
+  text-align: left;
+}
+
+.trip-guest {
+  display: block;
+  float: left;
+  margin-left: 15px;
+}
+
+.trip-guest-pic {
+  display: block;
+  float: left;
+}
+
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}

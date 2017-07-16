@@ -20,7 +20,9 @@
           =submit_tag "Search"
         = render "shared/search_partial"
         .navbar-user-types
-          =link_to "Sign in with Facebook", "/auth/facebook"
+          .loginBtn
+            .loginBtn--facebook
+              =link_to "Sign in with Facebook", "/auth/facebook"
           =link_to "Become a Host", login_path #needs specific host sign up
           =link_to "Help", "#" #needs help stuff
           - if current_user
