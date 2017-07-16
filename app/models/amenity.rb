@@ -7,10 +7,8 @@ class Amenity < ApplicationRecord
 
   def self.list_amenities(amenities)
     listing_amenities = []
-    amenities.each do |k,v|
-      if v != "0"
-        listing_amenities << Amenity.find_by(name: k)
-      end
+    amenities.each do |key,value|
+      listing_amenities << Amenity.find_by(name: key) if value != "0"
     end
     listing_amenities
   end
