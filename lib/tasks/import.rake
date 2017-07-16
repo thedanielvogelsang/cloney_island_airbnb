@@ -63,14 +63,6 @@ namespace :import do
     puts "Addresses loaded"
   end
 
-  # desc "Cancellations"
-  # task cancellations: :environment do
-  #   Cancellation.create!(name: "Flexible", refund: '100%', description: 'Cancellation policy is flexible with 100% refund with at least 1 week notice.')
-  #   Cancellation.create!(name: "Moderate", refund: '50%', description: 'Cancellation policy is moderate with 50% refund with at least 1 week notice.')
-  #   Cancellation.create!(name: "Strict", refund: '0%', description: 'Cancellation policy is strict with 0% refund once listing is reserved.')
-  #   puts "Cancellations loaded"
-  # end
-
   desc "Amenities"
   task amenities: :environment do
     Amenity.create!(name: "Kitchen")

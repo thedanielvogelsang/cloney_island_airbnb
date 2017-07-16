@@ -1,7 +1,7 @@
 %h1 Create a New Listing
 %br
 .new_listing_container
-  = form_for @listing, as: :host, url: user_hosts_listings_path(@listing.user), method: :post do |f|
+  = form_for @listing, as: :host, url: user_host_listings_path(@listing.user), method: :post do |f|
     %p
       = f.label :name
       = f.text_field :name
@@ -45,23 +45,23 @@
           = cancellation_form.label :name
           = cancellation_form.select :name, [["Flexible", :flexible],["Moderate", :moderate],["Strict", :strict]]
     %br
-    .address_form
-      = f.fields_for :address do |address_form|
-        %p 
-          = address_form.label :street_address
-          = address_form.text_field :street_address
-        %p 
-          = address_form.label :street_address_2
-          = address_form.text_field :street_address_2
-        %p 
-          = address_form.label :city
-          = address_form.text_field :city
-        %p 
-          = address_form.label :state
-          = address_form.text_field :state
-        %p 
-          = address_form.label :zip_code
-          = address_form.text_field :zip_code
+    -# .address_form
+    -#   = f.fields_for :address do |address_form|
+    -#     %p 
+    -#       = address_form.label :street_address
+    -#       = address_form.text_field :street_address
+    -#     %p 
+    -#       = address_form.label :street_address_2
+    -#       = address_form.text_field :street_address_2
+    -#     %p 
+    -#       = address_form.label :city
+    -#       = address_form.text_field :city
+    -#     %p 
+    -#       = address_form.label :state
+    -#       = address_form.text_field :state
+    -#     %p 
+    -#       = address_form.label :zip_code
+    -#       = address_form.text_field :zip_code
     %p 
       = f.submit "Create"
     %br
