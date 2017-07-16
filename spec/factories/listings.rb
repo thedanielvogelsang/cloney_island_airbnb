@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :listing do
     user
 
-    sequence(:name) do |n|
-      "Best Place on Earth #{n}"
+    sequence(:name) do  |i|
+      "Best Place on Earth #{i}"
     end
     description 'Place new description here'
     address '123 Billygoat Rd. Evergreen, CO 80411'
