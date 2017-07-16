@@ -1,24 +1,52 @@
-# README
+# Cloney Island Airbnb
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Alt text](https://github.com/Benja-Ross/little_shop/blob/master/app/screen-shots/little_shop_page.png?raw=true "Droids Category Page")
 
-Things you may want to cover:
+Cloney Island is a greenfield development project with the intention of cloning much of the functionality and design of Airbnb's platform.
 
-* Ruby version
+Inspired by the most epic twists on Faker Gem data that we could think of, this little ecommerce shop sells potions for superpowers, droids, and vehicles from a galaxy far far away, at great prices too. Visit our site, take a look at some items, effortlessly move starships or a potion of seismic power into your shopping cart. But wait, you don't have much power at all until you sign up for an account. Only then is your fake money good with us. You can also edit your profile, see your past orders, quickly increase the number of each item you wish to purchase. Perhaps you plan to battle the dark side, you're going to need a lot of starships.
 
-* System dependencies
+The site also has administrative authorization which allows someone with admin status to do everything a normal user can do, but also delete, edit, or create new items.
 
-* Configuration
+### Prerequisites to Run Locally
 
-* Database creation
+  * [Rails version 5.1.2](http://installrails.com/)
 
-* Database initialization
+  * [Ruby version 2.3.1](https://www.ruby-lang.org/en/documentation/installation/)
 
-* How to run the test suite
+### Running Locally
 
-* Services (job queues, cache servers, search engines, etc.)
+  * Clone this repo.
+  * cd into it
+  * ```bundle```
+  *```rake import:all```
+  *```rails server```
+  * visit ```localhost:30000```
 
-* Deployment instructions
+### Visit Online
 
-* ...
+ * Launch on - [Heroku]()
+
+### Built With
+
+ * Rails, Ruby, ActiveRecord, HTML, CSS, ERB, Postgresql, and Heroku
+
+### To Run the Automated Rspec Test Suite
+
+ * Simply input rspec from the command line
+
+## Authors
+
+* **Adam Gunther** - [Github](https://github.com/adamgunther1)
+* **William Thomas** - [Github](https://github.com/wthoma22)
+* **Padraic O'Neill** - [Github](https://github.com/podoglyph)
+* **Bao Nguyen** - [Github](https://github.com/rongxanh88)
+* **Benjamin Ross** - [Github](https://github.com/Benja-Ross)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Turing School of Software & Design
