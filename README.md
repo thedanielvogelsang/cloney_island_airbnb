@@ -1,12 +1,22 @@
 # Cloney Island Airbnb
 
-![Alt text](https://github.com/Benja-Ross/little_shop/blob/master/app/screen-shots/little_shop_page.png?raw=true "Droids Category Page")
+![Alt text](https://github.com/rongxanh88/cloney_island_airbnb/blob/master/app/screen-shots/first_homepage_shot.png?raw=true "Cloney Island Airbnb Homepage")
 
-Cloney Island is a greenfield development project with the intention of cloning much of the functionality and design of Airbnb's platform.
+Cloney Island is a greenfield development project aiming to clone much of the functionality and design of Airbnb's platform. Some of the tasks included are as follows:
 
-Inspired by the most epic twists on Faker Gem data that we could think of, this little ecommerce shop sells potions for superpowers, droids, and vehicles from a galaxy far far away, at great prices too. Visit our site, take a look at some items, effortlessly move starships or a potion of seismic power into your shopping cart. But wait, you don't have much power at all until you sign up for an account. Only then is your fake money good with us. You can also edit your profile, see your past orders, quickly increase the number of each item you wish to purchase. Perhaps you plan to battle the dark side, you're going to need a lot of starships.
+  * Meeting with an instructor to mimic a client and development team interaction
+  * Test Driven Development
+  * Tracking workflow on Pivatol Tracker
+  * Supporting multitenancy
+  * Using OAuth for user authentication
+  * Creating a rake task that loads enough objects to create a somewhat realistic scale for production
+  * Serving up an internal API
+  * Using Javascript to update pages dynamically
+  * Incorporating Twilio
+  * Incorporating Action Cable to create real-time messaging
 
-The site also has administrative authorization which allows someone with admin status to do everything a normal user can do, but also delete, edit, or create new items.
+This project was developed by a group of 5 developers over a 10 day sprint. The project will be handed off to another team of 5 once completed for another 10 day, round 2 sprint. The second group will add onto functionality as they see fit.
+
 
 ### Prerequisites to Run Locally
 
@@ -29,13 +39,13 @@ The site also has administrative authorization which allows someone with admin s
 
 ### Built With
 
- * Rails, Ruby, ActiveRecord, HTML, CSS, ERB, Postgresql, and Heroku
+ * Rails, Ruby, ActiveRecord, HTML, CSS, Sass, ERB, Haml, Postgresql, Twilio, ActionCable, OmniAuth Facebook
 
 ### To Run the Automated Rspec Test Suite
 
  * Simply input rspec from the command line
 
-## Authors
+## Round 1 Authors
 
 * **Adam Gunther** - [Github](https://github.com/adamgunther1)
 * **William Thomas** - [Github](https://github.com/wthoma22)
