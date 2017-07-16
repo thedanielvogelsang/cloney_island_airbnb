@@ -1,0 +1,5 @@
+.navbar-search
+  = form_tag(listings_path, method: "get", id: "search") do
+    = text_field_tag(:search_address, params[:search_address], placeholder: "Search any part of an address...", value: nil, size: "50x10")
+    = number_field_tag(:search_num_guests, params[:search_num_guests], placeholder: "Number of Guests...", value: nil, size: "20x10")
+    = submit_tag("Search", name: nil)
