@@ -1,11 +1,10 @@
 class ListingsController < ApplicationController
   def index
-    if params[:search_city] != "" && params[:search_state] != ""
-      @listings = Listing.search_city(params)
-    elsif params[:search_zip] != ""
-      @listings = Listing.search_zip(params)
+    if params[:search_address] != ""
+      @listings = Listing.search_address(params[:search_address])
     else
-      @listings = Listing.all.limit(20)
+      flash[:message] = "Unable to find listings related to your search."
+      @listings = []
     end
   end
 
