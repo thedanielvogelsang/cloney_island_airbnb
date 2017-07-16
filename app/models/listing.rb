@@ -1,10 +1,10 @@
 class Listing < ApplicationRecord
   validates :name, :description, :accomodates, :bathrooms, :bedrooms, :beds, :price, presence: true
   validates :property_type, :bed_type, :room_type, :pet_type, :status, :cancellation_policy, presence: true
+  validates :address, presence: true
   validates :name, uniqueness: true
 
   belongs_to :user
-  belongs_to :address
 
   has_many :listing_images, dependent: :destroy
   has_many :listing_amenities

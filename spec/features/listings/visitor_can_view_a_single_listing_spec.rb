@@ -9,6 +9,7 @@ RSpec.feature "User can see profile", type: :feature do
 
     expect(page).to have_content(listing.name)
     expect(page).to have_content(listing.description)
+    expect(page).to have_content(listing.address)
     expect(page).to have_content(listing.accomodates)
     expect(page).to have_content(listing.bathrooms)
     expect(page).to have_content(listing.beds)
