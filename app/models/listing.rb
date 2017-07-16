@@ -19,4 +19,5 @@ class Listing < ApplicationRecord
   enum cancellation_policy: [:flexible, :moderate, :strict]
 
   accepts_nested_attributes_for :listing_images, :reject_if => lambda { |t| t['listing_image'].nil? }
+
 end

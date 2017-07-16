@@ -1,19 +1,15 @@
 class Host::ListingsController < ApplicationController
   def new
-    binding.pry
     host = User.find(params[:user_id])
     @listing = host.listings.new
   end
 
   def create
     host = User.find(params[:user_id])
-    address = host.addresses.find_or_create_by(street_address: params[:host][:address][:street_address])
-    address.update_attributes(address_params)
     listing = host.listings.new(listing_params)
-    # policy_name = params[:host][:cancellation][:name]
-    binding.pry
+    amenities = Amenity.list_amenities(amenities_params)
     if listing.save
-      binding.pry
+      listing.amenities << amenities
       redirect_to listing_path(listing)
     else
       flash[:message] = "Unable to create new listing"
@@ -26,17 +22,14 @@ class Host::ListingsController < ApplicationController
     def listing_params
       params.require(:host)
             .permit(
-              :name, :description, :house_rules, :accomodates,
+              :name, :description, :address, :house_rules, :accomodates,
               :bathrooms, :bedrooms, :beds, :price, :property_type,
-              :bed_type, :room_type, :pet_type
+              :bed_type, :room_type, :pet_type, :cancellation_policy
             )
     end
 
-    def address_params
-      params.require(:host).require(:address)
-            .permit(
-              :street_address, :street_address_2, :city, :state, :zip_code
-            )
+    def amenities_params
+      params.require(:host).require(:listing_amenities)
     end
-    
+
 end
