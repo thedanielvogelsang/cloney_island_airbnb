@@ -28,3 +28,42 @@ body {
 .hidden {
   color: $background;
 }
+
+tbody {
+}
+
+thead tr {
+  background: #edefed;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.reservation-history {
+  min-width: 744px;
+}
+
+tr.trip.td {
+  border-bottom: 1pt #edefed;
+}
+
+.reservation-history img {
+  width: 60px;
+}
+
+.reservation-history p {
+  text-align: left;
+}
+
+.trip-guest {
+  display: block;
+  float: left;
+  margin-left: 15px;
+}
+
+.trip-guest-pic {
+  display: block;
+  float: left;
+}

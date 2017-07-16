@@ -35,4 +35,8 @@
             =link_to "Sign Up", new_user_path
             =link_to "Sign In", login_path
 
+    -flash.each do |name, message|
+      .notice
+        =message
+
     = yield

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :trip do
     user
-    host
+    # host
     listing
 
     trip_status 1
