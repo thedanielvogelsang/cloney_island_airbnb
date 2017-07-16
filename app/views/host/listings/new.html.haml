@@ -9,9 +9,6 @@
       = f.label :description
       = f.text_area :description, size: "50x10"
     %p
-      = f.label :address
-      = f.text_area :address
-    %p
       = f.label :house_rules
       = f.text_area :house_rules, size: "50x10"
     %p
@@ -41,67 +38,30 @@
     %p
       = f.label :pet_type
       = f.select :pet_type, [["No Pets", :no_pets], ["Cat(s)", :cat], ["Dog(s)", :dog], ["Cat(s) and Dog(s)", :cat_and_god], ["MISC", :misc]]
-      %p
-        = f.label :cancellation_policy
-        = f.select :cancellation_policy, [["Flexible", :flexible], ["Moderate", :moderate], ["Strict", :strict]]
     %br
     .cancellation_form
-      = f.fields_for :listing_amenities do |la|
-        %p
-          = la.label :amenities
-          %br
-          -# = la.select :name, [["Kitchen", :kitchen],["Essentials/Toiletries", :essentials_toiletries],["Air Conditioning", :air_conditioning], ["Heating", :heating], ["Washer/Dryer", :washer_dryer], ["TV", :tv], ["Private Entrance", :private_entrance], ["Living Room", :living_room]]
-          =la.label :kitchen
-          =la.check_box :'Kitchen'
-          %br
-          =la.label :'Essentials/Toiletries'
-          =la.check_box :'Essentials/Toiletries'
-          %br
-          =la.label :air_conditioning
-          =la.check_box :'Air Conditioning'
-          %br
-          =la.label :heating
-          =la.check_box :Heating
-          %br
-          =la.label :washer_dryer
-          =la.check_box :'Washer/Dryer'
-          %br
-          =la.label :'TV'
-          =la.check_box :'TV'
-          %br
-          =la.label :private_entrance
-          =la.check_box :'Private Entrance'
-          %br
-          =la.label :living_room
-          =la.check_box :'Living Room'
-          %br
-          =la.label :wifi
-          =la.check_box :'Wifi'
-          %br
-          =la.label :hot_tub
-          =la.check_box :'Hot Tub'
-          %br
-          =la.label :fire_extinguisher
-          =la.check_box :'Fire Extinguisher'
-          %br
+      = f.fields_for :cancellation do |cancellation_form|
+        %p 
+          = cancellation_form.label :name
+          = cancellation_form.select :name, [["Flexible", :flexible],["Moderate", :moderate],["Strict", :strict]]
     %br
-    -# .address_form
-    -#   = f.fields_for :address do |address_form|
-    -#     %p
-    -#       = address_form.label :street_address
-    -#       = address_form.text_field :street_address
-    -#     %p
-    -#       = address_form.label :street_address_2
-    -#       = address_form.text_field :street_address_2
-    -#     %p
-    -#       = address_form.label :city
-    -#       = address_form.text_field :city
-    -#     %p
-    -#       = address_form.label :state
-    -#       = address_form.text_field :state
-    -#     %p
-    -#       = address_form.label :zip_code
-    -#       = address_form.text_field :zip_code
-    %p
+    .address_form
+      = f.fields_for :address do |address_form|
+        %p 
+          = address_form.label :street_address
+          = address_form.text_field :street_address
+        %p 
+          = address_form.label :street_address_2
+          = address_form.text_field :street_address_2
+        %p 
+          = address_form.label :city
+          = address_form.text_field :city
+        %p 
+          = address_form.label :state
+          = address_form.text_field :state
+        %p 
+          = address_form.label :zip_code
+          = address_form.text_field :zip_code
+    %p 
       = f.submit "Create"
     %br
