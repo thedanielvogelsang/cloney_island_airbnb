@@ -1,0 +1,88 @@
+%h1 Create a New Listing
+%br
+.new_listing_container
+  = form_for @listing, as: :host, url: user_host_listings_path(@listing.user), method: :post do |f|
+    %p
+      = f.label :name
+      = f.text_field :name
+    %p
+      = f.label :description
+      = f.text_area :description, size: "50x10"
+    %p
+      = f.label :address
+      = f.text_area :address
+    %p
+      = f.label :house_rules
+      = f.text_area :house_rules, size: "50x10"
+    %p
+      = f.label :accomodates
+      = f.number_field :accomodates, in: 0..20
+    %p
+      = f.label :bathrooms
+      = f.number_field :bathrooms, in: 0..20
+    %p
+      = f.label :bedrooms
+      = f.number_field :bedrooms, in: 0..20
+    %p
+      = f.label :beds
+      = f.number_field :beds, in: 0..20
+    %p
+      = f.label :price
+      = f.number_field :price, in: 0..1000
+    %p
+      = f.label :property_type
+      = f.select :property_type, [["House", :house], ["Apartment", :apartment], ["Guesthouse", :guesthouse], ["Boat", :boat], ["Treehouse", :treehouse]]
+    %p
+      = f.label :bed_type
+      = f.select :bed_type, [["King", :king], ["Queen", :queen], ["Double", :double], ["Twin", :twin], ["Single", :single], ["Couch", :couch]]
+    %p
+      = f.label :room_type
+      = f.select :room_type, [["Entire Home", :entire_home], ["Private Room", :private_room], ["Shared Room", :shared_room]]
+    %p
+      = f.label :pet_type
+      = f.select :pet_type, [["No Pets", :no_pets], ["Cat(s)", :cat], ["Dog(s)", :dog], ["Cat(s) and Dog(s)", :cat_and_dod], ["MISC", :misc]]
+      %p
+        = f.label :cancellation_policy
+        = f.select :cancellation_policy, [["Flexible", :flexible], ["Moderate", :moderate], ["Strict", :strict]]
+    %br
+    .cancellation_form
+      = f.fields_for :listing_amenities do |la|
+        %p
+          = la.label :amenities
+          %br
+          =la.label :kitchen
+          =la.check_box :'Kitchen'
+          %br
+          =la.label :'Essentials/Toiletries'
+          =la.check_box :'Essentials/Toiletries'
+          %br
+          =la.label :air_conditioning
+          =la.check_box :'Air Conditioning'
+          %br
+          =la.label :heating
+          =la.check_box :Heating
+          %br
+          =la.label :washer_dryer
+          =la.check_box :'Washer/Dryer'
+          %br
+          =la.label :'TV'
+          =la.check_box :'TV'
+          %br
+          =la.label :private_entrance
+          =la.check_box :'Private Entrance'
+          %br
+          =la.label :living_room
+          =la.check_box :'Living Room'
+          %br
+          =la.label :wifi
+          =la.check_box :'Wifi'
+          %br
+          =la.label :hot_tub
+          =la.check_box :'Hot Tub'
+          %br
+          =la.label :fire_extinguisher
+          =la.check_box :'Fire Extinguisher'
+          %br
+    %br
+    %p
+      = f.submit "Create"

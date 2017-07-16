@@ -2,44 +2,53 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
-    listing = create(:listing, status: 1)
-    create(:listing_image, listing_id: listing.id)
+    address = "123 Fake St. Boulder, CO 80111"
+    5.times do |n|
+      listing = create(:listing, status: 1, address: "Bad address Rd Denver, CO 80303", name: "Bad Listing #{n}")
+      listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
+    end
+    result = create(:listing, status: 1, address: address, name: "Good Listing")
+    result.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     visit root_path
 
-    within(".search_bar") do
-      expect(page).to have_field("city")
-      expect(page).to have_field("zip_code")
-      expect(page).to have_field("check_in")
-      expect(page).to have_field("check_out")
+    within(".navbar-search") do
+      expect(page).to have_field("search_address")
       expect(page).to have_selector(:link_or_button, 'Search')
     end
 
-    fill_in "city", with: "#{listing.address.city}"
-    fill_in "state", with: "#{listing.address.state}"
+    fill_in "search_address", with: "ouLDe"
     click_on "Search"
 
-    expect(current_path).to eq(search_path)
-
-    expect(page).to have_content(listing.name)
+    expect(page).to have_content(result.name)
+    expect(page).not_to have_content("Bad Listing")
   end
 
   scenario "guests can search by zip_code" do
-    listing = create(:listing, status: 1)
-    create(:listing_image, listing_id: listing.id)
-
+    address = "123 Fake St. Boulder, CO 80111"
+    5.times do |n|
+      listing = create(:listing, status: 1, address: "Bad address Rd Denver, CO 80303", name: "Bad Listing #{n}")
+      listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
+    end
+    result = create(:listing, status: 1, address: address, name: "Good Listing")
+    result.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     visit root_path
 
-    fill_in "zip_code", with: "#{listing.address.zip_code}"
+    within(".navbar-search") do
+      expect(page).to have_field("search_address")
+      expect(page).to have_selector(:link_or_button, 'Search')
+    end
+
+    fill_in "search_address", with: "8011"
     click_on "Search"
 
-    expect(current_path).to eq(search_path)
-
-      expect(page).to have_content(listing.name)
+    expect(page).to have_content(result.name)
+    expect(page).not_to have_content("Bad Listing")
   end
 
   scenario "guest can search by dates" do
+    skip
     listing = create(:listing, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -63,6 +72,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guest can search by dates sad path" do
+    skip
     listing = create(:listing, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -86,23 +96,20 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guests can search by number of accomodations" do
-    listing = create(:listing, accomodates: 4, status: 1)
-    create(:listing_image, listing_id: listing.id)
+    listing = create(:listing, accomodates: 4, status: 1, address: "Boulder, CO 80303")
+    listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     visit root_path
 
-    fill_in "zip_code", with: "#{listing.address.zip_code}"
-    fill_in "num_guests", with: 3
+    fill_in "search_address", with: "Boulder"
+    fill_in "search_num_guests", with: 3
     click_on "Search"
 
-    expect(current_path).to eq(search_path)
-
-    within(".results") do
-      expect(page).to have_content(listing.name)
-    end
+    expect(page).to have_content(listing.name)
   end
 
   scenario "guests can search by number of accomodations sad path" do
+    skip
     listing = create(:listing, accomodates: 4, status: 1)
     create(:listing_image, listing_id: listing.id)
 
