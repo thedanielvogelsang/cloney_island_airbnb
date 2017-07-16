@@ -5,12 +5,12 @@ class Hosts::ListingsController < ApplicationController
   end
 
   def create
-    user = User.find(params[:user_id])
-    address = Address.new(address_params, user_id: user.id)
-    
-    listing = Listing.new(listing_params)
-    # listing.address_id = address.id 
-    listing.user_id = user.id
+    host = User.find(params[:user_id])
+    address = host.addresses.find_or_create_by(street_address: params[:host][:address][:street_address])
+    address.update_attributes(address_params)
+    listing = host.listings.new(listing_params)
+    cancellation_policy = Cancellation.first
+    listing.cancellation_id = cancellation_policy.id
     binding.pry
     if listing.save
       binding.pry
