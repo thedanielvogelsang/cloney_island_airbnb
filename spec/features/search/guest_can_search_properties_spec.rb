@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
+    skip
     listing = create(:listing, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -25,6 +26,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guests can search by zip_code" do
+    skip
     listing = create(:listing, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -40,6 +42,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guest can search by dates" do
+    skip
     listing = create(:listing, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -63,6 +66,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guest can search by dates sad path" do
+    skip
     listing = create(:listing, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -86,6 +90,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guests can search by number of accomodations" do
+    skip
     listing = create(:listing, accomodates: 4, status: 1)
     create(:listing_image, listing_id: listing.id)
 
@@ -103,6 +108,7 @@ RSpec.feature "Guest can search properties", type: :feature do
   end
 
   scenario "guests can search by number of accomodations sad path" do
+    skip
     listing = create(:listing, accomodates: 4, status: 1)
     create(:listing_image, listing_id: listing.id)
 

@@ -15,13 +15,12 @@ RSpec.describe Listing, type: :model do
     it { should validate_presence_of(:pet_type) }
     it { should validate_presence_of(:status) }
     it { should validate_presence_of(:cancellation_policy) }
-
+    it { should validate_presence_of(:address) }
     it { should validate_uniqueness_of(:name) }
   end
 
   describe 'relationships' do
     it { should belong_to(:user) }
-    it { should belong_to(:address) }
 
     it { should have_many(:listing_images) }
     it { should have_many(:listing_amenities) }
