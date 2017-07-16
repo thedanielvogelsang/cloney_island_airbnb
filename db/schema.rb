@@ -21,14 +21,6 @@ ActiveRecord::Schema.define(version: 20170716172954) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cancellations", force: :cascade do |t|
-    t.text "name"
-    t.text "refund"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "listing_amenities", force: :cascade do |t|
     t.bigint "amenity_id"
     t.bigint "listing_id"
@@ -63,12 +55,11 @@ ActiveRecord::Schema.define(version: 20170716172954) do
     t.integer "pet_type"
     t.integer "room_type"
     t.bigint "user_id"
-    t.bigint "cancellation_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cancellation_policy", default: 0
     t.string "address"
-    t.index ["cancellation_id"], name: "index_listings_on_cancellation_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -120,7 +111,6 @@ ActiveRecord::Schema.define(version: 20170716172954) do
   add_foreign_key "listing_amenities", "amenities"
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listing_images", "listings"
-  add_foreign_key "listings", "cancellations"
   add_foreign_key "listings", "users"
   add_foreign_key "trips", "listings"
   add_foreign_key "trips", "users"

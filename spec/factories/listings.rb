@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :listing do
     user
-    cancellation
 
     sequence(:name) do |n|
       "Best Place on Earth #{n}"
@@ -18,6 +17,7 @@ FactoryGirl.define do
     bed_type 'king'
     pet_type 'cat_and_dog'
     room_type 'entire_home'
+    cancellation_policy 0
     status 0
   end
 
