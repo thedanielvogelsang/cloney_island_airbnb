@@ -46,23 +46,6 @@ namespace :import do
     puts "Users loaded"
   end
 
-<<<<<<< HEAD
-  desc "Addresses"
-  task addresses: :environment do
-    users = User.all
-    users.each do |user|
-      address = Address.create!(
-        street_address: Faker::Address.street_address,
-        city: "Denver",
-        state: "CO",
-        zip_code: "80202",
-        user_id: user.id
-        )
-      puts "Address #{address.id} created!"
-    end
-    puts "Addresses loaded"
-  end
-=======
   # desc "Addresses"
   # task addresses: :environment do
   #   users = User.all
@@ -79,7 +62,6 @@ namespace :import do
   #   end
   #   puts "Addresses loaded"
   # end
->>>>>>> development
 
   # desc "Cancellations"
   # task cancellations: :environment do
