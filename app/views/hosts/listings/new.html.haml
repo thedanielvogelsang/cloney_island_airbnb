@@ -43,7 +43,7 @@
       = f.fields_for :cancellation do |cancellation_form|
         %p 
           = cancellation_form.label :name
-          = cancellation_form.select :name, [["Flexible", "Flexible"],["Moderate", "Moderate"],["Strict", "Strict"]]
+          = cancellation_form.select :name, [["Flexible", :flexible],["Moderate", :moderate],["Strict", :strict]]
     %br
     .address_form
       = f.fields_for :address do |address_form|

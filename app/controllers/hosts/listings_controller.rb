@@ -9,8 +9,7 @@ class Hosts::ListingsController < ApplicationController
     address = host.addresses.find_or_create_by(street_address: params[:host][:address][:street_address])
     address.update_attributes(address_params)
     listing = host.listings.new(listing_params)
-    cancellation_policy = Cancellation.first
-    listing.cancellation_id = cancellation_policy.id
+    # policy_name = params[:host][:cancellation][:name]
     binding.pry
     if listing.save
       binding.pry
