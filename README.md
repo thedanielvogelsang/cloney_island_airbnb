@@ -1,6 +1,6 @@
 # Cloney Island Airbnb
 
-![Alt text](https://github.com/rongxanh88/cloney_island_airbnb/blob/master/app/screen-shots/first_homepage_shot.png?raw=true "Cloney Island Airbnb Homepage")
+![Alt text](https://github.com/rongxanh88/cloney_island_airbnb/blob/development/app/screen_shots/first_homepage_shot.png?raw=true "Cloney Island Airbnb Homepage")
 
 Cloney Island is a greenfield development project aiming to clone much of the functionality and design of Airbnb's platform. Some of the tasks included are as follows:
 
