@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update] do
     resources :dashboard, only: [:index]
 
-    namespace :hosts do
+    namespace :host do
       resources :listings, only: [:new, :create]
+      resources :dashboard, only: [:index]
     end
   end
 end
