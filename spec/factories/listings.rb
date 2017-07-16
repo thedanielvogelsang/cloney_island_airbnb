@@ -1,15 +1,12 @@
 FactoryGirl.define do
   factory :listing do
-    # association :address, factory: :address
-    # association :cancellation, factory: :cancellation
     user
-    address
-    cancellation
 
     sequence(:name) do  |i|
       "Best Place on Earth #{i}"
     end
     description 'Place new description here'
+    address '123 Billygoat Rd. Evergreen, CO 80411'
     accomodates 3
     bathrooms 3
     bedrooms 2
@@ -20,6 +17,9 @@ FactoryGirl.define do
     bed_type 'king'
     pet_type 'cat_and_dog'
     room_type 'entire_home'
+    cancellation_policy 0
     status 0
   end
+
+
 end

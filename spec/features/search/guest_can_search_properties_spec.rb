@@ -3,18 +3,16 @@ require 'rails_helper'
 RSpec.feature "Guest can search properties", type: :feature do
   scenario "guests can search by city" do
     skip
-    good_address = create(:address)
-    bad_address = create(:address, state: "KS")
-    3.times do
-      create(:listing, address_id: good_address.id)
-      create(:listing, address_id: bad_address.id)
-    end
+    listing = create(:listing, status: 1)
+    create(:listing_image, listing_id: listing.id)
 
     visit root_path
 
     within(".search_bar") do
       expect(page).to have_field("city")
-      expect(page).to have_field("zipcode")
+      expect(page).to have_field("zip_code")
+      expect(page).to have_field("check_in")
+      expect(page).to have_field("check_out")
       expect(page).to have_selector(:link_or_button, 'Search')
     end
 
@@ -30,25 +28,27 @@ RSpec.feature "Guest can search properties", type: :feature do
     # end
   end
 
-  scenario "guests can search by zipcode" do
+  scenario "guests can search by zip_code" do
     skip
-    listing = create(:listing)
+    listing = create(:listing, status: 1)
+    create(:listing_image, listing_id: listing.id)
+
 
     visit root_path
 
-    fill_in "zipcode", with: "#{listing.address.zip_code}"
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
     click_on "Search"
 
     expect(current_path).to eq(search_path)
 
-    within(".results") do
       expect(page).to have_content(listing.name)
-    end
   end
 
   scenario "guest can search by dates" do
     skip
-    listing = create(:listing)
+    listing = create(:listing, status: 1)
+    create(:listing_image, listing_id: listing.id)
+
     user = create(:user)
     host = create(:user)
     trip = Trip.create!(user_id: user.id,
@@ -70,7 +70,9 @@ RSpec.feature "Guest can search properties", type: :feature do
 
   scenario "guest can search by dates sad path" do
     skip
-    listing = create(:listing)
+    listing = create(:listing, status: 1)
+    create(:listing_image, listing_id: listing.id)
+
     user = create(:user)
     host = create(:user)
     trip = Trip.create!(user_id: user.id,
@@ -88,5 +90,41 @@ RSpec.feature "Guest can search properties", type: :feature do
     click_on "Search"
 
     expect(current_path).to_not have_content(listing.name)
+  end
+
+  scenario "guests can search by number of accomodations" do
+    skip
+    listing = create(:listing, accomodates: 4, status: 1)
+    create(:listing_image, listing_id: listing.id)
+
+    visit root_path
+
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
+    fill_in "num_guests", with: 3
+    click_on "Search"
+
+    expect(current_path).to eq(search_path)
+
+    within(".results") do
+      expect(page).to have_content(listing.name)
+    end
+  end
+
+  scenario "guests can search by number of accomodations sad path" do
+    skip
+    listing = create(:listing, accomodates: 4, status: 1)
+    create(:listing_image, listing_id: listing.id)
+
+    visit root_path
+
+    fill_in "zip_code", with: "#{listing.address.zip_code}"
+    fill_in "num_guests", with: 5
+    click_on "Search"
+
+    expect(current_path).to eq(search_path)
+
+    within(".results") do
+      expect(page).to_not have_content(listing.name)
+    end
   end
 end
