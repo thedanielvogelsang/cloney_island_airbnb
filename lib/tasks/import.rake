@@ -1,6 +1,6 @@
 namespace :import do
   desc "Imports all seed data"
-  task :all => [:regenerate, :roles, :users, :addresses, :cancellations, :amenities, :listings, :listing_images, :trips]
+  task :all => [:regenerate, :roles, :users, :addresses, :amenities, :listings, :listing_images, :trips]
 
   desc "wipes database before seeding"
   task :regenerate do
@@ -63,13 +63,13 @@ namespace :import do
     puts "Addresses loaded"
   end
 
-  desc "Cancellations"
-  task cancellations: :environment do
-    Cancellation.create!(name: "Flexible", refund: '100%', description: 'Cancellation policy is flexible with 100% refund with at least 1 week notice.')
-    Cancellation.create!(name: "Moderate", refund: '50%', description: 'Cancellation policy is moderate with 50% refund with at least 1 week notice.')
-    Cancellation.create!(name: "Strict", refund: '0%', description: 'Cancellation policy is strict with 0% refund once listing is reserved.')
-    puts "Cancellations loaded"
-  end
+  # desc "Cancellations"
+  # task cancellations: :environment do
+  #   Cancellation.create!(name: "Flexible", refund: '100%', description: 'Cancellation policy is flexible with 100% refund with at least 1 week notice.')
+  #   Cancellation.create!(name: "Moderate", refund: '50%', description: 'Cancellation policy is moderate with 50% refund with at least 1 week notice.')
+  #   Cancellation.create!(name: "Strict", refund: '0%', description: 'Cancellation policy is strict with 0% refund once listing is reserved.')
+  #   puts "Cancellations loaded"
+  # end
 
   desc "Amenities"
   task amenities: :environment do
@@ -109,7 +109,7 @@ namespace :import do
         pet_type: [0, 1, 2, 3, 4].sample,
         price: [100, 200, 300, 400, 500, 600].sample,
         house_rules: ["No Smoking", "No Teenagers", "Hippies Use Back Door"].sample,
-        cancellation_id: [1, 2, 3].sample,
+        cancellation_policy: [0, 1, 2].sample,
         status: ["unlisted", "listed"].sample
         )
       5.times do
