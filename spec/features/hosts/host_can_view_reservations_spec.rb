@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "Host can view their reservations", type: :feature do
   scenario "host visits host dashboard" do
-    skip
     role = create(:role, name: 'host')
     role2 = create(:role, name: 'traveler')
     host = create(:user, first_name: 'Host Name')
@@ -40,11 +39,8 @@ RSpec.feature "Host can view their reservations", type: :feature do
 
     expect(page).to have_selector(".trip", count: 2)
 
-    expect(page).to have_content listing.address.street_address
+    expect(page).to have_content listing.address
     expect(page).to have_content listing.name
-    expect(page).to have_content listing.address.city
-    expect(page).to have_content listing.address.state
-    expect(page).to have_content listing.address.zip_code
     expect(page).to have_content trip1.trip_status
     expect(page).to have_content trip1.start_date
     expect(page).to have_content trip1.end_date
