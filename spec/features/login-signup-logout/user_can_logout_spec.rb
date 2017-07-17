@@ -18,7 +18,6 @@ RSpec.feature "Logged in user can log out", type: :feature do
       click_on "Sign In"
     end
 
-    #expect(page).to have_content("#{user.username}")
     click_on "Sign Out"
 
     expect(page).to have_link "Sign In", href: login_path
