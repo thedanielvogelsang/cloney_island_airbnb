@@ -9,4 +9,5 @@
     .form-group
       = f.label :num_guests, 'Guests'
       = f.text_field :num_guests
-    = f.submit 'Confirm Booking'
+    .button.confirm_booking_button
+      = f.submit 'Confirm Booking'

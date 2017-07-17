@@ -1,10 +1,14 @@
-- @trips.each do |trip|
-  = trip.listing.name
-  = trip.listing.address
-  = image_tag(trip.listing.listing_images.first.property_image)
-  = trip.start_date
-  = trip.end_date
-  = trip.listing.user.first_name
-  = trip.listing.user.phone_number
-  = trip.listing.user.email
-  = image_tag(trip.listing.user.profile_picture)
+%section.trips
+  - @trips.each do |trip|
+    .booked-trips
+      .trip-details
+        %h3= trip.listing.name
+        %h4= trip.listing.address
+        %h4= "Arrival: #{trip.start_date}"
+        %h4= "Departure: #{trip.end_date}"
+        = image_tag trip.listing.user.profile_picture, :class => "profile-pic trips-host-profile-pic"
+        %h4= trip.listing.user.first_name
+        %h4= trip.listing.user.phone_number
+        %h4= trip.listing.user.email
+      .trip-image
+        = image_tag trip.listing.listing_images.first.property_image, :class => "property-image trips-property_image"
