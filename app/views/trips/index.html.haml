@@ -1,2 +1,10 @@
 - @trips.each do |trip|
   = trip.listing.name
+  = trip.listing.address
+  = image_tag(trip.listing.listing_images.first.property_image)
+  = trip.start_date
+  = trip.end_date
+  = trip.listing.user.first_name
+  = trip.listing.user.phone_number
+  = trip.listing.user.email
+  = image_tag(trip.listing.user.profile_picture)

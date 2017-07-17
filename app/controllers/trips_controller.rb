@@ -15,10 +15,8 @@ class TripsController < ApplicationController
     @trip.user_id = current_user.id
     @trip.host_id = listing.user_id
     @trip.listing_id = listing.id
-    binding.pry
 
     if @trip.save
-      binding.pry
       flash[:success] = "Your trip at #{listing.name} has been booked."
       redirect_to trips_path
     else
