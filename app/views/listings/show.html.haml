@@ -27,4 +27,5 @@
   %p
     = image_tag image.property_image
   %br
-= button_to 'Book Now', new_listing_trip_path(@listing), method: :get
+.button.book_now_button
+  = button_to 'Book Now', new_listing_trip_path(@listing), method: :get

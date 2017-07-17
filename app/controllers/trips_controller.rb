@@ -30,12 +30,6 @@ class TripsController < ApplicationController
     params.require(:trip).permit(:trip_status, :start_date, :end_date, :num_guests, :listing_id)
   end
 
-  def all_trip_params
-    binding.pry
-    associations = {:user_id => current_user.id, :host_id => @listing.user_id, :listing_id => @listing.id}
-    trip_params.merge(associations)
-  end
-
   def listing
     Listing.find(params[:listing_id])
   end
