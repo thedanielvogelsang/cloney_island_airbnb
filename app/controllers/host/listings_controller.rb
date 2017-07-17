@@ -1,11 +1,13 @@
 class Host::ListingsController < ApplicationController
   def new
-    host = User.find(params[:user_id])
+    # host = User.find(params[:user_id])
+    host = current_user
     @listing = host.listings.new
   end
 
   def create
-    host = User.find(params[:user_id])
+    # host = User.find(params[:user_id])
+    host = current_user
     listing = host.listings.new(listing_params)
     amenities = Amenity.list_amenities(amenities_params)
     if listing.save
@@ -15,6 +17,12 @@ class Host::ListingsController < ApplicationController
       flash[:message] = "Unable to create new listing"
       redirect_to new_user_hosts_listing_path(user)
     end
+  end
+
+  def edit
+    # binding.pry
+    # host = User.find(params[:user_id])
+    # @listing = Listing.find()
   end
 
   private
