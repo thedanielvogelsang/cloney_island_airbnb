@@ -1,0 +1,12 @@
+%section{class: 'form add-trip'}
+  = form_for [@listing, @trip], :url => {:controller => 'trips', :action => "create"} do |f|
+    .form-group
+      = f.label :start_date, 'Start Date'
+      = f.text_field :start_date
+    .form-group
+      = f.label :end_date, 'End Date'
+      = f.text_field :end_date
+    .form-group
+      = f.label :num_guests, 'Guests'
+      = f.text_field :num_guests
+    = f.submit 'Confirm Booking'

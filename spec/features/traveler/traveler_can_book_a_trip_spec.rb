@@ -5,7 +5,7 @@ RSpec.describe 'As a traveler' do
     traveler_role = create(:role)
     traveler = create(:user)
     traveler.roles << traveler_role
-    listing = create(:listing, user_id: traveler.id)
+    listing = create(:listing, status: 'listed')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
 
@@ -19,7 +19,8 @@ RSpec.describe 'As a traveler' do
 
     click_button 'Book Now'
 
-    expect(current_path).to eq("/trips/new")
+    expect(current_path).to eq("/listings/#{listing.id}/trips/new")
+    expect(page).to have_content 'Confirm Your Booking'
 
     fill_in 'Start Date', with: '2017/08/08'
     fill_in 'End Date', with: '2017/08/12'
@@ -27,7 +28,7 @@ RSpec.describe 'As a traveler' do
     click_button 'Confirm Booking'
 
     expect(current_path).to eq("/trips")
-
+    save_and_open_page
     user_new_trips_count = traveler.trips.count
     expect(user_new_trips_count).to be > user_trips_count
 
