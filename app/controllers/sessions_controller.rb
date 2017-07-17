@@ -15,10 +15,14 @@ class SessionsController < ApplicationController
       @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.first_name}"
-      redirect_to user_dashboard_index_path(@user)
+      if @user.host?
+        redirect_to user_host_dashboard_index_path(@user)
+      else
+        redirect_to user_dashboard_index_path(@user)
+      end
     else
       flash[:login_error] = "The email or password you entered is invalid"
-        render :new
+      render :new
     end
   end
 
