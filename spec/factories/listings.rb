@@ -19,6 +19,7 @@ FactoryGirl.define do
     room_type 'entire_home'
     cancellation_policy 0
     status 0
+
   end
 
 

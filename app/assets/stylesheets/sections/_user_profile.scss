@@ -1,0 +1,36 @@
+//User Profile
+.container-profile {
+  width: 900px;
+  display: flex;
+  margin: 0 auto;
+  padding: 10px;
+
+  .col-1 {
+    width: 45%;
+    float: left;
+    border-right: 1px solid black;
+
+    .profile-pic {
+      text-align: center;
+
+      img {
+        display: block;
+        width: 300px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .col-2 {
+    width: 45%;
+    float: left;
+    margin-left: 54px;
+  }
+}
+
+//User Edit Profile
+
+.edit-attributes {
+  max-width: 400px;
+  margin: 0 auto;
+}
