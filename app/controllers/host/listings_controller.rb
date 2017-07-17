@@ -1,12 +1,10 @@
 class Host::ListingsController < ApplicationController
   def new
-    # host = User.find(params[:user_id])
     host = current_user
     @listing = host.listings.new
   end
 
   def create
-    # host = User.find(params[:user_id])
     host = current_user
     listing = host.listings.new(listing_params)
     amenities = Amenity.list_amenities(amenities_params)
@@ -20,9 +18,8 @@ class Host::ListingsController < ApplicationController
   end
 
   def edit
-    # binding.pry
-    # host = User.find(params[:user_id])
-    # @listing = Listing.find()
+    host = current_user
+    @listing = host.listings.find(params[:id])
   end
 
   private
