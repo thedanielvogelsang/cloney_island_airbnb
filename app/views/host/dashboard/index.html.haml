@@ -27,8 +27,7 @@
         %td
           %p= "#{trip.start_date} - #{trip.end_date}"
           %p= trip.listing.name
-          %p= "#{trip.listing.address.street_address} #{trip.listing.address.street_address_2}"
-          %p= "#{trip.listing.address.city}, #{trip.listing.address.state} #{trip.listing.address.zip_code}"
+          %p= trip.listing.address
         %td
           = image_tag trip.user.profile_picture, :class => "trip-guest-pic"
           %p.trip-guest= trip.user.first_name

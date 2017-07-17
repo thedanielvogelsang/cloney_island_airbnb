@@ -10,6 +10,10 @@ h6 {
   text-transform: capitalize;
 }
 
+h2 {
+  text-align: center;
+}
+
 p {
   font-size: 14px;
   text-transform: capitalize;
@@ -25,11 +29,30 @@ body {
   padding: 0;
 }
 
-.hidden {
-  color: $background;
+.form {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-tbody {
+.form-group {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 300px;
+}
+
+label {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+input {
+    margin: 0 auto;
+    display: block;
+}
+
+.hidden {
+  color: $background;
 }
 
 thead tr {
@@ -81,4 +104,51 @@ tr.trip.td {
   border-radius: 0.2em;
   font-size: 16px;
   color: #FFF;
+}
+
+.book_now_button {
+  margin: 0 auto;
+  display: block;
+}
+
+.confirm_booking_button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 25px;
+}
+input[type="submit"] {
+  background-color: #ff5a5f;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 9px 27px;
+  color: white;
+  opacity: .9;
+}
+
+img.property-image.trips-property_image {
+    margin: 0 auto;
+    display: block;
+}
+
+img.profile-pic.trips-host-profile-pic {
+    width: 100px;
+    float: left;
+    margin-right: 25px;
+}
+
+.booked-trips {
+    width: 75%;
+    height: 500px;
+    margin: auto;
+}
+
+.trip-image {
+    float: right;
+    width: 50%;
+}
+
+.trip-details {
+    float: left;
+    width: 50%;
 }
