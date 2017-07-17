@@ -60,6 +60,7 @@ RSpec.feature "Host can do the following with listings", type: :feature do
       click_on "Update"
     end
 
-    expect(page).to have_current_path(listing_path(listing))
+    expect(page).to have_current_path(user_host_listing_path(host, listing))
+    #add expectations
   end
 end
