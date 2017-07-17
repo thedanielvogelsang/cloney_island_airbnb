@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:login_error] = "The email or password you entered is invalid"
-        render :new
+      render :new
     end
   end
 
