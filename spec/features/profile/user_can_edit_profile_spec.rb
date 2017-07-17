@@ -18,10 +18,12 @@ RSpec.feature "User can edit profile", type: :feature do
     click_on "Save"
 
     expect(current_path).to eq(user_dashboard_index_path(user))
+    within('.container-profile .col-2') do
+      expect(page).to have_content("New first name")
+      expect(page).to have_content("New last name")
+      expect(page).to_not have_content("Ben")
+      expect(page).to_not have_content("Ross")
+    end
 
-    expect(page).to have_content("New first name")
-    expect(page).to have_content("New last name")
-    expect(page).to_not have_content("Ben")
-    expect(page).to_not have_content("Ross")
   end
 end
