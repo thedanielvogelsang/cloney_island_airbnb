@@ -26,7 +26,7 @@ namespace :import do
       birthday: Faker::Date.birthday(18, 97),
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      phone_number: "#{Faker::PhoneNumber.area_code} - #{Faker::PhoneNumber.exchange_code} - #{Faker::PhoneNumber.unique.subscriber_number}",
+      phone_number: "#{[*100..999].sample}-555-#{Faker::PhoneNumber.unique.subscriber_number}",
       email:  Faker::Internet.unique.email,
       password: "password",
       profile_picture: "http://lorempixel.com/400/300/cats"

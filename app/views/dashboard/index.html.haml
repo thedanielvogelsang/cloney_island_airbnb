@@ -1,14 +1,17 @@
 %h1 User Dashboard
-= image_tag @user.profile_picture
-%br
-= link_to "Edit Profile", edit_user_path(@user)
-%p
-  = "First Name: #{@user.first_name}"
-%p
-  = "Last Name: #{@user.last_name}"
-%p
-  = "Phone Number: #{@user.phone_number}"
-%p
-  = "Birthday: #{@user.birthday}"
-%p
-  = "Email: #{@user.email}"
+.container-profile
+  .col-1
+    .profile-pic
+      =image_tag @user.profile_picture
+      %h3=link_to "Edit Profile", edit_user_path(@user)
+  .col-2
+    %h3
+      = "First Name: #{@user.first_name}"
+    %h3
+      = "Last Name: #{@user.last_name}"
+    %h3
+      = "Phone Number: #{@user.phone_number}"
+    %h3
+      = "Birthday: #{@user.birthday}"
+    %h3
+      = "Email: #{@user.email}"
