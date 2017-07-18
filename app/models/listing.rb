@@ -1,4 +1,8 @@
 class Listing < ApplicationRecord
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   validates :name, :description, :accomodates, :bathrooms, :bedrooms, :beds, :price, presence: true
   validates :property_type, :bed_type, :room_type, :pet_type, :status, :cancellation_policy, presence: true
   validates :address, presence: true

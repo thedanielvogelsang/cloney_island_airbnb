@@ -1,3 +1,5 @@
+require 'csv'
+
 namespace :import do
   desc "Imports all seed data"
   task :all => [:regenerate, :roles, :users, :amenities, :listings, :listing_images, :trips]
@@ -68,12 +70,16 @@ namespace :import do
     hosts = User.joins(:user_roles, :roles).where(roles: {name: "host"}).uniq
     amenities = Amenity.all
     addresses = import_addresses(hosts.count)
+    latitudes = import_latitudes(hosts.count)
+    longitudes = import_longitudes(hosts.count)
     n = 0
     hosts.each do |host|
 
       listing = Listing.create!(
         description: ["Suite of three beautifully furnished rooms set amongst the trees. Just minutes from downtown, this secluded property is an urban retreat like no other. The treehouse provides and intimate, simple and calming retreat for 2 people. The treehouse is the subject of innumerable articles, blogs and was recently featured on Treehouse Masters Ultimate Treehouses.", "Spend a unforgettable holiday in the enchanting surroundings of the town of Cisternino (reachable from the near airports of Bari and Brindisi).Trullo Edera offers a heaven of peace and tranquillity, set in an elevated position with a stunning view. It’s the perfect place if you like nature. You can stay under an olive tree reading a good book, you can have a walk in the small country streets or go to the nearest beaches.", "You can even easily visit any of the sights in Apulia such as the caves of Castellana, the trulli of Alberobello, the baroque cities of Lecce and Martina Franca, the excavations of Egnazia, the zoosafari of Fasano, Castel del Monte with Frederick’s castle, Grottaglie famous for its ceramics, Taranto, Brindisi and Lecce museums.", "Set on the sacred Ayung river valley, this all bamboo house is unique. First established in 2010, it is part of a master-planned community of luxurious bamboo villas with distinctive blonde roofs. Entering the house is a feast to the eyes and a showcase at how black and white bamboo can be combined in all shapes and pattern to create a stunning collection of luxurious floors, walls, ceiling, stairs and railings. Even the roof is an innovative arrangement of bamboo shingles."].sample,
-        address: addresses[n],
+        address: "#{addresses[n]} Denver CO, 80205",
+        latitude: latitudes[n],
+        longitude: longitudes[n],
         user_id: host.id,
         property_type: [0, 1, 2, 3, 4].sample,
         room_type: [0, 1, 2].sample,
@@ -143,6 +149,36 @@ private
       # listing = Listing.new
       addresses << row['FULL_ADDRESS']
       # listing.save
+      if n == i
+        break
+      end
+      i += 1
+    end
+    addresses
+  end
+
+  def import_latitudes(n)
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'addresses.csv'))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO -8859-1')
+    i = 0
+    latitudes = []
+    csv.each do |row|
+      latitudes << row['LATITUDE']
+      if n == i
+        break
+      end
+      i += 1
+    end
+    addresses
+  end
+
+  def import_longitudes(n)
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'addresses.csv'))
+    csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO -8859-1')
+    i = 0
+    longitudes = []
+    csv.each do |row|
+      longitudes << row['LONGITUDE']
       if n == i
         break
       end
