@@ -1,24 +1,7 @@
-<!-- GOOGLE MAP -->
-<div class="container">
-    <div id="map"></div>
+<div class="container listing-cards">
+  <%=render partial: "shared/vertical_listing_card" %>
+</div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['Google-API-Key'] %>&callback=initMap"async defer>
-    </script>
-
-    <script>
-    function initMap() {
-      var uluru = {<%= @listing.latitude %>, <%= @listing.longitude %>};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-      });
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-      });
-    }
-    </script>
-
-    <h2><%= link_to "See all >", listings_path %></h2>
-    <%=render partial: "shared/vertical_listing_card" %>
-  </div>
+<div class="container map-side-long">
+  <%=render partial: "shared/map_right_side_long" %>
+</div>
