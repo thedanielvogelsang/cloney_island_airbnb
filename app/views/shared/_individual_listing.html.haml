@@ -31,6 +31,8 @@
                 = "Bathrooms: #{@listing.bathrooms}"
               %p
                 = "Bedrooms: #{@listing.bedrooms}"
+              %p 
+                = "Number of Beds: #{@listing.beds}"
             .col-half
               %p
                 = "Bed Type: #{@listing.bed_type}"
@@ -38,6 +40,15 @@
                 = "Pets: #{@listing.pet_type}"
               %p
                 = "Room Type: #{@listing.room_type}"
+              %p
+                = "Property Type: #{@listing.property_type}"
+          %hr
+          .section-title
+            = "Price"
+          .row
+            .column
+              %p
+                = "Price: $#{@listing.price}"
           %hr
           .section-title
             = "House Rules"
