@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.string "uid"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string "verification_code"
   end
 
   add_foreign_key "listing_amenities", "amenities"
