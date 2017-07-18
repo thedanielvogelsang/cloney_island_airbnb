@@ -12,7 +12,7 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     visit root_path
 
-    within(".navbar-search") do
+    within(".search") do
       expect(page).to have_field("search_address")
       expect(page).to have_selector(:link_or_button, 'Search')
     end
@@ -35,7 +35,7 @@ RSpec.feature "Guest can search properties", type: :feature do
 
     visit root_path
 
-    within(".navbar-search") do
+    within(".search") do
       expect(page).to have_field("search_address")
       expect(page).to have_selector(:link_or_button, 'Search')
     end
