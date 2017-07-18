@@ -23,6 +23,7 @@ gem 'faker'
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 # gem 'twilio-ruby'
 
 group :development, :test do
