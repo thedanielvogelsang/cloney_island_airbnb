@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :get_messages
 
   def index
+    @messages = current_user.messages
   end
 
   def create
