@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716172954) do
+ActiveRecord::Schema.define(version: 20170718212139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20170716172954) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_conversations_on_trip_id"
   end
 
   create_table "listing_amenities", force: :cascade do |t|
@@ -61,6 +68,16 @@ ActiveRecord::Schema.define(version: 20170716172954) do
     t.integer "cancellation_policy", default: 0
     t.string "address"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -112,10 +129,13 @@ ActiveRecord::Schema.define(version: 20170716172954) do
     t.datetime "oauth_expires_at"
   end
 
+  add_foreign_key "conversations", "trips"
   add_foreign_key "listing_amenities", "amenities"
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listing_images", "listings"
   add_foreign_key "listings", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "trips", "listings"
   add_foreign_key "trips", "users"
   add_foreign_key "trips", "users", column: "host_id"

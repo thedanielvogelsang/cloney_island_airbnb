@@ -25,6 +25,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 # gem 'twilio-ruby'
+gem 'redis'
 
 group :development, :test do
   gem 'pry'
