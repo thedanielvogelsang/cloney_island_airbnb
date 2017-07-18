@@ -4,9 +4,8 @@ class ConfirmationsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    if @user.verification_code == params[:verification_code]
-      @user.confirm!
+    @user = User.find(session[:user_id])
+    if @user.verification_code == params["confirmations"]["verification_code"]
 
       session[:authenticated] = true
 
@@ -18,7 +17,7 @@ class ConfirmationsController < ApplicationController
 
       flash.now[:error] = "Verification code is incorrect."
 
-      render: new
+      render :new
     end
   end
 end
