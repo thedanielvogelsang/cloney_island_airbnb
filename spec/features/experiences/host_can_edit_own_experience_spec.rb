@@ -18,9 +18,9 @@ RSpec.describe 'As a host with experiences' do
       within('edit-experience-box') do
         expect(page).to have_field("Category", :value => experience.category) #Check boxes
         expect(page).to have_field("Title", :value => experience.title) #Text field
-        expect(page).to have_field("Time", :value => experience.duration.) #Text field
-        expect(page).to have_field("Tagline", :value => experience.tagline.) #Text box
-        expect(page).to have_field("Photos", :value => experience.image.) # Photo upload
+        expect(page).to have_field("Time", :value => experience.duration) #Text field
+        expect(page).to have_field("Tagline", :value => experience.tagline) #Text box
+        expect(page).to have_field("Photos", :value => experience.image) # Photo upload
         expect(page).to have_field("What", :value => experience.what) #Text box
         expect(page).to have_field("Where", :value => experience.where) #Text box
         expect(page).to have_field("Provisions", :value => experience.provisions) #Text box
@@ -49,6 +49,6 @@ RSpec.describe 'As a host with experiences' do
       expect(page).to have_flash_message("Experience Successfully Deleted")
       expect(path).to eq(experiences_path)
     end
-    
+
   end
 end
