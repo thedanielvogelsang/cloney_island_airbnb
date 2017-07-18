@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Guest user upon signup", type: :feature do
   scenario "is required to input a code that is texted to their phone" do
+    skip
     user = build(:user)
     create(:role)
 
@@ -28,12 +29,12 @@ RSpec.feature "Guest user upon signup", type: :feature do
 
 
 
-After I submit a message appears indicating that I will receive a text message
-A message field also appears asking me to enter the code that will be sent
-Then I receive a text message with the code
-I enter the code into a confirmation box on the screen
-I click submit and I receive a flash message
-The flash message says that my phone number has been verified.
+# After I submit a message appears indicating that I will receive a text message
+# A message field also appears asking me to enter the code that will be sent
+# Then I receive a text message with the code
+# I enter the code into a confirmation box on the screen
+# I click submit and I receive a flash message
+# The flash message says that my phone number has been verified.
 
 
   end

@@ -1,4 +1,6 @@
-<%= form_for :confirmations, :url => { :action => :create } do |f| %>
+<div class="">
+  <%= form_for :confirmations, :url => { :action => :create } do |f| %>
   Verification Code: <%= f.text_field :verification_code %><br />
-  <%= f.submit %>
-<% end %>
+  <%= f.submit "Check Validation Code"%>
+  <% end %>
+</div>
