@@ -27,15 +27,12 @@ RSpec.feature "Guest user upon signup", type: :feature do
       click_on "Sign Up"
     end
 
-
-
 # After I submit a message appears indicating that I will receive a text message
 # A message field also appears asking me to enter the code that will be sent
 # Then I receive a text message with the code
 # I enter the code into a confirmation box on the screen
 # I click submit and I receive a flash message
 # The flash message says that my phone number has been verified.
-
 
   end
 end
