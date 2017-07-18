@@ -1,11 +1,14 @@
 class MessagesController < ApplicationController
   before_action :get_messages
 
+  def index
+  end
+
   def create
     message = current_user.messages.build(message_params)
     if message.save
     else
-      redirect_to conversations_path
+      render 'index'
     end
   end
 
