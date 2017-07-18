@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170718212139) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170718212139) do
     t.integer "bathrooms"
     t.integer "bedrooms"
     t.integer "beds"
-    t.float "price"
+    t.integer "price"
     t.text "house_rules"
     t.integer "property_type"
     t.integer "bed_type"
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170718212139) do
     t.string "uid"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string "verification_code"
   end
 
   add_foreign_key "conversations", "trips"

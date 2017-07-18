@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'As a guest user' do
-
-  xit 'can create an account' do
+RSpec.feature "Guest user upon signup", type: :feature do
+  scenario "is required to input a code that is texted to their phone" do
+    skip
     user = build(:user)
     create(:role)
 
@@ -27,13 +27,12 @@ RSpec.describe 'As a guest user' do
       click_on "Sign Up"
     end
 
-    user = User.find_by(phone_number: "444-332-5032")
+# After I submit a message appears indicating that I will receive a text message
+# A message field also appears asking me to enter the code that will be sent
+# Then I receive a text message with the code
+# I enter the code into a confirmation box on the screen
+# I click submit and I receive a flash message
+# The flash message says that my phone number has been verified.
 
-    expect(current_path).to eq(user_dashboard_index_path(user))
-    expect(page).not_to have_content("Sign Up")
-    expect(page).to have_content("Sign Out")
-    expect(page).to have_content("Messages")
-    expect(page).to have_content("Trips")
   end
-
 end
