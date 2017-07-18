@@ -1,4 +1,4 @@
-<div class="">
+<div class="kaminari">
   <%= form_for :confirmations, :url => { :action => :create } do |f| %>
   Verification Code: <%= f.text_field :verification_code %><br />
   <%= f.submit "Check Validation Code"%>
