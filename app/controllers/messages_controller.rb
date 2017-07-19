@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
 
   def create
     message = current_user.messages.build(message_params)
+    binding.pry
     if message.save
       ActionCable.server.broadcast 'room_channel',
                                    content:  message.content,
@@ -24,6 +25,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :conversation_id)
     end
 end

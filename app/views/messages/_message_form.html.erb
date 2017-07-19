@@ -1,7 +1,8 @@
 <div class="message-input">
   <%= form_for(@message, remote: true) do |f| %>
     <%= f.text_area :content, class: 'form-control', data: {textarea: 'message'} %>
-    
+    <%= hidden_field_tag :conversation_id, @conversation.id %>
+    <% binding.pry %>
     <%= f.submit "Send Message", class: 'message-submit', data: {send: 'message'} %>
   <% end %>
 </div>
