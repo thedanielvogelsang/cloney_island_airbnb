@@ -36,4 +36,5 @@ Rails.application.routes.draw do
   end
 
   resources :messages #, only: [:create, :index]
+  resources :conversations
 end

@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'room_channel',
                                    content:  message.content,
                                    first_name: message.user.first_name
+      head :ok
     else
       render 'index'
     end
