@@ -2,9 +2,9 @@
 
 .experiences-box
   -@experiences.each do |e|
-    .experience-card
+    .experience-card{:id => "experience-#{e.id}"}
       .experience-image
-        =link_to image_tag('/lib/assets/baby_penguin.jpg')
+        =link_to image_tag('/lib/assets/baby_penguin.jpg'), experience_path(e)
       .experience-details
         .experience-title
           =e.title

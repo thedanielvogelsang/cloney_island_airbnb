@@ -2,25 +2,35 @@
 
 .experience-box
   .experience-title-box
-
+    %span=@experience.title
   .experience-category-box
-
+    %span=@experience.category
   .experience-what-box
-
+    %span=@experience.what
   .experience-host-provides-box
-
+    %span=@experience.provisions
   .experience-notes-box
-
+    %span=@experience.notes
   .experience-where-box
-
+    %span=@experience.where
     .experience-map
 
   .host-block
-
+    %span=@experience.host_description
   .host-contact
-
+    -# =link_to messaging system
   .available-dates
-
+    -# =link_to see available-dates popup
   .experience-reviews
-
+    -# import some reviews
   .experience-extras
+    %span=@experience.group_size
+    %span=@experience.guest_requirements
+    %span=@experience.cancellation_policy_type
+
+.experience-featured-image
+  -# image_tag for featured image
+  .experience-price
+    %span "$#{@experience.price} per person"
+  .experience_date
+    -# =link_to see available-dates popup
