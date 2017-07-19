@@ -24,3 +24,4 @@ RSpec.describe 'As a host' do
     expect(user.roles).should include('host') # and this!
   end
 end
+

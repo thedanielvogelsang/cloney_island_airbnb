@@ -9,12 +9,12 @@ class User < ApplicationRecord
   validates :email, :phone_number, uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
-  has_many :listings
+  has_many :listings, dependent: :destroy
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
-  has_many :trips
   has_many :messages
   has_many :conversations, through: :messages
+  has_many :trips, dependent: :destroy
 
   def full_name
     first_name + " " + last_name
