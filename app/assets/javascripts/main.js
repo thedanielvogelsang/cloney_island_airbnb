@@ -3,12 +3,20 @@ $(document).ready(function() {
   $('.dropbtn').click(function() {
     event.preventDefault();
   });
-  
+
   $('.host-dropdown').hover(
     function() {
-      $('.dropdown-content').addClass('show');
+      $('.host-dropdown-content').addClass('show');
     }, function() {
-      $('.dropdown-content').removeClass('show');
+      $('.host-dropdown-content').removeClass('show');
+    }
+  );
+
+  $('.signin-dropdown').hover(
+    function() {
+      $('.signin-dropdown-content').addClass('show');
+    }, function() {
+      $('.signin-dropdown-content').removeClass('show');
     }
   );
 
