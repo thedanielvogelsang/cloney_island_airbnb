@@ -32,8 +32,13 @@ RSpec.describe 'Guest visits /experiences' do
 
   it 'can view a single experience' do
     visit experiences_path
-    #and I click on an experience within css
-    #I arrive to the experience show page
+
+    within first('.experience-card') do
+      page.find('img').click
+    end
+
+    expect(current_path).to eq(expererience_path)
+    
     #and I see within title block, city, brief description
     #and within category block I see the word "Category", "Hosted by: [host_name]", the host's profile picture, experience_duration, experience provisions
     #And on the right I see an experience image, with $price 'per person', date,  and social sharing links

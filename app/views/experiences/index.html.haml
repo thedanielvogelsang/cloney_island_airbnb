@@ -4,7 +4,7 @@
   -@experiences.each do |e|
     .experience-card
       .experience-image
-        -#=image_tag(e.experience_images.first.image_file_name)
+        =link_to image_tag('/lib/assets/baby_penguin.jpg')
       .experience-details
         .experience-title
           =e.title
