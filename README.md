@@ -32,9 +32,9 @@ This project was developed by a group of 5 developers over a 10 day sprint. The 
 
   * Sign Up with a Trial Twilio Account. Set up a trial phone number on the Twilio website. Also provide a phone number that will be used as the phone to communicate with in development. Go to the console section and copy both the account SID and auth token. Inside of the config/application.yml file, (it may be hidden depending on your text editor and its current settings) enter the keys with the following environment variables:
   
-TWILIO_ACCOUNT_SID: '#############################'
-TWILIO_AUTH_TOKEN: '############################'
-TWILIO_NUMBER: '+1 720-###-####'
+TWILIO_ACCOUNT_SID: '#############################'\s\s
+TWILIO_AUTH_TOKEN: '############################'\s\s
+TWILIO_NUMBER: '+1 720-###-####'\s\s
 
 Once this is complete, your application should be able to send a verification code to the phone number provided on the Twilio website.
 
