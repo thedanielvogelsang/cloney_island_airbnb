@@ -30,6 +30,7 @@ This project was developed by a group of 5 developers over a 10 day sprint. The 
   * cd into it
   * ```bundle install```
   * ```rake db:schema:load```
+  * ```rake db:setup```
   *```rake import:all```
   *```rails server```
   * visit ```localhost:3000```

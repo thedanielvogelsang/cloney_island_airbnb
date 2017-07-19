@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.datetime "updated_at", null: false
     t.integer "cancellation_policy", default: 0
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
