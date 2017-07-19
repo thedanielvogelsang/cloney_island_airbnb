@@ -3,4 +3,6 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @message = Message.new
   end
+
+  
 end

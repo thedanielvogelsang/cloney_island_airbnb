@@ -10,5 +10,6 @@
         %h4= trip.listing.user.first_name
         %h4= trip.listing.user.phone_number
         %h4= trip.listing.user.email
+        = button_to 'Message Host', conversations_path(trip_id: trip.id, :method => :post)
       .trip-image
         = image_tag trip.listing.listing_images.first.property_image, :class => "property-image trips-property_image"
