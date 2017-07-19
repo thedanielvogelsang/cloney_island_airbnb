@@ -4,5 +4,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :listing
 
+  has_one :conversation
+
   enum trip_status: [:requested, :pending, :accepted, :paid]
 end

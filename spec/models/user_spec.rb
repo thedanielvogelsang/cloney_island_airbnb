@@ -25,6 +25,8 @@ RSpec.describe User, type: :model do
     it {should have_many(:user_roles)}
     it {should have_many(:roles).through(:user_roles)}
     it {should have_many(:listings)}
+    it {should have_many(:messages)}
+    it {should have_many(:conversations).through(:messages)}
   end
 
   describe 'password' do

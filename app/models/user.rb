@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :listings, dependent: :destroy
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
+  has_many :messages
+  has_many :conversations, through: :messages
   has_many :trips, dependent: :destroy
 
   def full_name
