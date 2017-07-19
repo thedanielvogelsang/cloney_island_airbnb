@@ -1,7 +1,10 @@
 $(document).ready(function() {
 
-  $('.dropbtn').mouseover(function() {
+  $('.host-dropdown').mouseenter(function() {
     $('.dropdown-content').toggleClass('show');
   });
+  $('.host-dropdown').mouseleave(function() {
+    $('.dropdown-content').toggleClass('show');
+  })
 
 })
