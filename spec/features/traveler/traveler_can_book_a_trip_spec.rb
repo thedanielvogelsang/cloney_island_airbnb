@@ -61,9 +61,8 @@ RSpec.describe 'As a traveler' do
 
     user_trips_count = traveler.trips.count
 
-    click_on '.card-image'
-
-    save_and_open_page
+    find(:xpath, "//a[@href='/experiences/#{id}']").click
+    #save_and_open_page
 
     click_button 'Book Now'
 
