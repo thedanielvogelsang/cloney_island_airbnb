@@ -4,8 +4,6 @@ RSpec.describe 'Guest visits /experiences' do
 
   it 'can view all experiences' do
     experiences = create_list(:experience, 4)
-    cats = create_list(:experience_category, 4)
-    binding.pry
     experience = experiences.first
     #image = create(:experience_image)
     #experience.experience_images << image
@@ -35,6 +33,9 @@ RSpec.describe 'Guest visits /experiences' do
   scenario 'can view a single experience' do
 
     experience = create(:experience)
+    cats = create_list(:experience_category, 4)
+    experience.experience_categories << cats
+
     id = experience.id
     visit experiences_path
 
@@ -48,8 +49,8 @@ RSpec.describe 'Guest visits /experiences' do
     end
 
     within('.experience-category-box') do
-      #expect(page).to have_content(experience.experience_categories.first)
-      #expect(page).to have_content(experience.experience_categories.last)
+      expect(page).to have_content(experience.experience_categories.first.name)
+      expect(page).to have_content(experience.experience_categories.last.name)
       expect(page).to have_content("Hosted by: #{experience.user.full_name}")
       #expect(page).to have_image('small host profile pic')
       expect(page).to have_content(experience.duration)
