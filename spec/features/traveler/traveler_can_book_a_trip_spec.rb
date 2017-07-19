@@ -45,7 +45,7 @@ RSpec.describe 'As a traveler' do
     expect(page).to have_content listing.user.email
   end
 
-  xscenario 'I can book a listing from the featured listings on the homepage' do
+  scenario 'I can book a listing from the featured listings on the homepage' do
     traveler_role = create(:role)
     traveler = create(:user)
     traveler.roles << traveler_role
@@ -61,8 +61,7 @@ RSpec.describe 'As a traveler' do
 
     user_trips_count = traveler.trips.count
 
-    find(:xpath, "//a[@href='/experiences/#{id}']").click
-    #save_and_open_page
+    xfind(:xpath, "//a[@href='/experiences/#{id}']").click
 
     click_button 'Book Now'
 
