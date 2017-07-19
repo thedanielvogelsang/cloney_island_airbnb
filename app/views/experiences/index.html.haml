@@ -1,0 +1,12 @@
+%h1 Experiences
+
+.experiences-box
+  -@experiences.each do |e|
+    .experience-card
+      .experience-image
+        -#=image_tag(e.experience_images.first.image_file_name)
+      .experience-details
+        .experience-title
+          =e.title
+        .experience_price
+          "$#{e.price}"

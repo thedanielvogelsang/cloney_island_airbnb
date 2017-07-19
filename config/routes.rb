@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   end
 
   resources :trips, only: [:index]
+  resources :experiences, only: [:index]
 end

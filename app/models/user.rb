@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
   has_many :trips
+  has_many :experiences
 
   def full_name
     first_name + " " + last_name

@@ -2,21 +2,36 @@ require 'rails_helper'
 
 RSpec.describe 'Guest visits /experiences' do
 
-  xit 'can view all experiences' do
-    #when I visit root
-    # and I click on 'Experiences' within navbar-header
-    # I arrive to /experiences
-    # I see a list of experiences within container-main
-    # I see experience image within experience-card
-    #I see experience price
-    #I see experience title
-    #When I hover over the image it zoooms
+  it 'can view all experiences' do
+    experiences = create_list(:experience, 4)
+    experience = experiences.first
+    #image = create(:experience_image)
+    #experience.experience_images << image
 
+    visit root_path
+
+    within('.navbar-header') do
+      click_on "Experiences"
+    end
+
+    expect(current_path).to eq('/experiences')
+    expect(page).to have_css('.experiences-box')
+
+    within('.experiences-box') do
+      expect(page).to have_css('.experience-card', count: 4)
+    end
+
+    within first('.experience-card') do
+      expect(page).to have_content(experience.price)
+      expect(page).to have_content(experience.title)
+      #expect(page).to have_css('.experience-image')
+      #expect(page).to have_css('img', count: 4)
+    end
 
   end
 
-  xit 'can view a single experience' do
-    #when I visit /experiences
+  it 'can view a single experience' do
+    visit experiences_path
     #and I click on an experience within css
     #I arrive to the experience show page
     #and I see within title block, city, brief description
