@@ -10,6 +10,8 @@
     %span"Hosted by: #{@experience.user.full_name}"
     %span"Duration: #{@experience.duration}"
     %span"Provisions: #{@experience.provisions}"
+    .host-profile-pic
+      -# =image_tag(@experience.user.profile_picture_file_name)
   .experience-what-box
     %span"What We'll Do: #{@experience.what}"
   .experience-host-provides-box

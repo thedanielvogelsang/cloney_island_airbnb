@@ -5,8 +5,8 @@ RSpec.describe 'Guest visits /experiences' do
   it 'can view all experiences' do
     experiences = create_list(:experience, 4)
     experience = experiences.first
-    #image = create(:experience_image)
-    #experience.experience_images << image
+    # experience.experience_images.create!(image_file_name: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
+
 
     visit root_path
 
@@ -18,14 +18,14 @@ RSpec.describe 'Guest visits /experiences' do
     expect(page).to have_css('.experiences-box')
 
     within('.experiences-box') do
-      expect(page).to have_css('.experience-card', count: 4)
+      expect(page).to have_css(".experience-card", count: 4)
     end
 
     within first('.experience-card') do
       expect(page).to have_content(experience.price)
       expect(page).to have_content(experience.title)
-      #expect(page).to have_css('.experience-image')
-      #expect(page).to have_css('img', count: 4)
+      # expect(page).to have_css('.experience-image')
+      # expect(page).to have_css('img', count: 1)
     end
 
   end
@@ -52,7 +52,7 @@ RSpec.describe 'Guest visits /experiences' do
       expect(page).to have_content(experience.experience_categories.first.name)
       expect(page).to have_content(experience.experience_categories.last.name)
       expect(page).to have_content("Hosted by: #{experience.user.full_name}")
-      #expect(page).to have_image('small host profile pic')
+      # expect(page).to have_xpath("//img[contains(@src,'baby_penguin.jpg')]")
       expect(page).to have_content(experience.duration)
       expect(page).to have_content(experience.provisions)
     end
