@@ -1,10 +1,15 @@
 $(document).ready(function() {
 
-  $('.host-dropdown').mouseenter(function() {
-    $('.dropdown-content').toggleClass('show');
+  $('.dropbtn').click(function() {
+    event.preventDefault();
   });
-  $('.host-dropdown').mouseleave(function() {
-    $('.dropdown-content').toggleClass('show');
-  })
+  
+  $('.host-dropdown').hover(
+    function() {
+      $('.dropdown-content').addClass('show');
+    }, function() {
+      $('.dropdown-content').removeClass('show');
+    }
+  );
 
 })
