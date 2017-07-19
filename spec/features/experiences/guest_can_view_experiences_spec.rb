@@ -30,41 +30,36 @@ RSpec.describe 'Guest visits /experiences' do
 
   end
 
-  context 'can view a single experience' do
+  scenario 'can view a single experience' do
 
-    before(:each) do
-      experiences = create_list(:experience, 4)
-      @experience = experiences.first
-      id = @experience.id
-      visit experiences_path
-      within("#experience-#{id}") do
-        find(:xpath, "//a[@href='/experiences/#{id}']").click
-      end
-      expect(current_path).to eq("/experiences/#{id}")
+    experience = create(:experience)
+    id = experience.id
+    visit experiences_path
+
+    find(:xpath, "//a[@href='/experiences/#{id}']").click
+
+    expect(current_path).to eq("/experiences/#{id}")
+
+
+    within('.experience-title-box') do
+      expect(page).to have_content(experience.title)
+      expect(page).to have_content(experience.city)
+      expect(page).to have_content(experience.tagline)
     end
 
-    it 'can see title block' do
-      within('.experience-title-box') do
-        expect(page).to have_content(@experience.title)
-        expect(page).to have_content(@experience.city)
-        expect(page).to have_content(@experience.description)
-      end
-    end
-
-    xit 'can see category box' do
-      within('.experience-category-box') do
-        expect(page).to have_content(@experience.category)
-        expect(page).to have_content("Hosted by: #{@experience.host.name}")
-        #expect(page).to have_image('small host profile pic')
-        expect(page).to have_content(@experience.duration)
-        expect(page).to have_content(@experience.provisions)
-      end
+    within('.experience-category-box') do
+      #expect(page).to have_content(experience.experience_categories.first)
+      #expect(page).to have_content(experience.experience_categories.last)
+      expect(page).to have_content("Hosted by: #{experience.host.name}")
+      #expect(page).to have_image('small host profile pic')
+      expect(page).to have_content(experience.duration)
+      expect(page).to have_content(experience.provisions)
     end
 
     xit 'can see featured image block' do
       within('.experience-featured-image') do
         #expect(page).to have the featured image
-        expect(page).to have_content("#{@experience.price} per person")
+        expect(page).to have_content("#{experience.price} per person")
         expect(page).to have_content("See Dates")
       end
     end
@@ -73,8 +68,8 @@ RSpec.describe 'Guest visits /experiences' do
       within('.experience-date') do
         click_on 'See Dates'
         #expect a popup to pop up
-        expect(page).to have_content(@experience.dates.first)
-        expect(page).to have_content(@experience.dates.last)
+        expect(page).to have_content(experience.dates.first)
+        expect(page).to have_content(experience.dates.last)
         expect(page).to have_content("Book Now", count: 4)
       end
     end
@@ -82,18 +77,18 @@ RSpec.describe 'Guest visits /experiences' do
     xit 'can see the what we will do block' do
       within('.experience-what-box') do
         expect(page).to have_content("What We'll Do")
-        expect(page).to have_content(@experience.what)
+        expect(page).to have_content(experience.what)
       end
     end
 
     xit 'can see what the host will provide' do
       expect(page).to have_content("What I'll Provide")
-      expect(page).to have_content(@experience.provisions)
+      expect(page).to have_content(experience.provisions)
     end
 
     xit 'can see notes on the experience' do
       expect(page).to have_content('Notes')
-      expect(page).to have_content(@experience.notes)
+      expect(page).to have_content(experience.notes)
     end
 
     xit 'can see where the experience will be on a map' do
@@ -104,9 +99,9 @@ RSpec.describe 'Guest visits /experiences' do
 
     xit 'can see a brief host description' do
       within('.host-block') do
-        expect(page).to have_content("About your host, #{@experience.host.name}")
+        expect(page).to have_content("About your host, #{experience.host.name}")
         #this should be unique for each experience so the host can brand himself/herself according to the experience
-        expect(page).to have_content(@experience.host_description)
+        expect(page).to have_content(experience.host_description)
       end
     end
 
@@ -125,17 +120,17 @@ RSpec.describe 'Guest visits /experiences' do
     xit 'can see reviews for the experience' do
       within('.experience-reviews') do
         expect(page).to have_content('Reviews')
-        expect(page).to have_content(@experience.reviews.first.content)
-        expect(page).to have_content(@experience.reviews.first.title)
-        expect(page).to have_content(@experience.reviews.first.name)
+        expect(page).to have_content(experience.reviews.first.content)
+        expect(page).to have_content(experience.reviews.first.title)
+        expect(page).to have_content(experience.reviews.first.name)
       end
     end
 
     xit 'can see the extra info about the experience' do
       expect(page).to have_content("Extra Info")
-      expect(page).to have_content(@experience.group_size)
-      expect(page).to have_content(@experience.guest_requirements)
-      expect(page).to have_content(@experience.cancellation_policy_type)
+      expect(page).to have_content(experience.group_size)
+      expect(page).to have_content(experience.guest_requirements)
+      expect(page).to have_content(experience.cancellation_policy_type)
     end
 
   end

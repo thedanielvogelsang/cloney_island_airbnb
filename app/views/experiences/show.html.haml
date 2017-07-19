@@ -3,8 +3,10 @@
 .experience-box
   .experience-title-box
     %span=@experience.title
+    %span=@experience.city
+    %span=@experience.tagline
   .experience-category-box
-    %span=@experience.category
+    %span=@experience.experience_categories.each { |cat| cat.name}
   .experience-what-box
     %span=@experience.what
   .experience-host-provides-box

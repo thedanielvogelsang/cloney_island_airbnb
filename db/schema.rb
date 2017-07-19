@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719032456) do
+ActiveRecord::Schema.define(version: 20170719055134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 20170719032456) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exp_experience_categories", force: :cascade do |t|
+    t.bigint "experience_id"
+    t.bigint "experience_category_id"
+    t.index ["experience_category_id"], name: "index_exp_experience_categories_on_experience_category_id"
+    t.index ["experience_id"], name: "index_exp_experience_categories_on_experience_id"
+  end
+
+  create_table "experience_categories", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "experience_images", force: :cascade do |t|
@@ -42,6 +53,14 @@ ActiveRecord::Schema.define(version: 20170719032456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "price"
+    t.text "host_description"
+    t.integer "group_size"
+    t.text "guest_requirements"
+    t.string "cancellation_policy_type"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
@@ -137,6 +156,8 @@ ActiveRecord::Schema.define(version: 20170719032456) do
     t.string "verification_code"
   end
 
+  add_foreign_key "exp_experience_categories", "experience_categories"
+  add_foreign_key "exp_experience_categories", "experiences"
   add_foreign_key "experience_images", "experiences"
   add_foreign_key "experiences", "users"
   add_foreign_key "listing_amenities", "amenities"
