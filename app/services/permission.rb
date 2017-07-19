@@ -7,9 +7,7 @@ class Permission
   end
 
   def authorized?
-    if user.admin?
-      admin_permissions
-    elsif user.host?
+    if user.host?
       host_permissions
     elsif user.traveler?
       traveler_permissions
@@ -40,15 +38,4 @@ class Permission
       return true if controller == "trips" && action.in?(%w(index new create))
       return true if controller == "users" && action.in?(%w(new create edit update))
     end
-
-    def admin_permissions
-      return true if controller == "sessions"
-      return true if controller == "confirmations" && action.in?(%w(new create))
-      return true if controller == "dashboard" && action.in?(%w(index))
-      return true if controller == "homepage" && action.in?(%w(index))
-      return true if controller == "listings" && action.in?(%w(index show new create update))
-      return true if controller == "trips" && action.in?(%w(index new create))
-      return true if controller == "users" && action.in?(%w(new create edit update))
-    end
-
 end

@@ -39,16 +39,6 @@ RSpec.describe User, type: :model do
       expect(full_name).to eq(user.first_name + " " + user.last_name)
     end
 
-    it 'check for admin role' do
-      role = create(:role, name: "admin")
-      user = create(:user)
-      other_user = create(:user)
-      user.roles << role
-
-      expect(user.admin?).to be(true)
-      expect(other_user.admin?).to be(false)
-    end
-
     it 'check for host role' do
       role = create(:role, name: "host")
       user = create(:user)

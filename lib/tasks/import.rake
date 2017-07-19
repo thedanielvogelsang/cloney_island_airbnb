@@ -14,7 +14,6 @@ namespace :import do
   task roles: :environment do
     Role.create!(name: "traveler")
     Role.create!(name: "host")
-    Role.create!(name: "admin")
     puts "Roles loaded"
   end
 
@@ -35,10 +34,6 @@ namespace :import do
 
       if n % 2 == 0
         user.roles << Role.find_by(name: "host")
-      end
-
-      if n == 1
-        user.roles << Role.find_by(name: "admin")
       end
 
       puts "user: #{user.id} created"

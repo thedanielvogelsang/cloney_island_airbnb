@@ -26,8 +26,6 @@
             %span=link_to "Messages", "#" #needs Messages path
             %span=link_to "Trips", trips_path
             %span=link_to "Sign Out", logout_path
-            -if current_user.admin?
-              %span=link_to "Admin Dashboard", "#" #admin_dashboard_path
             -if current_user.traveler?
               %span=link_to "Dashboard", user_dashboard_index_path(current_user)
               -# =link_to "Inbox", user_messages_center_page_path
