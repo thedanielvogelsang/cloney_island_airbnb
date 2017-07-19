@@ -20,10 +20,6 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
-  def admin?
-    roles.exists?(name: "admin")
-  end
-
   def host?
     roles.exists?(name: "host")
   end
