@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :experience_category do
-    name Faker::Name.last_name
+    sequence(:name) { |n| "Caspian Star #{n}" }
   end
 end

@@ -4,6 +4,8 @@ RSpec.describe 'Guest visits /experiences' do
 
   it 'can view all experiences' do
     experiences = create_list(:experience, 4)
+    cats = create_list(:experience_category, 4)
+    binding.pry
     experience = experiences.first
     #image = create(:experience_image)
     #experience.experience_images << image
