@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_conversations_on_trip_id"
+  end
+
   create_table "listing_amenities", force: :cascade do |t|
     t.bigint "amenity_id"
     t.bigint "listing_id"
@@ -63,6 +70,16 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -115,10 +132,13 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.string "verification_code"
   end
 
+  add_foreign_key "conversations", "trips"
   add_foreign_key "listing_amenities", "amenities"
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listing_images", "listings"
   add_foreign_key "listings", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "trips", "listings"
   add_foreign_key "trips", "users"
   add_foreign_key "trips", "users", column: "host_id"

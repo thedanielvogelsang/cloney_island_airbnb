@@ -130,6 +130,8 @@ namespace :import do
       num_guests: [*1..listing.accomodates].sample
       )
       puts "Trip #{trip.id} created!"
+      conversation = Conversation.create(trip_id: trip.id)
+      puts "Conversation for #{trip.id} initiated!"
     end
     puts "Trips loaded"
   end

@@ -17,6 +17,7 @@ class TripsController < ApplicationController
     @trip.listing_id = listing.id
 
     if @trip.save
+      Conversation.create(trip_id: @trip.id)
       flash[:success] = "Your trip at #{listing.name} has been booked."
       redirect_to trips_path
     else
