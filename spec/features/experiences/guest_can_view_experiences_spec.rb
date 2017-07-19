@@ -5,8 +5,7 @@ RSpec.describe 'Guest visits /experiences' do
   it 'can view all experiences' do
     experiences = create_list(:experience, 4)
     experience = experiences.first
-    # experience.experience_images.create!(image_file_name: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
-
+    experience.experience_images.create!(image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     visit root_path
 
@@ -24,8 +23,8 @@ RSpec.describe 'Guest visits /experiences' do
     within first('.experience-card') do
       expect(page).to have_content(experience.price)
       expect(page).to have_content(experience.title)
-      # expect(page).to have_css('.experience-image')
-      # expect(page).to have_css('img', count: 1)
+      expect(page).to have_css('.experience-image')
+      expect(page).to have_css('img', count: 1)
     end
 
   end
@@ -35,6 +34,8 @@ RSpec.describe 'Guest visits /experiences' do
     experience = create(:experience)
     cats = create_list(:experience_category, 4)
     experience.experience_categories << cats
+
+    experience.experience_images.create!(image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     id = experience.id
     visit experiences_path
@@ -58,7 +59,7 @@ RSpec.describe 'Guest visits /experiences' do
     end
 
     within('.experience-featured-image') do
-      #expect(page).to have the featured image
+      expect(page).to have_css('img', count: 1)
       expect(page).to have_content("#{experience.price} per person")
       #expect(page).to have_content("See Dates")
     end

@@ -3,10 +3,12 @@
 .experiences-box
   -@experiences.each do |e|
     .experience-card{:id => "experience-#{e.id}"}
-      .experience-image
-        =link_to image_tag('/lib/assets/baby_penguin.jpg'), experience_path(e)
-      .experience-details
-        .experience-title
-          =e.title
-        .experience_price
-          "$#{e.price}"
+      %a{href: experience_path(e)}
+        .experience-image
+          -e.experience_images.each do |image|
+            =image_tag(image.image_file_name)
+        .experience-details
+          .experience-title
+            =e.title
+          .experience_price
+            "$#{e.price}"

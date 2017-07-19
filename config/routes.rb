@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   end
 
   resources :trips, only: [:index]
-  resources :experiences, only: [:index, :show]
+  resources :experiences, only: [:index, :show, :new, :create]
 end

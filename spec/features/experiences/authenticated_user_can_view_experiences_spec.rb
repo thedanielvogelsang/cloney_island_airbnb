@@ -2,33 +2,34 @@ require 'rails_helper'
 
 RSpec.describe 'Authenticated user visits /experiences' do
 
-  xit 'can view all experiences' do
+  it 'can view all experiences' do
+    host_role = create(:role, name: "host")
+    user = create(:user)
+    user.roles << host_role
+    experiences = create_list(:experience, 4)
+    experiences.each do |e|
+      e.experience_images.create!(image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
+    end
 
-    #create 4 experiences
     visit root_path
-    within('navbar-header') do
+    within('.navbar-user-types.sub') do
       click_on 'Experiences'
     end
 
-    expect(path).to eq('/experiences')
+    expect(current_path).to eq('/experiences')
 
     within('.experiences-box') do
-      expect(page).to have_content(experience1.title)
-      expect(page).to have_content(experience2.title)
-      expect(page).to have_content(experience3.title)
-      expect(page).to have_content(experience4.title)
+      expect(page).to have_content(experiences[0].title)
+      expect(page).to have_content(experiences[1].title)
+      expect(page).to have_content(experiences[2].title)
+      expect(page).to have_content(experiences[3].title)
 
-      expect(page).to have_content(experience1.image)
-      expect(page).to have_content(experience2.image)
-      expect(page).to have_content(experience3.image)
-      expect(page).to have_content(experience4.image)
+      expect(page).to have_css('img', count: 4)
 
-      expect(page).to have_content(experience1.price)
-      expect(page).to have_content(experience2.price)
-      expect(page).to have_content(experience3.price)
-      expect(page).to have_content(experience4.price)
-
-      expect(page).to have_css('experiences-box img:hover')
+      expect(page).to have_content(experiences[0].price)
+      expect(page).to have_content(experiences[1].price)
+      expect(page).to have_content(experiences[2].price)
+      expect(page).to have_content(experiences[3].price)
     end
 
   end

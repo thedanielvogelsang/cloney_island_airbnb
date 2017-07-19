@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'As a host' do
 
-  xit 'can create a new listing' do
+  it 'can create a new listing' do
     visit root_path
-    hover_on 'Become a Host'
     click_on 'Host an Experience'
 
     expect(path).to be(new_experience_path)

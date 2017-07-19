@@ -1,0 +1,48 @@
+<div class="create-account-box">
+  <h1>Create an Experience</h1>
+  <div class="form">
+    <%= form_for @experience do |f| %>
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title %>
+
+      <%= f.label :category, "Category" %>
+      <%= f.select_tag(:category, @categories, multiple: true ) %>
+
+      <%= f.label :duration, "Duration" %>
+      <%= f.text_field :duration %>
+
+      <%= f.label :tagline, "Tagline" %>
+      <%= f.text_field :tagline %>
+
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+
+      <%= f.label :what, "What We'll Do" %>
+      <%= f.text_field :what %>
+
+      <%= f.label :where, "Where We're Going" %>
+      <%= f.text_field :where %>
+
+      <%= f.label :provisions, "What I'll Provide" %>
+      <%= f.text_field :provisions %>
+
+      <%= f.label :notes, "Notes" %>
+      <%= f.text_field :notes %>
+
+      <%= f.label :group_size, "Group Size" %>
+      <%= f.text_field :group_size %>
+
+      <%= f.label :guest_requirements, "Guest Requirements" %>
+      <%= f.text_field :guest_requirements %>
+
+      <%= f.label :cancellation_policy_type, "Cancellation Policy Type" %>
+      <%= f.text_field :cancellation_policy_type %>
+
+      <%= f.submit "Sign Up" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+click_on "Create Experience"
