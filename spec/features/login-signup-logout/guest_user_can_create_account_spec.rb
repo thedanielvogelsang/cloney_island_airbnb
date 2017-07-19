@@ -5,6 +5,14 @@ RSpec.describe 'As a guest user' do
   it 'can create an account' do
     user = build(:user)
     create(:role)
+    address = "123 Fake St. Boulder, CO 80111"
+
+    5.times do |n|
+      listing = create(:listing, status: 1, address: "Bad address Rd Denver, CO 80303", name: "Bad Listing #{n}")
+      listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
+    end
+    result = create(:listing, status: 1, address: address, name: "Good Listing")
+    result.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     visit '/'
 
