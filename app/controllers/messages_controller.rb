@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
-  before_action :get_messages
+  # before_action :get_messages
 
-  def index
-  end
+  # def index
+  # end
 
   def create
     message = current_user.messages.build(message_params)
@@ -18,10 +18,10 @@ class MessagesController < ApplicationController
 
   private
 
-    def get_messages
-      @messages = Message.for_display
-      @message  = current_user.messages.build
-    end
+    # def get_messages
+    #   @messages = Message.for_display
+    #   @message  = current_user.messages.build
+    # end
 
     def message_params
       params.require(:message).permit(:content, :conversation_id)
