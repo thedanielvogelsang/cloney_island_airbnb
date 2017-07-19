@@ -9,7 +9,5 @@ RSpec.describe "Rendering pins on map" do
     visit root_path
 
     expect(page).to have_css('div#map')
-
-    expect()
   end
 end

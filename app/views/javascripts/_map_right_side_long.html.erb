@@ -6,14 +6,10 @@
       center:{lat: <%= @listings.first.latitude %>,
               lng: <%= @listings.first.longitude %>}
     });
-
-    // var image = listing.listing_images.first.property_image;
-
     <% @listings.each do |listing| %>
       var marker = new google.maps.Marker({
         position: {lat: <%= listing.latitude %>, lng: <%= listing.longitude %>},
         map: map
-        // icon: listing.listing_images.first.property_image
       });
     <% end %>
   }
