@@ -7,18 +7,22 @@
     %span=@experience.tagline
   .experience-category-box
     %span=@experience.experience_categories.each { |cat| cat.name}
+    %span"Hosted by: #{@experience.user.full_name}"
+    %span"Duration: #{@experience.duration}"
+    %span"Provisions: #{@experience.provisions}"
   .experience-what-box
-    %span=@experience.what
+    %span"What We'll Do: #{@experience.what}"
   .experience-host-provides-box
-    %span=@experience.provisions
+    %span"What I'll Provide: #{@experience.provisions}"
   .experience-notes-box
-    %span=@experience.notes
+    %span"Notes: #{@experience.notes}"
   .experience-where-box
-    %span=@experience.where
+    %span"Where We'll Be: #{@experience.where}"
     .experience-map
 
   .host-block
-    %span=@experience.host_description
+    %span"About your host, #{@experience.user.first_name}"
+    %p=@experience.host_description
   .host-contact
     -# =link_to messaging system
   .available-dates
@@ -26,6 +30,7 @@
   .experience-reviews
     -# import some reviews
   .experience-extras
+    %span"Extra Info"
     %span=@experience.group_size
     %span=@experience.guest_requirements
     %span=@experience.cancellation_policy_type
