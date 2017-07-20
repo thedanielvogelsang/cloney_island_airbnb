@@ -59,7 +59,6 @@ thead tr {
 
 table {
   border-collapse: collapse;
-  margin: 0 auto;
 }
 
 .reservation-history {
@@ -234,5 +233,15 @@ input.cancel-trip-btn {
 }
 
 .message {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.host-nav {
+  float: left;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.container.listing-cards.host-listings {
+  margin-left: 3.25%;
 }
