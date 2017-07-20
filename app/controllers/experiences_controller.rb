@@ -11,8 +11,6 @@ class ExperiencesController < ApplicationController
   def new
     if current_user
       @experience = Experience.new
-      @categories = ExperienceCategory.all
-      @user = current
     else
       flash[:notice] = "You must have an account to Host an Experience."
       redirect_to login_path
