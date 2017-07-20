@@ -74,6 +74,10 @@ tr.trip.td {
   width: 60px;
 }
 
+.conversation img {
+  width: 60px;
+}
+
 .reservation-history p {
   text-align: left;
 }
@@ -149,4 +153,36 @@ img.profile-pic.trips-host-profile-pic {
 .trip-details {
     float: left;
     width: 50%;
+}
+
+.message-wr {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+td.conversation-name-date {
+  width: 125px;
+}
+
+td.conversation-name-date p {
+  text-align: left;
+}
+
+.profile-picture-column {
+  width: 75px;
+}
+
+td.message-snippet {
+  width: 300px;
+  text-align: left;
+}
+
+.send-message-btn {
+  float: left;
+  margin-left: 0px;
+}
+
+#message_content {
+  float: left;
+  margin-right: 25px;
 }

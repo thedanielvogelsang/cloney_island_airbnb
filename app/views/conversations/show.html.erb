@@ -1,4 +1,32 @@
-<div class="message-wr">
-  <%= render 'messages/messages' %>
-  <%= render 'messages/message_form' %>
-</div>
+<% if current_user.id == @conversation.trip.user_id || current_user.id == @conversation.trip.host_id %>
+  <section>
+    <div class="host-info">
+      <%= image_tag @conversation.trip.listing.user.profile_picture, :class => 'profile-picture-column' %>
+      <%= @conversation.trip.listing.user.first_name %>
+      <%= @conversation.trip.listing.address %>
+      <h5>Email</h5>
+      <%= @conversation.trip.listing.user.email %>
+      <h5>Phone Number</h5>
+      <%= @conversation.trip.listing.user.phone_number %>
+      <h4>Trip Details</h4>
+      <%= @conversation.trip.listing.description[0..50].gsub(/\s\w+$/,'...') %>
+      <h5>Check In</h5>
+      <%= @conversation.trip.start_date %>
+      <h5>Check Out</h5>
+      <%= @conversation.trip.end_date %>
+      <h5>Guests</h5>
+      <%= @conversation.trip.num_guests %>
+      <h4>Payment</h4>
+      <%= @conversation.trip.listing.price %>
+    </div>
+  </section>
+
+  <section>
+    <div class="message-wr">
+      <%= render 'messages/messages' %>
+      <%= render 'messages/message_form' %>
+    </div>
+  </section>
+<% else %>
+  <%= controller.redirect_to conversations_path %> 
+<% end %>
