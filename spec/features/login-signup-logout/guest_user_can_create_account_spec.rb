@@ -14,6 +14,7 @@ RSpec.describe 'As a guest user' do
     result = create(:listing, status: 1, address: address, name: "Good Listing")
     result.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/'
 
     within('.navbar-user-types.nav-item') do
