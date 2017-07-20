@@ -18,7 +18,7 @@
         <h4>Guests</h4>
         <p><%= @conversation.trip.num_guests %></p>
         <h3>Payment</h3>
-        <p><%= @conversation.trip.listing.price %></p>
+        <p><%= number_to_currency(@conversation.trip.listing.price) %></p>
       </div>
     </section>
   </div>
