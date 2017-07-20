@@ -6,7 +6,9 @@
     %span=@experience.city
     %span=@experience.tagline
   .experience-category-box
-    %span=@experience.experience_categories.each { |cat| cat.name}
+    -@experience.experience_categories.each do |cat|
+      %span.cat-name=cat.name
+
     %span"Hosted by: #{@experience.user.full_name}"
     %span"Duration: #{@experience.duration}"
     %span"Provisions: #{@experience.provisions}"
@@ -33,9 +35,9 @@
     -# import some reviews
   .experience-extras
     %span"Extra Info"
-    %span=@experience.group_size
-    %span=@experience.guest_requirements
-    %span=@experience.cancellation_policy_type
+    %span"Group Size: #{@experience.group_size}"
+    %span"Guest Requirements: #{@experience.guest_requirements}"
+    %span"Cancellation Policy Type: #{@experience.cancellation_policy_type}"
 
 .experience-featured-image
   -@experience.experience_images.each do |image|
@@ -44,3 +46,7 @@
     %span "$#{@experience.price} per person"
   .experience_date
     -# =link_to see available-dates popup
+    
+-if current_user && current_user.id == @experience.user.id
+  .host-edit-link
+    =link_to "Edit Your Experience", edit_experience_path
