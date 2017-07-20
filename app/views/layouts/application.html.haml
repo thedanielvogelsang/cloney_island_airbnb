@@ -23,7 +23,7 @@
           -if current_user && current_user.host? == false
             %span=link_to "Become a Host", new_user_host_listing_path(current_user)
           - if current_user
-            %span=link_to "Messages", "#" #needs Messages path
+            %span=link_to "Messages", conversations_path
             %span=link_to "Trips", trips_path
             %span=link_to "Sign Out", logout_path
             -if current_user.traveler?
