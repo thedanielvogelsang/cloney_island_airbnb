@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "Logged in user can log out", type: :feature do
   scenario "user sees the visitor options page" do
-    skip
     user = create(:user)
     role = create(:role)
+    listing = create(:listing)
+    listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     user.roles << role
 
