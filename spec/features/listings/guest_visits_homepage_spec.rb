@@ -5,8 +5,8 @@ RSpec.describe 'As a guest user' do
     role = create(:role, name: 'traveler')
     traveler = create(:user)
     traveler.roles << role
-    
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
+
+    # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(traveler)
 
     listing = create(:listing)
     listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))

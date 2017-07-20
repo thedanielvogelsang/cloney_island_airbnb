@@ -12,6 +12,6 @@
         %span.room
           = "#{listing.room_type} | #{listing.beds} beds"
       .card-details
-        - if current_user.roles.exists?(name: "host") && listing.user_id == current_user.id
+        - if current_user && current_user.roles.exists?(name: "host") && listing.user_id == current_user.id
           %p
             = link_to "Edit Listing", edit_user_host_listing_path(current_user, listing)
