@@ -8,10 +8,7 @@ RSpec.describe 'Authenticated user visits experience_path' do
     @exps = create_many_experiences
     @user = @exps.first.user
     @exp = @exps[0]
-    visit experiences_path
-    within first('.experience-image') do
-      find(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
-    end
+    visit experience_path(@exp)
   end
 
   describe 'and can see a full experience' do

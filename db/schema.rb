@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170719055134) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "price"
+    t.integer "price"
     t.text "host_description"
     t.integer "group_size"
     t.text "guest_requirements"

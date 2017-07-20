@@ -16,7 +16,7 @@ RSpec.describe 'Authorized users can see edit link' do
       visit experiences_path
 
       within first('.experience-image') do
-        find(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
+        first(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
       end
 
       expect(current_path).to eq("/experiences/#{@exp.id}")
@@ -39,7 +39,7 @@ RSpec.describe 'Authorized users can see edit link' do
       visit experiences_path
 
       within first('.experience-image') do
-        find(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
+        first(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
       end
 
       expect(current_path).to eq("/experiences/#{@exp.id}")
@@ -58,7 +58,7 @@ RSpec.describe 'Authorized users can see edit link' do
       visit experiences_path
 
       within first('.experience-image') do
-        find(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
+        first(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
       end
 
       expect(current_path).to eq("/experiences/#{@exp.id}")

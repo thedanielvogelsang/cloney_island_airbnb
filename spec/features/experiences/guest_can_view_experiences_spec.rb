@@ -20,9 +20,12 @@ RSpec.describe 'Guest visits /experiences' do
       expect(page).to have_css(".experience-card", count: 4)
     end
 
-    within first('.experience-card') do
+    within first('.experience-details') do
       expect(page).to have_content(experience.price)
       expect(page).to have_content(experience.title)
+    end
+
+    within first('.experience-card') do
       expect(page).to have_css('.experience-image')
       expect(page).to have_css('img', count: 1)
     end
