@@ -170,6 +170,8 @@ td.conversation-name-date p {
 
 .profile-picture-column {
   width: 75px;
+  margin: 0 auto;
+  display: block;
 }
 
 td.message-snippet {
@@ -185,4 +187,22 @@ td.message-snippet {
 #message_content {
   float: left;
   margin-right: 25px;
+}
+
+.host-info {
+    width: 25%;
+    float: left;
+    margin-right: 20%;
+    border: 1px solid;
+    border-color: #D3D3D3;
+    padding: 10px;
+}
+
+.host-info h3,h4 {
+  text-align: center;
+}
+
+.conversation-show-container {
+    width: 800px;
+    margin: 0 auto;
 }
