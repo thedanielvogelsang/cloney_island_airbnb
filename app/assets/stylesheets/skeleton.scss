@@ -155,6 +155,11 @@ img.profile-pic.trips-host-profile-pic {
     width: 50%;
 }
 
+.message-wr {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 td.conversation-name-date {
   width: 125px;
 }
@@ -170,4 +175,14 @@ td.profile-picture-column {
 td.message-snippet {
   width: 300px;
   text-align: left;
+}
+
+.send-message-btn {
+  float: left;
+  margin-left: 0px;
+}
+
+#message_content {
+  float: left;
+  margin-right: 25px;
 }
