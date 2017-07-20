@@ -51,8 +51,11 @@
             %span=link_to "Trips", trips_path
 
     -flash.each do |name, message|
-      .notice
-        =message
+      -if !message.is_a?(Array)
+        %div.flash=sanitize(message)
+      -else
+        -message.each do |message|
+          %div.flash=message
 
     .container-main
       = yield

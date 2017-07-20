@@ -1,11 +1,12 @@
 class ExperiencesController < ApplicationController
+  before_action :set_experience, only: [:edit, :update, :show, :destroy]
 
   def index
     @experiences = Experience.all
   end
 
   def show
-    @experience = Experience.find(params[:id])
+    @experience
   end
 
   def new
@@ -31,6 +32,27 @@ class ExperiencesController < ApplicationController
 
   end
 
+  # def edit
+  #   @experience
+  # end
+
+  def update
+    @experience.update(experience_params)
+    if @experience.save
+      flash[:success] = 'Experience updated!'
+      redirect_to experiences_path
+    else
+      flash[:failure] = "Failed. Try, try again."
+      render :edit
+    end
+  end
+
+  def destroy
+    @experience.destroy
+    flash[:success] = 'Experience Erased!'
+    redirect_to experiences_path
+  end
+
   private
 
     def experience_params
@@ -39,6 +61,10 @@ class ExperiencesController < ApplicationController
               :title, :duration, :tagline, :what, :where,
               :provisions, :notes, :group_size, :guest_requirements, :cancellation_policy_type, :user_id, :price, :host_description, :street_address, :city, :state, :zipcode
               )
+    end
+
+    def set_experience
+      @experience = Experience.find(params[:id])
     end
 
 end
