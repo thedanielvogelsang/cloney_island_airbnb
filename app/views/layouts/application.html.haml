@@ -28,11 +28,6 @@
             %span=link_to "Sign Out", logout_path
             -if current_user.traveler?
               %span=link_to "Dashboard", user_dashboard_index_path(current_user)
-              -# =link_to "Inbox", user_messages_center_page_path
-              -# =link_to "Your Listing", user_listings_path
-              -# =link_to 'Your Trips', user_trips_path
-              -# =link_to 'Profile', user_profile_path
-              -# =link_to 'Account', user_account_path
           - else
             %span=link_to "Sign Up", new_user_path
             %span=link_to "Sign In", login_path
@@ -42,13 +37,3 @@
         =message
     .container-main
       = yield
-
-    -# .container.footer
-    -#   .item
-    -#     %span Airbnb
-    -#
-    -#   .item
-    -#     %span Discover
-    -#
-    -#   .item
-    -#     %span Hosting
