@@ -7,7 +7,7 @@ RSpec.describe 'Guest visits /experiences' do
     experience = experiences.first
     experience.experience_images.create!(image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
-    visit root_path
+    visit experiences_path
 
     within('.navbar-header') do
       click_on "Experiences"

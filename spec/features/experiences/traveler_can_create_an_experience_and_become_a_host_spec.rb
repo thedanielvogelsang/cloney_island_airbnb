@@ -5,6 +5,9 @@ RSpec.describe 'As a traveler' do
   context 'can create a new listing' do
 
     xit 'adds host to user roles' do
+      listing = create(:listing)
+      listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
+      
       visit root_path
       hover_on 'Become a Host'
       click_on 'Host an Experience'

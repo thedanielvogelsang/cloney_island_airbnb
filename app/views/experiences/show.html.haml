@@ -46,7 +46,7 @@
     %span "$#{@experience.price} per person"
   .experience_date
     -# =link_to see available-dates popup
-    
+
 -if current_user && current_user.id == @experience.user.id
   .host-edit-link
     =link_to "Edit Your Experience", edit_experience_path

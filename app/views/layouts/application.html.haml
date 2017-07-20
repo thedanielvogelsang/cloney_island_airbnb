@@ -34,10 +34,15 @@
               %span=link_to "Sign in with Facebook", "/auth/facebook"
           .navbar-user-types.sub
             %span.host-dropdown
-              %span=link_to "Become a Host", "#", class: 'dropbtn'
+              -if current_user && current_user.host?
+                %span=link_to "Host", "#", class: 'dropbtn'
+              -else
+                %span=link_to "Become a Host", "#", class: 'dropbtn'
+
               #hostDropdown.host-dropdown-content
-                -if current_user
-                  %span=link_to "Become a Host", new_user_host_listing_path(current_user)
+                -if current_user && current_user.host?
+                  %span=link_to "Host Reservations", host_dashboard_index_path
+                  %span=link_to "Host Listings", user_host_listings_path(current_user)
                 -else
                   %span=link_to "Become a Host", login_path
                 %br
