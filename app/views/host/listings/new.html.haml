@@ -41,9 +41,12 @@
     %p
       = f.label :pet_type
       = f.select :pet_type, [["No Pets", :no_pets], ["Cat(s)", :cat], ["Dog(s)", :dog], ["Cat(s) and Dog(s)", :cat_and_dog], ["MISC", :misc]]
-      %p
-        = f.label :cancellation_policy
-        = f.select :cancellation_policy, [["Flexible", :flexible], ["Moderate", :moderate], ["Strict", :strict]]
+    %p
+      = f.label :cancellation_policy
+      = f.select :cancellation_policy, [["Flexible", :flexible], ["Moderate", :moderate], ["Strict", :strict]]
+    %p
+      = f.label :status
+      = f.select :status, [["Unlisted", :unlisted], ["Listed", :listed]]
     %br
     .cancellation_form
       = f.fields_for :listing_amenities do |la|
