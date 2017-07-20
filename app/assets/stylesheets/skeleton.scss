@@ -1,0 +1,247 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+section {
+  padding: 30px auto;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 300px;
+}
+
+label {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+input {
+    margin: 0 auto;
+    display: block;
+}
+
+.hidden {
+  color: $background;
+}
+
+thead tr {
+  background: #edefed;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.reservation-history {
+  min-width: 744px;
+}
+
+tr.trip.td {
+  border-bottom: 1pt #edefed;
+}
+
+.reservation-history img {
+  width: 60px;
+}
+
+.conversation img {
+  width: 60px;
+}
+
+.reservation-history p {
+  text-align: left;
+}
+
+.trips h4 {
+  text-align: left;
+  
+}
+
+.trips 
+
+.trip-guest {
+  display: block;
+  float: left;
+  margin-left: 15px;
+}
+
+.trip-guest-pic {
+  display: block;
+  float: left;
+}
+
+// .loginBtn {
+//   box-sizing: border-box;
+//   position: relative;
+//   /* width: 13em;  - apply for fixed size */
+//   margin: 0.2em;
+//   padding: 0 15px 0 46px;
+//   border: none;
+//   text-align: left;
+//   line-height: 34px;
+//   white-space: nowrap;
+//   border-radius: 0.2em;
+//   font-size: 16px;
+//   color: #FFF;
+// }
+
+.book_now_button {
+  margin: 0 auto;
+  display: block;
+}
+
+.confirm_booking_button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 25px;
+}
+input[type="submit"] {
+  background-color: #ff5a5f;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 9px 27px;
+  color: white;
+  opacity: .9;
+}
+
+img.property-image.trips-property_image {
+    margin: 0 auto;
+    display: block;
+}
+
+img.profile-pic.trips-host-profile-pic {
+    width: 100px;
+    float: left;
+    margin-right: 25px;
+}
+
+.booked-trips {
+    width: 75%;
+    height: 500px;
+    margin: auto;
+}
+
+.trip-image {
+    float: right;
+    width: 50%;
+}
+
+.trip-details {
+    float: left;
+    width: 50%;
+}
+
+.message-wr {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+td.conversation-name-date {
+  width: 125px;
+}
+
+td.conversation-name-date p {
+  text-align: left;
+}
+
+.profile-picture-column {
+  width: 75px;
+  margin: 0 auto;
+  display: block;
+}
+
+td.message-snippet {
+  width: 300px;
+  text-align: left;
+}
+
+.send-message-btn {
+  float: left;
+  margin-left: 0px;
+}
+
+#message_content {
+  float: left;
+  margin-right: 25px;
+}
+
+.host-info {
+    width: 25%;
+    float: left;
+    margin-right: 20%;
+    border: 1px solid;
+    border-color: #D3D3D3;
+    padding: 10px;
+}
+
+.host-info h3,h4 {
+  text-align: center;
+}
+
+.conversation-show-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.message-host-btn {
+  float: left;
+  margin-right: 15px;
+}
+
+.cancel-trip-btn {
+  float: left;
+}
+
+input.cancel-trip-btn {
+  background-color: white;
+  color: #484848;
+  border: 1px solid #c4c4c4;
+}
+
+.reservation-history h4 { 
+  text-align: left;
+}
+
+.message {
+  margin-bottom: 15px;
+}
+
+.host-nav {
+  float: left;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.container.listing-cards.host-listings {
+  margin-left: 3.25%;
+}

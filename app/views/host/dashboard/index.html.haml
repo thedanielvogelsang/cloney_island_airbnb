@@ -1,0 +1,39 @@
+.container.host-nav
+  =render partial: "shared/host_nav"
+  
+%table{:class => "table reservation-history"}
+  %thead
+    %tr
+      %td
+      %td
+        %h3
+          %strong All Reservations
+      %td
+      %td
+  %tbody
+    %tr{:class => "trip-headers" }
+      %td
+        %h4
+          %strong Status
+      %td
+        %h4
+          %strong Dates and Locations
+      %td
+        %h4
+          %strong Guest
+      %td
+        %h4
+          %strong Details
+    - @trips.each do |trip|
+      %tr{:class => "trip trip-#{trip.id}"}
+        %td= trip.trip_status
+        %td
+          %p= "#{trip.start_date} - #{trip.end_date}"
+          %p= trip.listing.name
+          %p= trip.listing.address
+        %td
+          = image_tag trip.user.profile_picture, :class => "trip-guest-pic"
+          %p.trip-guest= trip.user.first_name
+        %td
+          %p= number_to_currency(trip.listing.price * (trip.end_date - trip.start_date).to_i)
+          %p= link_to 'Message History', conversations_path
