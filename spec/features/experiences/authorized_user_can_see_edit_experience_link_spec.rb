@@ -50,28 +50,6 @@ RSpec.describe 'Authorized users can see edit link' do
 
   end
 
-  describe 'a traveler cannot see the edit link' do
-
-    it 'cannot see edit link' do
-      disallowed_user = create(:user)
-      disallowed_user.roles << create(:role, name: "traveler")
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(disallowed_user)
-
-      visit experiences_path
-
-      within first('.experience-image') do
-        find(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
-      end
-
-      expect(current_path).to eq("/experiences/#{@exp.id}")
-      expect(page).to_not have_css('.host-edit-link')
-      expect(page).to_not have_content('Edit Your Experience')
-
-    end
-
-  end
-
   describe 'a guest cannot see the edit link' do
 
     it 'cannot see edit link' do

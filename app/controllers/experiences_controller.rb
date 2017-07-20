@@ -20,7 +20,7 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
-
+    current_user.roles << Role.find_by(name: "host") if current_user.host? == false
     if @experience.save
       flash[:success] = "Experience created successfully!"
       redirect_to experience_path(@experience)

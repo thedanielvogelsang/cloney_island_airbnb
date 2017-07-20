@@ -1,32 +1,44 @@
 require 'rails_helper'
+require_relative 'experience_helper'
 
 RSpec.describe 'As a traveler' do
+  include ExperienceHelper
 
-  context 'can create a new listing' do
+  before(:example) do
+    @user = create(:user)
+    host_role
+  end
 
-    xit 'adds host to user roles' do
+  describe 'can create a new experience' do
+
+    it 'adds host to user roles' do
       listing = create(:listing)
       listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
-      
-      visit root_path
-      hover_on 'Become a Host'
-      click_on 'Host an Experience'
 
-      expect(path).to be(new_experience_path)
-      expect(page).to have_field("Category", :value => "Category") #Check boxes
-      expect(page).to have_field("Title", :value => "Title") #Text field
-      expect(page).to have_field("Time", :value => "Time") #Text field
-      expect(page).to have_field("Tagline", :value => "Tagline") #Text box
-      expect(page).to have_field("Photos", :value => "Photos") # Photo upload
-      expect(page).to have_field("What", :value => "What We'll Do") #Text box
-      expect(page).to have_field("Where", :value => "Where We'll Meet") #Text box
-      expect(page).to have_field("Provisions", :value => "What I'll Provide") #Text box
-      expect(page).to have_field("Notes", :value => "Notes") #Text box
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+      visit new_experience_path
+
+      fill_in "Title", :with => "Visit the Only Worthy Gallery in the Galaxy"
+      fill_in "Duration", :with => "2 hours"
+      fill_in "Tagline", :with => "If you're with us, you're awesome!"
+      fill_in "experience[what]", :with => "Walk around and ask questions about art. Do you buy art because it's evocative? Would you buy art that disgusts you becaues it evokes that feeling?"
+      fill_in "Where", :with => "The place beyond the pines."
+      fill_in "experience[provisions]", :with => "Water, energy bars, chewing gum."
+      fill_in "Notes", :with => "Bring yourself. Bring your smile. Bring your happiness and share it."
+      fill_in "Group Size", :with => "10"
+      fill_in "Guest Requirements", :with => "Smile a lot."
+      fill_in "Cancellation Policy Type", :with => "Moderate"
+      fill_in "Price", :with => "$29"
+      fill_in "Host Description", :with => "I ran out of time on this project."
+      fill_in "Street Address", :with => "123 Go"
+      fill_in "City", :with => "Denver"
+      fill_in "State", :with => "CO"
+      fill_in "Zipcode", :with => "90210"
 
       click_on "Create Experience"
 
-      expect(user.roles).should include('traveler') #make this work!
-      expect(user.roles).should include('host') # and this!
+      expect(@user.roles.first.name).to eq("host")
     end
   end
 end
