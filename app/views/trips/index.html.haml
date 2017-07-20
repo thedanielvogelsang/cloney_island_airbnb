@@ -3,7 +3,7 @@
     - @trips.each do |trip|
       .booked-trips
         .trip-details
-          %h3= trip.listing.name
+          %h3= link_to trip.listing.name, trip_path(trip)
           %h4= trip.listing.address
           %h4= "Arrival: #{trip.start_date}"
           %h4= "Departure: #{trip.end_date}"
