@@ -16,7 +16,7 @@
           %p= conversation.trip.listing.user.first_name
           %p= conversation.messages.last.updated_at.strftime("%B %d, %Y")
         %td.message-snippet
-          = conversation.messages.last.content[0..50].gsub(/\s\w+$/,'...')
+          = link_to conversation.messages.last.content[0..50].gsub(/\s\w+$/,'...'), conversation_path(conversation)
         %td
           %p= conversation.trip.trip_status
           %p= number_to_currency(conversation.trip.listing.price)
