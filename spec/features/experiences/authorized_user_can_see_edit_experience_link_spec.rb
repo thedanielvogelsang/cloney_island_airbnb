@@ -1,61 +1,72 @@
 require 'rails_helper'
+require_relative 'experience_helper'
 
-RSpec.describe 'Authorized user can see edit link' do
+RSpec.describe 'Authorized users can see edit link' do
+  include ExperienceHelper
 
   before(:example) do
-    @exp = create(:experience)
-    role = create(:role, name: "host")
-    @exp.user.roles << role
+    @exp = create_experience
+    @user = @exp.user
   end
 
   describe 'it visits own experience page' do
 
-    xit 'can see edit link' do
+    it 'can see edit link' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+      visit experiences_path
+
+      within first('.experience-image') do
+        first(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
+      end
+
+      expect(current_path).to eq("/experiences/#{@exp.id}")
+      expect(page).to have_css('.host-edit-link')
+      within('.host-edit-link') do
+        expect(page).to have_content('Edit Your Experience')
+      end
+    end
+
+  end
+
+  describe 'it cannot see link on another host experience page' do
+
+    it 'cannot see edit link' do
+      disallowed_user = create(:user)
+      disallowed_user.roles << @role_host
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(disallowed_user)
+
+      visit experiences_path
+
+      within first('.experience-image') do
+        first(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
+      end
+
+      expect(current_path).to eq("/experiences/#{@exp.id}")
+      expect(page).to_not have_css('.host-edit-link')
+      expect(page).to_not have_content('Edit Your Experience')
+
+    end
+
+  end
+
+  describe 'a guest cannot see the edit link' do
+
+    it 'cannot see edit link' do
+      disallowed_guest = create(:user)
+
+      visit experiences_path
+
+      within first('.experience-image') do
+        first(:xpath, "//a[@href='/experiences/#{@exp.id}']").click
+      end
+
+      expect(current_path).to eq("/experiences/#{@exp.id}")
+      expect(page).to_not have_css('.host-edit-link')
+      expect(page).to_not have_content('Edit Your Experience')
 
     end
 
   end
 
 end
-# it 'the experience belongs_to the current_user' do
-#
-#
-#
-#   host_role = create(:role, name: "host")
-#   user = create(:user)
-#   user.roles << host_role
-#   experiences = create_list(:experience, 4)
-#   experience = experiences.first
-#   id = experience.id
-#   experiences.each do |e|
-#     e.experience_images.create!(image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
-#   end
-#
-#   within('.host-edit-link') do
-#     expect(page).to have_link('Edit Your Experience')
-#     click_on "Edit Your Experience"
-#   end
-#
-#   expect(path).to eq(edit_experience_path(experience.id))
-#
-# end
-#
-# context 'the experience does not belong to the host' do
-#   it 'cannot see an Edit your experience link' do
-#     expect(page).not_to have_link('Edit your experience')
-#   end
-# end
-#
-# context 'as a traveler' do
-#   it 'cannot see an Edit your experience link' do
-#     #create traveler user
-#     expect(page).not_to have_link('Edit Your Experience')
-#   end
-# end
-#
-# context 'as a guest' do
-#   it 'cannot see an Edit your experience link' do
-#     #create non-host user
-#     expect(page).not_to have_link('Edit your experience')
-#   end
-# end

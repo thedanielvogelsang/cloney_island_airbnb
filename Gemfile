@@ -27,6 +27,8 @@ gem 'redis'
 gem 'twilio-ruby', '~> 4.4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'geocoder'
+gem "jquery-slick-rails"
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry'

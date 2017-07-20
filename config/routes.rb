@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :update] do
   end
-  resources :experiences, only: [:index, :show, :new, :create]
+  resources :experiences, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :messages , only: [:create]
   resources :conversations, only: [:index, :show, :create]
 end
