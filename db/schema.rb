@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20170719055134) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_conversations_on_trip_id"
+  end
+
   create_table "exp_experience_categories", force: :cascade do |t|
     t.bigint "experience_id"
     t.bigint "experience_category_id"
@@ -166,13 +173,6 @@ ActiveRecord::Schema.define(version: 20170719055134) do
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
     t.string "verification_code"
-  end
-
-  create_table "conversations", force: :cascade do |t|
-    t.bigint "trip_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_conversations_on_trip_id"
   end
 
   add_foreign_key "conversations", "trips"

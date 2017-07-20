@@ -21,7 +21,7 @@
         .nav-right.nav-item
           .navbar-user-types.nav-item
             - if current_user
-              %span=link_to "Messages", "#" #needs Messages path
+              %span=link_to "Messages", conversations_path
               %span.signin-dropdown.nav-item
                 %span=link_to "Profile", "#", class: 'dropbtn'
                 #hostDropdown.signin-dropdown-content
