@@ -8,7 +8,7 @@ RSpec.feature "Logged in user can log out", type: :feature do
     listing.listing_images.create!(property_image: File.new("#{Rails.root}/lib/assets/baby_penguin.jpg"))
 
     user.roles << role
-
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit root_path
 
     within('.navbar-user-types') do

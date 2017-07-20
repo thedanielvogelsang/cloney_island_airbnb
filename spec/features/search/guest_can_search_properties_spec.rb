@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Guest can search properties", type: :feature do
+  before(:each) do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+  
   scenario "guests can search by city" do
     address = "123 Fake St. Boulder, CO 80111"
     5.times do |n|
