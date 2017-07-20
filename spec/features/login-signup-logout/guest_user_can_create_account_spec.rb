@@ -16,7 +16,7 @@ RSpec.describe 'As a guest user' do
 
     visit '/'
 
-    within('.navbar-user-types') do
+    within('.navbar-user-types.nav-item') do
       click_on "Sign Up"
     end
 

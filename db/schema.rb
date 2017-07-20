@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718215209) do
+ActiveRecord::Schema.define(version: 20170719055134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,47 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.bigint "trip_id"
+  create_table "exp_experience_categories", force: :cascade do |t|
+    t.bigint "experience_id"
+    t.bigint "experience_category_id"
+    t.index ["experience_category_id"], name: "index_exp_experience_categories_on_experience_category_id"
+    t.index ["experience_id"], name: "index_exp_experience_categories_on_experience_id"
+  end
+
+  create_table "experience_categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "experience_images", force: :cascade do |t|
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.bigint "experience_id"
+    t.index ["experience_id"], name: "index_experience_images_on_experience_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "title"
+    t.string "duration"
+    t.text "tagline"
+    t.text "what"
+    t.text "where"
+    t.text "provisions"
+    t.text "notes"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_conversations_on_trip_id"
+    t.string "price"
+    t.text "host_description"
+    t.integer "group_size"
+    t.text "guest_requirements"
+    t.string "cancellation_policy_type"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
   create_table "listing_amenities", force: :cascade do |t|
@@ -132,7 +168,18 @@ ActiveRecord::Schema.define(version: 20170718215209) do
     t.string "verification_code"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_conversations_on_trip_id"
+  end
+
   add_foreign_key "conversations", "trips"
+  add_foreign_key "exp_experience_categories", "experience_categories"
+  add_foreign_key "exp_experience_categories", "experiences"
+  add_foreign_key "experience_images", "experiences"
+  add_foreign_key "experiences", "users"
   add_foreign_key "listing_amenities", "amenities"
   add_foreign_key "listing_amenities", "listings"
   add_foreign_key "listing_images", "listings"

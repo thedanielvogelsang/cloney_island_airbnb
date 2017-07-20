@@ -5,7 +5,7 @@ RSpec.feature "As a user with an account", type: :feature do
       user = create(:user)
       visit login_path
 
-      within('.navbar-user-types') do
+      within('.navbar-user-types.nav-item') do
         click_on 'Sign In'
       end
 
@@ -28,7 +28,7 @@ RSpec.feature "As a user with an account", type: :feature do
 
       visit login_path
 
-      within('.navbar-user-types') do
+      within('.navbar-user-types.nav-item') do
         click_on 'Sign In'
       end
 

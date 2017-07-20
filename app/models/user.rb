@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :conversations, through: :messages
   has_many :trips, dependent: :destroy
+  has_many :experiences
 
   def full_name
     first_name + " " + last_name
