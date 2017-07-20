@@ -6,5 +6,5 @@ class Trip < ApplicationRecord
 
   has_one :conversation
 
-  enum trip_status: [:requested, :pending, :accepted, :paid]
+  enum trip_status: [:requested, :pending, :accepted, :paid, :cancelled]
 end
