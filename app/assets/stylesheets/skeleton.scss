@@ -59,7 +59,6 @@ thead tr {
 
 table {
   border-collapse: collapse;
-  margin: 0 auto;
 }
 
 .reservation-history {
@@ -81,6 +80,13 @@ tr.trip.td {
 .reservation-history p {
   text-align: left;
 }
+
+.trips h4 {
+  text-align: left;
+  
+}
+
+.trips 
 
 .trip-guest {
   display: block;
@@ -170,6 +176,8 @@ td.conversation-name-date p {
 
 .profile-picture-column {
   width: 75px;
+  margin: 0 auto;
+  display: block;
 }
 
 td.message-snippet {
@@ -185,4 +193,55 @@ td.message-snippet {
 #message_content {
   float: left;
   margin-right: 25px;
+}
+
+.host-info {
+    width: 25%;
+    float: left;
+    margin-right: 20%;
+    border: 1px solid;
+    border-color: #D3D3D3;
+    padding: 10px;
+}
+
+.host-info h3,h4 {
+  text-align: center;
+}
+
+.conversation-show-container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.message-host-btn {
+  float: left;
+  margin-right: 15px;
+}
+
+.cancel-trip-btn {
+  float: left;
+}
+
+input.cancel-trip-btn {
+  background-color: white;
+  color: #484848;
+  border: 1px solid #c4c4c4;
+}
+
+.reservation-history h4 { 
+  text-align: left;
+}
+
+.message {
+  margin-bottom: 15px;
+}
+
+.host-nav {
+  float: left;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.container.listing-cards.host-listings {
+  margin-left: 3.25%;
 }

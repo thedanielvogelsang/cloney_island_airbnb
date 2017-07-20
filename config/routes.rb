@@ -31,8 +31,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
   end
 
-  resources :trips, only: [:index] do
-    # resources :messages, only: [:create, :index]
+  resources :trips, only: [:index, :update] do
   end
   resources :experiences, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :messages , only: [:create]
