@@ -82,6 +82,13 @@ tr.trip.td {
   text-align: left;
 }
 
+.trips h4 {
+  text-align: left;
+  
+}
+
+.trips 
+
 .trip-guest {
   display: block;
   float: left;
@@ -203,6 +210,21 @@ td.message-snippet {
 }
 
 .conversation-show-container {
-    width: 800px;
-    margin: 0 auto;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.message-host-btn {
+  float: left;
+  margin-right: 15px;
+}
+
+.cancel-trip-btn {
+  float: left;
+}
+
+input.cancel-trip-btn {
+  background-color: white;
+  color: #484848;
+  border: 1px solid #c4c4c4;
 }
