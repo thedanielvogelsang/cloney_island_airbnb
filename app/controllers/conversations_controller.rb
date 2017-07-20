@@ -11,5 +11,7 @@ class ConversationsController < ApplicationController
     end
   end
 
-  
+  def index
+    @conversations = current_user.conversations.uniq
+  end
 end
