@@ -1,0 +1,14 @@
+%h1 Experiences
+
+.experiences-box
+  -@experiences.each do |e|
+    .experience-card{:id => "experience-#{e.id}"}
+      %a{href: experience_path(e)}
+        .experience-image
+          -e.experience_images.each do |image|
+            =image_tag(image.image_file_name)
+        .experience-details
+          .experience-title
+            =e.title
+          .experience_price
+            "$#{e.price}"

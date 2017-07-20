@@ -11,7 +11,7 @@ RSpec.feature "Logged in user can log out", type: :feature do
 
     visit root_path
 
-    within('.navbar-user-types') do
+    within('.navbar-user-types.nav-item') do
       click_on "Sign In"
     end
 
