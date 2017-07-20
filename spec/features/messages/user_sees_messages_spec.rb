@@ -29,38 +29,46 @@ RSpec.describe "On Messages Show Page" do
   end
 
   it "hosts can read traveler messages" do
-    skip
-    current_user = host.id
+    host = create(:user)
+    traveler = create(:user)
+    role = create(:role)
+    host_role = create(:role, name: 'host')
+    traveler.roles << role
+    listing = create(:listing, user_id: host.id)
+    trip = create(:trip, host_id: host.id, user_id: traveler.id, listing_id: listing.id)
+    conversation = Conversation.create!(trip_id: trip.id)
+    message = Message.create!(content: 'test message', user_id: traveler.id, conversation_id: conversation.id)
 
-    listing = create(:listing_with_trip_and_conversation_with_messages, traveler_id: traveler.id, host_id: host.id)#????
-    trip = listing.trips.first
-    conversation = listing.conversations.first
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
+
+    conversation = trip.conversation
     latest_message = conversation.messages.last
 
     visit conversation_path(conversation)
 
     expect(page).to have_content(latest_message.content)
-    expect(page).to have_content(latest_message.created_at)
-    expect(page).to have_css(".content_message_box")
   end
 
   it "hosts can send traveler messages" do
-    skip
-    current_user = host.id
+    host = create(:user)
+    traveler = create(:user)
+    role = create(:role)
+    host_role = create(:role, name: 'host')
+    traveler.roles << role
+    listing = create(:listing, user_id: host.id)
+    trip = create(:trip, host_id: host.id, user_id: traveler.id, listing_id: listing.id)
+    conversation = Conversation.create!(trip_id: trip.id)
+    message = Message.create!(content: 'test message', user_id: traveler.id, conversation_id: conversation.id)
 
-    listing = create(:listing_with_trip_and_conversation_with_messages, traveler_id: traveler.id, host_id: host.id)#????
-    trip = listing.trips.first
-    conversation = listing.conversations.first
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(host)
+
     latest_message = conversation.messages.last
 
     visit conversation_path(conversation)
 
-    expect(page).to have_css('.empty_message_box')
-    fill_in "Message", with: "Hey that sounds great!"
+    fill_in 'message[content]', with: "Hey that sounds great!"
     click_button "Send Message"
 
-    expect(current_path).to eq("/conversations/#{conversation.id}")
-    expect(page).to have_content("Hey that sounds great!")
-    #Somehow test that the host's photo shows up or however we want the conversation designed
+    expect(host.messages.last.content).to eq("Hey that sounds great!")
   end
 end
