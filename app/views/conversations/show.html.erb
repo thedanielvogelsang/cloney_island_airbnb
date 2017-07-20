@@ -1,4 +1,8 @@
-<div class="message-wr">
-  <%= render 'messages/messages' %>
-  <%= render 'messages/message_form' %>
-</div>
+<% if current_user.id == @conversation.trip.user_id || current_user.id == @conversation.trip.host_id %>
+  <div class="message-wr">
+    <%= render 'messages/messages' %>
+    <%= render 'messages/message_form' %>
+  </div>
+<% else %>
+   <%= controller.redirect_to conversations_path %> 
+<% end %>
