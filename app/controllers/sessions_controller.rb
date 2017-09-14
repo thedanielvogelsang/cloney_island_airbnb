@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
       if user = User.from_omniauth(request.env['omniauth.auth'])
-      session[:user_id] = user.id
+        session[:user_id] = user.id
       redirect_to user_dashboard_index_path(user.id)
     elsif @user && @user.authenticate(params[:session][:password])
       @user && @user.authenticate(params[:session][:password])
