@@ -19,10 +19,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    binding.pry
     @user = User.find(params[:id])
   end
 
   def update
+    delete_picture
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       redirect_to user_dashboard_index_path(@user)
@@ -42,4 +44,7 @@ class UsersController < ApplicationController
             )
   end
 
+  def delete_picture
+    byebug
+  end
 end
