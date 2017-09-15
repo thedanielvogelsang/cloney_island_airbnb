@@ -29,6 +29,9 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'geocoder'
 gem "jquery-slick-rails"
 gem 'font-awesome-rails'
+gem 'momentjs-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap-daterangepicker-rails'
 
 group :development, :test do
   gem 'pry'
