@@ -13,7 +13,7 @@
     %span"Duration: #{@experience.duration}"
     %span"Provisions: #{@experience.provisions}"
     .host-profile-pic
-      =image_tag(@experience.user.profile_picture_file_name)
+      =image_tag(@experience.user.profile_picture)
   .experience-what-box
     %span"What We'll Do: #{@experience.what}"
   .experience-host-provides-box
@@ -41,7 +41,7 @@
 
 .experience-featured-image
   -@experience.experience_images.each do |image|
-    =image_tag(image.image_file_name)
+    =image_tag(image.image)
   .experience-price
     %span "$#{@experience.price} per person"
   .experience_date
