@@ -19,12 +19,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
+    delete_picture?
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if !params[:delete] && @user.update_attributes(user_params)
+      redirect_to user_dashboard_index_path(@user)
+    elsif params[:delete]
       redirect_to user_dashboard_index_path(@user)
     else
       render 'edit'
@@ -42,4 +45,12 @@ class UsersController < ApplicationController
             )
   end
 
+  def delete_picture?
+    if params[:delete]
+      @user = User.find(params[:id])
+      @user.profile_picture.destroy
+      @user.save
+    else
+    end
+  end
 end
