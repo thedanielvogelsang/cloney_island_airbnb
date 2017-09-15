@@ -27,9 +27,6 @@
         <%= f.label :password, "Password" %>
         <%= f.text_field :password %>
       </div>
-      <% if current_user.profile_picture %>
-          <%= link_to "delete image", user_path(current_user.id, 'delete'), method: :post %>
-      <% end %>
       <div class="form-group">
         <%= f.label :profile_picture %>
         <%= f.file_field :profile_picture %>
