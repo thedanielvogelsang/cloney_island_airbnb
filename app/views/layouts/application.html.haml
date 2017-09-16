@@ -5,7 +5,9 @@
     %title CloneyIslandAirbnb
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link {:rel => "stylesheet" :href => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script {:type => "text/javascript", :src =>"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"}
   %body
     .user-widget
       -if current_user
@@ -59,3 +61,4 @@
 
     .container-main
       = yield
+

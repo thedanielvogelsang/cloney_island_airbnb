@@ -15,5 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.slick
+//= require moment
+//= require bootstrap-datepicker
 //= require main
 //= require_tree .

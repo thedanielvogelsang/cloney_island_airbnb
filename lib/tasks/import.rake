@@ -22,7 +22,7 @@ namespace :import do
     desc "Users"
     task users: :environment do
       #change to 1000 later
-      30.times do |n|
+      40.times do |n|
         user = User.create!(
         birthday: Faker::Date.birthday(18, 97),
         first_name: Faker::Name.first_name,

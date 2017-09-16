@@ -30,11 +30,12 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
+
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.first_name = auth.info.name
-      user.last_name = auth.info.name
+      user.first_name = auth.info.name.split[0]
+      user.last_name = auth.info.name.split[1]
       user.email = auth.info.email
       user.phone_number = "505-234-9092"
       user.birthday = Date.new
