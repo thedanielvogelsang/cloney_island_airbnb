@@ -31,6 +31,8 @@ gem "jquery-slick-rails"
 gem 'font-awesome-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-sass'
+gem 'gon'
+gem 'responders'
 
 
 group :development, :test do
