@@ -1,0 +1,38 @@
+=if current_user.id == @conversation.trip.user_id || current_user.id == @conversation.trip.host_id
+  .conversation-show-container
+    %section
+      .host-info
+        =image_tag @conversation.trip.listing.user.profile_picture, :class => 'profile-picture-colum'
+        %p
+          = @conversation.trip.listing.user.first_name
+        %p
+          = @conversation.trip.listing.address
+        %h4 Email
+        %p
+          = @conversation.trip.listing.user.email
+        %h4 Phone Number
+        %p
+          = @conversation.trip.listing.user.phone_number
+        %h3 Trip Details
+        %p
+          = @conversation.trip.listing.description[0..50].gsub(/\s\w+$/,'...')
+        %h4 Check In
+        %p
+          = @conversation.trip.start_date
+        %h4 Check Out
+        %p
+          = @conversation.trip.end_date
+        %h4 Guests
+        %p
+          = @conversation.trip.num_guests
+        %h4 Payment
+        %p
+          =number_to_currency(@conversation.trip.listing.price)
+
+    %section
+      .message-wr
+        =render :partial => 'messages/messages'
+        =render :partial => 'messages/message_form'
+
+-else
+  = controller.redirect_to conversations_path

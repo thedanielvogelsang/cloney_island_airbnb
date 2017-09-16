@@ -32,9 +32,9 @@ class ExperiencesController < ApplicationController
 
   end
 
-  # def edit
-  #   @experience
-  # end
+  def edit
+    @experience
+  end
 
   def update
     @experience.update(experience_params)
