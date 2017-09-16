@@ -42,7 +42,7 @@ $(document).ready(function() {
       $('ul.slider button').css('display', 'none');
     }
   );
-
+    // Datepicker for Search Bar
     var nowTemp = new Date();
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -66,4 +66,9 @@ $(document).ready(function() {
     }).on('changeDate', function(ev) {
         checkout.hide();
     }).data('datepicker');
+
+    // Datepicker for Booking Form
+    $('.datepicker').datepicker({
+        format: 'yyyy/mm/dd'
+    });
 });
