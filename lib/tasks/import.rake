@@ -2,7 +2,7 @@ require 'csv'
 
 namespace :import do
     desc "Imports all seed data"
-    task :all => [:regenerate, :roles, :users, :amenities, :listings, :listing_images, :trips, :experience_categories, :experiences, :experience_images]
+    task :all => [:roles, :users, :amenities, :listings, :listing_images, :trips, :experience_categories, :experiences, :experience_images]
 
     desc "wipes database before seeding"
     task :regenerate do
