@@ -6,10 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-      if user = User.from_omniauth(request.env['omniauth.auth'])
-        session[:user_id] = user.id
-      redirect_to user_dashboard_index_path(user.id)
-    elsif @user && @user.authenticate(params[:session][:password])
+    @user = User.find_by(email: params[:session][:email])
+    if @user && @user.authenticate(params[:session][:password])
       @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.first_name}"
@@ -18,6 +16,9 @@ class SessionsController < ApplicationController
       else
         redirect_to user_dashboard_index_path(@user)
       end
+    elsif user = User.from_omniauth(request.env['omniauth.auth'])
+        session[:user_id] = user.id
+      redirect_to user_dashboard_index_path(user.id)
     else
       flash[:login_error] = "The email or password you entered is invalid"
       render :new
