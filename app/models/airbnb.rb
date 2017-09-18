@@ -13,4 +13,11 @@ class Airbnb
     @price          = search[:pricing_quote][:rate][:amount]
     @listing_image = search[:listing][:picture_url]
   end
+
+  def self.find_properties(location)
+    properties = AirbnbService.find_properties(location)
+    properties.map do |property|
+      new(property)
+    end
+  end
 end
