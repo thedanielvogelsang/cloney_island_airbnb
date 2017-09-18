@@ -9,25 +9,11 @@ $(document).on("ready", function() {
 });
 
 function getListings(map) {
-  var $loading_wheel = $("#spinning-wheel")
-  $loading_wheel.show();
   $.ajax({
-    dataType: 'text',
-    url: '/listings.json',
-    success:function(listings) {
-      $loading_wheel.hide();
-      var geojson = $.parseJSON(listings);
-      map.featureLayer.setGeoJSON({
-        type: "FeatureCollection",
-        features: geojson
-      });
-      addListingPopups(map);
-    },
-    error:function() {
-      $loading_wheel.hide();
-      alert("Could not load the listings");
-    }
-  });
+    url: "https://www.airbnb.com/api/v2/search_results?client_id="
+    + gon.airbnb_key
+    + ""
+  })
 }
 
 function addListingPopups(map) {

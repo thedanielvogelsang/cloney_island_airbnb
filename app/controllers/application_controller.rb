@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def assign_env_variables
     gon.mapbox_api_key = ENV["MAPBOX_API_KEY"]
+    gon.airbnb_key = ENV['airbnb_key']
   end
 
   private
