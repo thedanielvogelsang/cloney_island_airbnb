@@ -7,3 +7,13 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 @import "components/datepicker";
+
+.navbar-header {
+  width: 100%;
+}
+
+.fa-envelope-open {
+  margin-top: 16px;
+  margin-right: 3px;
+  font-size: 1.6em;
+}

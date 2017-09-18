@@ -23,9 +23,11 @@
         .nav-right.nav-item
           .navbar-user-types.nav-item
             - if current_user
-              %span=link_to "Messages", conversations_path
+              =link_to conversations_path do
+                %i{:class => "fa fa-envelope-open fa-lg"}
               %span.signin-dropdown.nav-item
-                %span=link_to "Profile", "#", class: 'dropbtn'
+                %a.dropdown-toggle
+                  %i{:class => "fa fa-user fa-2x"}
                 #hostDropdown.signin-dropdown-content
                   %span=link_to "Profile", user_dashboard_index_path(current_user)
                   %br
