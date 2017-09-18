@@ -1,13 +1,14 @@
-%table{:class => "table conversations"}
+%table{:class => "table-conversations"}
   %thead
     %tr
-      %td
-      %td
-      %td
-        %h3
+      %th.title
+        %h2
           %strong All Messages
+      %th
+  %tbody{:class => "conversations"}
+    %tr.spacer
       %td
-  %tbody
+        %h1
     - @conversations.each do |conversation|
       %tr{:class => "conversation conversation-#{conversation.id}"}
         %td.profile-picture-column
@@ -20,3 +21,8 @@
         %td
           %p= conversation.trip.trip_status
           %p= number_to_currency(conversation.trip.listing.price)
+
+    - if @conversations.count == 0
+      %tr
+        %td.container.conversation-container
+          %h3.empty-container No Messages...
