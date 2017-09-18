@@ -1,7 +1,5 @@
 class AirbnbService
 
-  attr_reader :location
-
   def initialize(location)
     @location = location
     @conn = Faraday.new(url: "https://www.airbnb.com/") do |faraday|
@@ -22,4 +20,8 @@ class AirbnbService
   def self.find_properties(location)
     new(location).find_properties
   end
+
+  private
+
+  attr_reader :location
 end
