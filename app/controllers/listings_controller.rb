@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
 
   def build_geojson(listings, geojson)
     listings.each do |listing|
-      geojson << GeojsonBuilder.build_listing(listing, geojson)
+      @geojson << GeojsonBuilder.build_listing(listing, geojson)
     end
   end
 end

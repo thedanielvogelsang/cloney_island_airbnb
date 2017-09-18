@@ -16,7 +16,6 @@ function getListings(map) {
     url: '/listings.json',
     success:function(listings) {
       $loading_wheel.hide();
-      console.log(listings);
       var geojson = $.parseJSON(listings);
       map.featureLayer.setGeoJSON({
         type: "FeatureCollection",
