@@ -26,10 +26,13 @@ class ListingsController < ApplicationController
      @results = results.map do |result|
         Airbnb.new(result)
      end
-     # binding.pry
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    if params[:search_address]
+      @result = Airbnb.find(params[:id])
+    else
+      @listing = Listing.find(params[:id])
+    end
   end
 end
