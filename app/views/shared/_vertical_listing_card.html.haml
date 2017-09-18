@@ -4,13 +4,11 @@
       .card-image
         - if listing.listing_images.first
           = link_to image_tag(listing.listing_images.first.property_image), listing_path(listing)
-        - elsif listing.listing_images.first.nil?
-          %h1.spacer-tile
       .card-details
         %span.price.badge
           $#{listing.price}
-        =link_to listing.name, listing_path(listing), :class => "name"
-        %br
+        %span.name
+          = listing.name
         %span.room
           = "#{listing.room_type} | #{listing.beds} beds"
       .card-details
