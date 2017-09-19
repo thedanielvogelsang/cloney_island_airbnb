@@ -1,18 +1,7 @@
 class Listing < ApplicationRecord
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
-
-  validates :name, :description, :accomodates, :bathrooms, :bedrooms, :beds, :price, presence: true
-  validates :property_type, :bed_type, :room_type, :pet_type, :status, :cancellation_policy, presence: true
-  validates :address, presence: true
-  validates :name, uniqueness: true
-
-  belongs_to :user
-
-  has_many :listing_images, dependent: :destroy
-  has_many :listing_amenities, dependent: :destroy
-  has_many :amenities, through: :listing_amenities
+  validates :airbnb_id
+  
   has_many :trips
 
   enum property_type: [:house, :apartment, :guesthouse, :boat, :treehouse]
