@@ -6,7 +6,8 @@ class TripsController < ApplicationController
   end
 
   def new
-    @listing = Airbnb.find(params[:listing_id])
+    binding.pry
+    @listing = Airbnb.find(params[:id])
     @trip = Trip.new()
   end
 
