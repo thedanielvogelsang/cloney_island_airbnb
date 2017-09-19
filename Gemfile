@@ -43,8 +43,11 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'rspec-rails', '~> 3.5'
-  # gem 'vcr'
-  # gem 'webmock'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

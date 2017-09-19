@@ -17,4 +17,11 @@ class Airbnb
     @lat            = search[:listing][:lat]
     @lng            = search[:listing][:lng]
   end
+
+  def self.find_properties(location)
+    properties = AirbnbService.find_properties(location)
+    properties.map do |property|
+      new(property)
+    end
+  end
 end
