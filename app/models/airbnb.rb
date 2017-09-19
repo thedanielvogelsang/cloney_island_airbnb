@@ -20,7 +20,8 @@ class Airbnb
               :user_id,
               :amenities,
               :longitude,
-              :latitude
+              :latitude,
+              :listing_id
 
   def initialize(search)
     @id             = search[:listing][:id]
@@ -54,7 +55,7 @@ class Airbnb
   end
 
   def listing_id_create(id)
-    Listing.create!(airbnb_id: id)
+    @listing_id = Listing.find_or_create_by!(airbnb_id: id).id
   end
 
   def amenity_find_or_create(search)

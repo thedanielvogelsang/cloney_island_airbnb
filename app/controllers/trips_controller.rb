@@ -7,15 +7,16 @@ class TripsController < ApplicationController
 
   def new
     binding.pry
-    @listing = Airbnb.find(params[:id])
+    @listing = Listing.find(params[:listing_id])
     @trip = Trip.new()
   end
 
   def create
-    @listing = Airbnb.find(params[:listing_id])
+    binding.pry
+    @listing = Listing.find(params[:listing_id])
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.host_id = @listing.user_id
+    @trip.host_id = generate_host_id
     @trip.listing_id = @listing.id
     binding.pry
     date_search = {'search_start_date' => params[:trip][:start_date], 'search_end_date' => params[:trip][:end_date]}
