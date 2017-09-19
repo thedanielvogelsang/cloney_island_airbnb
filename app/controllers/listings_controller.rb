@@ -14,7 +14,6 @@ class ListingsController < ApplicationController
     # if @listings.empty?
     #   @listings = Listing.all
     # end
-
      @results = Airbnb.find_properties(location)
   end
 
