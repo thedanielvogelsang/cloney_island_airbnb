@@ -1,10 +1,10 @@
 class GeojsonBuilder
-  def self.build_listing(listing, geojson)
-    geojson << {
+  def self.build_listing(listing)
+     {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [listing.longitude, listing.latitude]
+        coordinates: [listing.lng, listing.lat]
       },
       properties: {
         name: listing.name,

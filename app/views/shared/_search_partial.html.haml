@@ -3,4 +3,4 @@
   = number_field_tag(:search_num_guests, params[:search_num_guests], placeholder: "Number of Guests...", value: nil, size: "5x10", min: 0)
   = text_field_tag(:search_start_date, params[:search_start_date], placeholder: "Start Date...", value: nil, size: "15x10", id: 'dpd1')
   = text_field_tag(:search_end_date, params[:search_end_date], placeholder: "End Date...", value: nil, size: "15x10", id: 'dpd2' )
-  = submit_tag("Search", name: nil)
+  = submit_tag("Search", name: nil, id: "search-submit")

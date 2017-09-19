@@ -34,7 +34,6 @@ gem 'bootstrap-sass'
 gem 'gon'
 gem 'responders'
 
-
 group :development, :test do
   gem 'pry'
   gem 'pry-state'

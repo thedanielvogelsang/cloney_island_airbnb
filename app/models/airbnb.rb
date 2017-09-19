@@ -7,6 +7,7 @@ class Airbnb
               :listing_image,
               :lat,
               :lng,
+              :address
 
   def initialize(search)
     @name           = search[:listing][:name]
@@ -16,6 +17,7 @@ class Airbnb
     @listing_image  = search[:listing][:picture_url]
     @lat            = search[:listing][:lat]
     @lng            = search[:listing][:lng]
+    @address        = search[:listing][:public_address]
   end
 
   def self.find_properties(location)
