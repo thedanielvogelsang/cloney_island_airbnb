@@ -9,11 +9,7 @@ $(document).on("ready", function() {
 });
 
 function getListings(map) {
-  $.ajax({
-    url: "https://www.airbnb.com/api/v2/search_results?client_id="
-    + gon.airbnb_key
-    + ""
-  })
+  
 }
 
 function addListingPopups(map) {
