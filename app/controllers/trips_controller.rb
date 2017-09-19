@@ -6,8 +6,7 @@ class TripsController < ApplicationController
   end
 
   def new
-    @airbnb = AirbnbService.find_listing(params[:listing_id])
-    @listing = Listing.find_or_create_by!(id: @airbnb.listing_id)
+    @listing = AirbnbService.find_listing(params[:listing_id])
     @trip = Trip.new()
     binding.pry
   end
