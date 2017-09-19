@@ -1,8 +1,8 @@
 class Trip < ApplicationRecord
   validates :start_date, :end_date, :num_guests, :trip_status, presence: true
 
-  belongs_to :user
-  belongs_to :listing
+  # belongs_to :user
+  # belongs_to :listing
 
   has_one :conversation
 
