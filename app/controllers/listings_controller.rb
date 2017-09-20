@@ -1,29 +1,14 @@
 class ListingsController < ApplicationController
   def index
-    # if params[:search_address] != "" && params[:search_num_guests] != "" && (params['search_start_date'] != "" && params[:search_end_date] != "" && params[:search_num_guests] != "")
-    #   preliminary_listings = Listing.search_address_and_num_guests(params)
-    #   @listings = Search.listings_available(preliminary_listings, params)
-    # elsif params[:search_address] != "" && params[:search_num_guests] != ""
-    #   @listings = Listing.search_address_and_num_guests(params)
-    # elsif
-    #   @listings = Listing.search_address(params[:search_address])
-    # else
-    #   flash[:message] = "Unable to find listings related to your search."
-    #   @listings = []
-    # end
-    # if @listings.empty?
-    #   @listings = Listing.all
-    # end
-
      location = params['search_address']
      @results = Airbnb.find_properties(location)
   end
 
   def show
-    if params[:search_address]
-      @result = Airbnb.find(params[:id])
-    else
+    if Listing.exists?(params[:id])
       @listing = Listing.find(params[:id])
+    else
+      @listing = Airbnb.find(params[:id])
     end
   end
 end

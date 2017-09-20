@@ -18,13 +18,12 @@
         - if current_user && current_user.roles.exists?(name: "host") && listing.user_id == current_user.id
           %p
             = link_to "Edit Listing", edit_user_host_listing_path(current_user, listing)
-
 -if @results
   - @results.each do |result|
     .item
       .card-image
         - if result.listing_image
-          = link_to image_tag(result.listing_image), listing_path(result)
+          = link_to image_tag(result.listing_image), listing_path(result.id, airbnb: 'yes')
       .card-details
         %span.price.badge
           $#{result.price}
