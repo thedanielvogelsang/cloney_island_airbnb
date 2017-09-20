@@ -1,10 +1,14 @@
+require 'faraday-manual-cache'
+
 class AirbnbService
 
   def initialize(location)
     @location = location
     @conn = Faraday.new(url: "https://www.airbnb.com/") do |faraday|
-      faraday.headers["X-API-KEY"] = ENV["airbnb_key"]
-      faraday.adapter Faraday.default_adapter
+        faraday.headers["X-API-KEY"] = ENV["airbnb_key"]
+        faraday.use :manual_cache,
+                    expires_in: 50
+        faraday.adapter Faraday.default_adapter
     end
   end
 
@@ -20,7 +24,6 @@ class AirbnbService
   def self.find_properties(location)
     new(location).find_properties
   end
-
 
   def self.find_listing(id)
     new.find_listing(id)
@@ -49,7 +52,11 @@ class AirbnbService
   def find_listings(id_array)
     listings = []
     id_array.each do |id|
-      listings << find_listing(Listing.find(id).airbnb_id)
+      if Listing.find(id).airbnb_id == 1
+        listings << Listing.find(id)
+      else
+        listings << find_listing(Listing.find(id).airbnb_id)
+      end
     end
     listings
   end

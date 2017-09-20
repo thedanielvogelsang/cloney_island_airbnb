@@ -8,21 +8,31 @@ class TripsController < ApplicationController
   end
 
   def new
-    @listing = AirbnbService.find_listing(params[:listing_id])
+    if Listing.exists?(params[:listing_id])
+      @listing = Listing.find(params[:listing_id])
+    else
+      @listing = AirbnbService.find_listing(params[:listing_id])
+    end
     @trip = Trip.new()
   end
 
   def create
-    @airbnb = AirbnbService.find_listing(params[:listing_id])
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.listing_id = @airbnb.listing_id
-    @trip.host_id = generate_host_by_listing_id(@airbnb.id).id
+    if Listing.exists?(params[:listing_id])
+      @listing = Listing.find(params[:listing_id])
+      @trip.listing_id = @listing.id
+      @trip.host_id = @listing.user_id
+    else
+      @listing = AirbnbService.find_listing(params[:listing_id])
+      @trip.listing_id = @listing.listing_id
+      @trip.host_id = generate_host_by_listing_id(@listing.id).id
+    end
     date_search = {'search_start_date' => params[:trip][:start_date], 'search_end_date' => params[:trip][:end_date]}
     if Search.existing_trips_overlap_request(current_user, date_search) == false
       if @trip.save
         Conversation.create(trip_id: @trip.id)
-        flash[:success] = "Your trip at #{@airbnb.name} has been booked."
+        flash[:success] = "Your trip at #{@listing.name} has been booked."
         redirect_to trips_path
       else
         render :new

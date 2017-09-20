@@ -1,7 +1,11 @@
 class ConversationsController < ApplicationController
   def show
     @conversation = Conversation.find(params[:id])
-    @listing ||= AirbnbService.find_listing(params[:format]) || Listing.find(params[:format])
+    if Listing.exists?(params[:format])
+      @listing = Listing.find(params[:format])
+    else
+      @listing = AirbnbService.find_listing(params[:format])
+    end
     @message = Message.new
   end
 

@@ -109,6 +109,9 @@ GEM
       i18n (~> 0.5)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
+    faraday-manual-cache (0.1.1)
+      activesupport (>= 3.0.0)
+      faraday (~> 0.9)
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -304,6 +307,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   faraday
+  faraday-manual-cache
   figaro
   font-awesome-rails
   geocoder
