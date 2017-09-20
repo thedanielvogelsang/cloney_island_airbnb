@@ -25,7 +25,6 @@ class Airbnb
               :user_first_name,
               :user_profile_picture
 
-
   def initialize(search)
     @id             = search[:listing][:id]
     @name           = search[:listing][:name]
@@ -56,7 +55,6 @@ class Airbnb
     listing_id_create(@id)
     find_price(search)
   end
-
 
   def self.find_properties(location)
     properties = AirbnbService.find_properties(location)
@@ -107,4 +105,3 @@ class Airbnb
     end
   end
 end
-
