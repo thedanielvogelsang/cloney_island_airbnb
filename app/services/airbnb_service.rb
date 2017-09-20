@@ -16,4 +16,16 @@ class AirbnbService
     listing = Airbnb.new(result)
     # fetch_facets=true&&ib=false&ib_add_photo_flow=true
   end
+
+  def self.generate_host_by_listing_id(id)
+    new.generate_host_by_listing_id(id)
+  end
+
+  def generate_host_by_listing_id(id)
+    response = @conn.get("/api/v2/listings/#{id}?client_id=#{ENV['airbnb_key']}&_format=v1_legacy_for_p3&locale=en-US&_source=mobile_p3&number_of_guests=1")
+    result = JSON.parse(response.body, symbolize_names: true)
+    host = AirbnbHost.create_host(result, id)
+    host
+    binding.pry
+  end
 end

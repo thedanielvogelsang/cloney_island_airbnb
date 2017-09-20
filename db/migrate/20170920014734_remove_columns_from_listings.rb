@@ -1,4 +1,4 @@
-class RemoveColumnsFromListing < ActiveRecord::Migration[5.1]
+class RemoveColumnsFromListings < ActiveRecord::Migration[5.1]
   def change
     remove_column :listings, :name, :string
     remove_column :listings, :description, :string
@@ -17,6 +17,5 @@ class RemoveColumnsFromListing < ActiveRecord::Migration[5.1]
     remove_column :listings, :address, :string
     remove_column :listings, :latitude, :string
     remove_column :listings, :longitude, :string
-    remove_column :listings, :user_id, :integer
   end
 end

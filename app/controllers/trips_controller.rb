@@ -8,16 +8,14 @@ class TripsController < ApplicationController
   def new
     @listing = AirbnbService.find_listing(params[:listing_id])
     @trip = Trip.new()
-    binding.pry
   end
 
   def create
-    @listing = AirbnbService.find_listing(params[:id])
+    @airbnb = AirbnbService.find_listing(params[:listing_id])
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.host_id = generate_host_id
-    @trip.listing_id = @listing.listing_id
-    binding.pry
+    @trip.listing_id = @airbnb.listing_id
+    @trip.host_id = generate_host_by_listing_id(@airbnb.id)
     date_search = {'search_start_date' => params[:trip][:start_date], 'search_end_date' => params[:trip][:end_date]}
     if Search.existing_trips_overlap_request(current_user, date_search) == false
       if @trip.save
@@ -47,5 +45,9 @@ class TripsController < ApplicationController
 
   def listing
     Listing.find(params[:listing_id])
+  end
+
+  def generate_host_by_listing_id(id)
+    AirbnbService.generate_host_by_listing_id(id)
   end
 end
