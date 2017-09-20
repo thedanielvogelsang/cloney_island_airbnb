@@ -33,7 +33,11 @@ class AirbnbService
   def find_listings(id_array)
     listings = []
     id_array.each do |id|
-      listings << find_listing(Listing.find(id).airbnb_id)
+      if Listing.find(id).airbnb_id == 1
+        listings << Listing.find(id)
+      else
+        listings << find_listing(Listing.find(id).airbnb_id)
+      end
     end
     listings
   end

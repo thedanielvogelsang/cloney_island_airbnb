@@ -2,11 +2,14 @@
   .conversation-show-container
     %section
       .host-info
-        =image_tag @listing.user_profile_picture, :class => 'profile-picture-colum'
-        %p
-          = @listing.user_first_name
-        %p
-          = @listing.address
+        -if @listing.class == Airbnb
+          =image_tag @listing.user_profile_picture, :class => 'profile-picture-column'
+          %p
+            = @listing.user_first_name
+        -elsif @listing.class == Listing
+          = image_tag @listing.user.profile_picture, :class => 'profile-picture-column'
+          %p
+            = @listing.address
         -if @conversation.trip.listing.user
           %h4 Email
           %p
