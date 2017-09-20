@@ -21,7 +21,9 @@ class Airbnb
               :amenities,
               :longitude,
               :latitude,
-              :listing_id
+              :listing_id,
+              :user_first_name,
+              :user_profile_picture
 
   def initialize(search)
     @id             = search[:listing][:id]
@@ -46,7 +48,10 @@ class Airbnb
     @listing_id     = nil
     @latitude       = search[:listing][:lat]
     @longitude      = search[:listing][:lng]
+    @user_first_name = nil
+    @user_profile_picture = search[:listing][:user][:picture_url]
     amenity_find_or_create(search)
+    user_name_and_pic(search)
     listing_id_create(@id)
   end
 
@@ -56,6 +61,16 @@ class Airbnb
 
   def listing_id_create(id)
     @listing_id = Listing.find_or_create_by!(airbnb_id: id).id
+  end
+
+  def user_name_and_pic(search)
+    if search[:listing][:user][:user]
+      @user_profile_picture = search[:listing][:user][:user][:picture_url]
+      @user_first_name = search[:listing][:user][:user][:first_name]
+    else
+      @user_profile_picture = search[:listing][:user][:picture_url]
+      @user_first_name = search[:listing][:user][:first_name]
+    end
   end
 
   def amenity_find_or_create(search)
