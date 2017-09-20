@@ -57,15 +57,14 @@ class Airbnb
     find_price(search)
   end
 
-<<<<<<< HEAD
+
   def self.find_properties(location)
     properties = AirbnbService.find_properties(location)
     properties.map do |property|
       new(property)
     end
   end
-end
-=======
+
   def self.find(id)
     AirbnbService.find_listing(id)
   end
@@ -108,4 +107,4 @@ end
     end
   end
 end
->>>>>>> a276e5839c733bb295f4d6c32d08bc98caaa4b2f
+
