@@ -15,8 +15,10 @@ class ListingsController < ApplicationController
   end
 
   def show
-    if params[:search_address] || params[:airbnb]
-      @listing = Airbnb.find(params[:id]) || Listing.find(params[:id])
+    if Listing.exists?(params[:id])
+      @listing = Listing.find(params[:id])
+    else
+      @listing = Airbnb.find(params[:id])
     end
   end
 end
