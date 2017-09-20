@@ -25,6 +25,7 @@ class Airbnb
               :user_first_name,
               :user_profile_picture
 
+
   def initialize(search)
     @id             = search[:listing][:id]
     @name           = search[:listing][:name]
@@ -34,7 +35,7 @@ class Airbnb
     @beds           = search[:listing][:beds]
     @address        = search[:listing][:address]
     @room_type      = search[:room_type_category]
-    @price          = search[:listing][:price]
+    @price          = nil
     @listing_image = search[:listing][:picture_url]
     @bed_type       = search[:listing][:bed_type]
     @accomodates    = search[:listing][:person_capacity]
@@ -53,6 +54,7 @@ class Airbnb
     amenity_find_or_create(search)
     user_name_and_pic(search)
     listing_id_create(@id)
+    find_price(search)
   end
 
   def self.find(id)
@@ -70,6 +72,16 @@ class Airbnb
     else
       @user_profile_picture = search[:listing][:user][:picture_url]
       @user_first_name = search[:listing][:user][:first_name]
+    end
+  end
+
+  def find_price(search)
+    if search[:pricing_quote]
+      @price = search[:pricing_quote][:rate][:amount]
+    elsif search[:listing][:price]
+      @price = search[:listing][:price]
+    else
+      nil
     end
   end
 

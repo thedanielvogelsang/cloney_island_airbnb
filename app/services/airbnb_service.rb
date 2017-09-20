@@ -1,7 +1,11 @@
+require 'faraday-manual-cache'
+
 class AirbnbService
   def initialize
     @conn = Faraday.new(url: "https://www.airbnb.com/") do |faraday|
         faraday.headers["X-API-KEY"] = ENV["airbnb_key"]
+        faraday.use :manual_cache,
+                    expires_in: 50
         faraday.adapter Faraday.default_adapter
     end
   end

@@ -31,7 +31,7 @@ gem "jquery-slick-rails"
 gem 'font-awesome-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-sass'
-
+gem 'faraday-manual-cache'
 
 group :development, :test do
   gem 'pry'
