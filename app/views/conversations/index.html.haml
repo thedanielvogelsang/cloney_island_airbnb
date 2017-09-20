@@ -12,7 +12,7 @@
     - @conversations.each do |conversation|
       %tr{:class => "conversation conversation-#{conversation.id}"}
         %td.profile-picture-column
-          = image_tag conversation.trip.listing.user.profile_picture
+          = image_tag listing.user_profile_picture
         %td.conversation-name-date
           %p= conversation.trip.listing.user.first_name
           %p= conversation.messages.last.updated_at.strftime("%B %d, %Y")

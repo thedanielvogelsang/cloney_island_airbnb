@@ -9,7 +9,7 @@
           %h4= "Departure: #{trip.end_date}"
           = image_tag listing.user_profile_picture, :class => "profile-pic trips-host-profile-pic"
           %h4= listing.user_first_name
-          = button_to 'Message Host', conversation_path(trip.conversation.id), :method => :get, :class => 'message-host-btn'
+          = button_to 'Message Host', conversation_path(trip.conversation.id, listing.id), :method => :get, :class => 'message-host-btn'
           - if trip.trip_status == 'cancelled'
             %h4 Trip has been cancelled
           - else
