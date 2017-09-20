@@ -1,5 +1,5 @@
 $(document).on("ready", function() {
-  L.mapbox.accessToken = gon.mapbox_api_key;
+  L.mapbox.accessToken = 'pk.eyJ1IjoibGFsb25kZWoiLCJhIjoiY2o3c2I4MW43MnZ5NjMzbzZjNXpuZXE2ZyJ9.sspxGF6kmKlobwI859-InQ'
   var map = L.mapbox.map('map', 'mapbox.run-bike-hike', { zoomControl: false }).setView([39.739, -104.990], 12);
   var myLayer = L.mapbox.featureLayer().addTo(map);
 
@@ -11,6 +11,7 @@ $(document).on("ready", function() {
     map.fitBounds(myLayer.getBounds());
     return marker.bindPopup(popupContent, {closeButton: false, minWidth: 300});
   });
+});
 
   $(document).on('click', '.search-submit', function(){
     var address = document.getElementsByClassName('search-address')[0].value
@@ -31,4 +32,3 @@ $(document).on("ready", function() {
       }
     });
   });
-});
