@@ -4,7 +4,7 @@ class GeojsonBuilder
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [listing.lng, listing.lat]
+        coordinates: [listing.longitude, listing.latitude]
       },
       properties: {
         name: listing.name,
