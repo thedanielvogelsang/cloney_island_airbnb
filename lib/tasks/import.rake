@@ -66,7 +66,6 @@ namespace :import do
       addresses = import_addresses(hosts.count)
       n = 0
         hosts.each do |host|
-
           listing = Listing.create!(
           user_id: host.id,
           airbnb_id: rand(0..10000),
@@ -76,7 +75,6 @@ namespace :import do
       end
       puts "Listings loaded"
     end
-
 
     desc "Trips"
     task trips: :environment do
@@ -161,7 +159,6 @@ namespace :import do
       end
       puts "Experience Images loaded"
     end
-
 
   private
 
