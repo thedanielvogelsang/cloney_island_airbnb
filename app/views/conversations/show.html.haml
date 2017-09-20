@@ -1,21 +1,23 @@
-=if current_user.id == @conversation.trip.user_id || current_user.id == @conversation.trip.host_id
+-if current_user.id == @conversation.trip.user_id || current_user.id == @conversation.trip.host_id
   .conversation-show-container
     %section
       .host-info
-        =image_tag @conversation.trip.listing.user.profile_picture, :class => 'profile-picture-colum'
+        =image_tag @listing.user_profile_picture, :class => 'profile-picture-colum'
         %p
-          = @conversation.trip.listing.user.first_name
+          = @listing.user_first_name
         %p
-          = @conversation.trip.listing.address
-        %h4 Email
-        %p
-          = @conversation.trip.listing.user.email
-        %h4 Phone Number
-        %p
-          = @conversation.trip.listing.user.phone_number
+          = @listing.address
+        -if @conversation.trip.listing.user
+          %h4 Email
+          %p
+            = @conversation.trip.listing.user.email
+        -if @conversation.trip.listing.user
+          %h4 Phone Number
+          %p
+            = @conversation.trip.listing.user.phone_number
         %h3 Trip Details
         %p
-          = @conversation.trip.listing.description[0..50].gsub(/\s\w+$/,'...')
+          = @listing.description[0..50].gsub(/\s\w+$/,'...')
         %h4 Check In
         %p
           = @conversation.trip.start_date
@@ -27,7 +29,7 @@
           = @conversation.trip.num_guests
         %h4 Payment
         %p
-          =number_to_currency(@conversation.trip.listing.price)
+          =number_to_currency(@listing.price)
 
     %section
       .message-wr
