@@ -6,24 +6,30 @@ $(document).on("ready", function() {
   myLayer.on("layeradd", function(e){
     var marker = e.layer;
     var properties = marker.feature.properties;
+    map.fitBounds(myLayer.getBounds());
     var popupContent = '<div class="marker-popup">' + '<h3>' + properties.name + '</h3>' +
-    '<h4>' + properties.address + '</h4>' + '</div>';
+      '<h4>' + properties.address + '</h4>' + '</div>';
     return marker.bindPopup(popupContent, {closeButton: false, minWidth: 300});
   });
 
-      $.ajax({
-        dataType: "text",
-        url: "/listings.json",
-        success:function(listings) {
-          var geojson = $.parseJSON(listings);
-          return myLayer.setGeoJSON({
-            type: "FeatureCollection",
-            features: geojson
-          });
+  $(document).on('click', '.search-submit', function(){
+    var address = document.getElementsByClassName('search-address')[0].value
+    $.ajax({
+      dataType: "text",
+      url: "/listings.json",
+      data: {search_address: address},
+      success:function(data) {
+        var geojson = $.parseJSON(data);
+        myLayer.setGeoJSON({
+          type: "FeatureCollection",
+          features: geojson
+        });
+      },
+      error:function(error) {
+        console.log(error.responseText)
+        alert("Could not load the listings");
 
-        },
-        error:function() {
-          alert("Could not load the listings");
-        }
-      });
+      }
+    });
+  });
 });
