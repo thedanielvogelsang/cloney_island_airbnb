@@ -33,6 +33,7 @@ gem 'momentjs-rails'
 gem 'bootstrap-sass'
 gem 'gon'
 gem 'responders'
+gem 'faraday-manual-cache'
 
 group :development, :test do
   gem 'pry'

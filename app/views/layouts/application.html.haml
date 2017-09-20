@@ -49,13 +49,11 @@
               #hostDropdown.host-dropdown-content
                 -if current_user && current_user.host?
                   %span=link_to "Your Current Listings", user_host_listings_path(current_user)
-                  %br
                   %span=link_to "Host your Property", new_user_host_listing_path(current_user)
-                  %br
                   %span=link_to "Host an Experience", new_experience_path
                 -elsif current_user
-                  %span=link_to "Become a Host", new_experience_path
-
+                  %span=link_to "Host your Property", new_user_host_listing_path(current_user)
+                  %span=link_to "Host an Experience", new_experience_path
             %span=link_to "Experiences", experiences_path
             %span=link_to "Trips", trips_path
 

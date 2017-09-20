@@ -5,9 +5,7 @@ class User < ApplicationRecord
   has_attached_file :profile_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :profile_picture, content_type: /^image\/(png|jpeg|jpg)/
 
-  validates :first_name, :last_name, :phone_number, :email, :birthday, presence: true
-  validates :email, :phone_number, uniqueness: true
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+  validates :first_name, presence: true
 
   has_many :listings, dependent: :destroy
   has_many :user_roles, dependent: :destroy
@@ -30,7 +28,6 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.provider = auth.provider
       user.uid = auth.uid
