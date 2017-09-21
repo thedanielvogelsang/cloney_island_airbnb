@@ -9,20 +9,27 @@
     %tr.spacer
       %td
         %h1
-    - @conversations.each do |conversation|
+    - @index.each do |conversation, listing|
       %tr{:class => "conversation conversation-#{conversation.id}"}
-        %td.profile-picture-column
-          = image_tag listing.user_profile_picture
-        %td.conversation-name-date
-          %p= conversation.trip.listing.user.first_name
-          %p= conversation.messages.last.updated_at.strftime("%B %d, %Y")
+        -if listing.class == Airbnb
+          %td.profile-picture-column
+            = image_tag listing.user_profile_picture
+          %td.conversation-name-date
+            %p= conversation.trip.listing.user_first_name
+            %p= conversation.messages.last.updated_at.strftime("%B %d, %Y")
+        -elsif listing.class == Listing
+          %td.profile-picture-column
+            = image_tag listing.user.profile_picture
+          %td.conversation-name-date
+            %p= conversation.trip.listing.user.first_name
+            %p= conversation.messages.last.updated_at.strftime("%B %d, %Y")
         %td.message-snippet
           = link_to conversation.messages.last.content[0..50].gsub(/\s\w+$/,'...'), conversation_path(conversation)
         %td
           %p= conversation.trip.trip_status
-          %p= number_to_currency(conversation.trip.listing.price)
+          %p= number_to_currency(listing.price)
 
-    - if @conversations.count == 0
+    - if @index.count == 0
       %tr
         %td.container.conversation-container
           %h3.empty-container No Messages...

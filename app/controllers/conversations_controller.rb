@@ -17,7 +17,8 @@ class ConversationsController < ApplicationController
   end
 
   def index
-    @listin
-    @conversations = current_user.conversations.uniq
+    listings = AirbnbService.find_listings(current_user.listings.pluck(:id))
+    conversations = current_user.conversations.uniq
+    @index = conversations.zip(listings)
   end
 end
