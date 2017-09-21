@@ -18,7 +18,7 @@
       -else
         -message.each do |message|
           %div.flash=message
-          
+
     .user-widget
       -if current_user
         ="Welcome #{current_user.first_name}!"
@@ -57,11 +57,8 @@
                 -if current_user && current_user.host?
                   %span=link_to "Your Current Listings", user_host_listings_path(current_user)
                   %span=link_to "Host your Property", new_user_host_listing_path(current_user)
-                  %span=link_to "Host an Experience", new_experience_path
                 -elsif current_user
                   %span=link_to "Host your Property", new_user_host_listing_path(current_user)
-                  %span=link_to "Host an Experience", new_experience_path
-            %span=link_to "Experiences", experiences_path
             %span=link_to "Trips", trips_path
 
     .container-main

@@ -2,7 +2,7 @@ require 'csv'
 
 namespace :import do
     desc "Imports all seed data"
-    task :all => [:roles, :users, :amenities, :listings, :trips, :experience_categories, :experiences, :experience_images]
+    task :all => [:roles, :users, :amenities, :listings, :trips]
 
     desc "wipes database before seeding"
     task :regenerate do
@@ -116,66 +116,6 @@ namespace :import do
         puts "Conversation for #{trip.id} initiated!"
       end
       puts "Trips loaded"
-    end
-
-    desc "Experience Categories"
-    task experience_categories: :environment do
-
-      ExperienceCategory.create!(name: "Arts")
-      ExperienceCategory.create!(name: "Entertainment")
-      ExperienceCategory.create!(name: "Business")
-      ExperienceCategory.create!(name: "Sports")
-      ExperienceCategory.create!(name: "Outdoors")
-
-      puts "Experience Categories created!"
-      puts "Experience Categories loaded"
-    end
-
-    desc "Experience"
-    task experiences: :environment do
-      hosts = User.joins(:user_roles, :roles).where(roles: {name: "host"}).uniq
-      categories = ExperienceCategory.all
-      n = 0
-        hosts.each do |host|
-
-          experience = Experience.create!(
-            title: Faker::Zelda.character,
-            duration:  "#{Faker::Number.between(1, 10)} hours",
-            tagline: Faker::Zelda.game,
-            what: Faker::ElderScrolls.creature,
-            where: Faker::ElderScrolls.region,
-            provisions: Faker::Food.dish,
-            notes: Faker::Simpsons.quote,
-            price: Faker::Number.between(10, 300),
-            host_description: Faker::Lovecraft.paragraph(2),
-            group_size: Faker::Number.between(1, 10),
-            guest_requirements: Faker::MostInterestingManInTheWorld.quote,
-            cancellation_policy_type: Faker::Lovecraft.word,
-            street_address: Faker::Address.street_address,
-            city: Faker::Address.city,
-            state: Faker::Address.state_abbr,
-            zipcode: Faker::Number.between(10101, 90909),
-            user_id: host.id
-          )
-          2.times do
-            experience.experience_categories << categories.sample
-          end
-          n += 1
-          puts "Experience #{experience.id} created!"
-        end
-      puts "Experiences loaded"
-    end
-
-    desc "Experience Images"
-    task experience_images: :environment do
-      experiences = Experience.all
-      experiences.each do |experience|
-        3.times do
-          experience.experience_images.create!(image: "http://lorempixel.com/400/300/city")
-        end
-        puts "experience #{experience.id} images loaded"
-      end
-      puts "Experience Images loaded"
     end
 
   private
