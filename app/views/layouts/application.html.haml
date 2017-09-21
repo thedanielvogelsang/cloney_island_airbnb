@@ -12,6 +12,13 @@
     %link{:rel => "stylesheet", :href =>"https://api.tiles.mapbox.com/mapbox.js/v3.1.1/mapbox.css"}
     %script{:type => "text/javascript", :src =>"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"}
   %body
+    -flash.each do |name, message|
+      -if !message.is_a?(Array)
+        %div.flash=sanitize(message)
+      -else
+        -message.each do |message|
+          %div.flash=message
+
     .user-widget
       -if current_user
         ="Welcome #{current_user.first_name}!"
@@ -50,19 +57,9 @@
                 -if current_user && current_user.host?
                   %span=link_to "Your Current Listings", user_host_listings_path(current_user)
                   %span=link_to "Host your Property", new_user_host_listing_path(current_user)
-                  %span=link_to "Host an Experience", new_experience_path
                 -elsif current_user
                   %span=link_to "Host your Property", new_user_host_listing_path(current_user)
-                  %span=link_to "Host an Experience", new_experience_path
-            %span=link_to "Experiences", experiences_path
             %span=link_to "Trips", trips_path
-
-    -flash.each do |name, message|
-      -if !message.is_a?(Array)
-        %div.flash=sanitize(message)
-      -else
-        -message.each do |message|
-          %div.flash=message
 
     .container-main
       = yield

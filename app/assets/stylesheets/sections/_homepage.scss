@@ -1,9 +1,10 @@
-.container.listing-cards, .container.experiences-box {
-  width: 86%;
+.container.listing-cards {
+  width: 96%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  margin-left: 60px;
 
   .item {
     position: relative;
@@ -28,64 +29,13 @@
         overflow: hidden;
       }
     }
-
-    .experience-card {
-
-      img {
-        display: block;
-        width: 100%;
-      }
-
-      .slider {
-        width:282px;
-        height:212px;
-        margin:0px auto;
-        text-align: center;
-        padding:20px;
-        color:white;
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1 100%;
-        flex-wrap: wrap;
-        background: fade(#ebebeb, 10%);
-
-        .slide {
-          display:flex;
-          flex: 1 100%;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-        }
-
-        button {
-          display: none;
-          position: absolute;
-          top: 48%;
-          z-index: 1;
-          background: transparent;
-          border: none;
-
-          &.slick-next {
-            right: 8%;
-          }
-
-          &.slick-prev {
-            left: 8%;
-          }
-        }
-
-        .show {
-          display: block;
-        }
-      }
-    }
+  }
 
     .card-details{
       text-align: center;
       padding: 10px 0px 50px 0px;
 
-      .price.badge, .experience_price.badge {
+      .price.badge {
         background-color: #ff5a5f;
         color: #fff;
         border-radius: 50%;
@@ -103,28 +53,21 @@
 
       }
     }
-
-    .experience-details {
-      text-align: center;
-      padding: 10px 0px 20px 0px;
-
-      span.experience-title, .experience_price {
-        font-size: 1.3em;
-      }
-      .divider hr{
-        border-color: rgb(255,107,111);
-      }
-    }
+}
+.col-md-5 {
+  padding-right: 40px;
+  .map-side-long {
+    width: 100%;
   }
 }
-
 #map {
-  width: 34%;
+  width: 36%;
   background-color: grey;
   position: fixed !important;
   top: 110px;
   bottom: 5px;
-  right: 0px;
+  right: 30px;
+  border: 3px solid #ff5a5f;
 }
 
 h2 select {

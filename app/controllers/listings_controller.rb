@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
     location = params['search_address']
     gon.search_location = location
     @results = Airbnb.find_properties(location)
+    @listings = Listing.all
     @geojson = Array.new
     build_geojson(@results, @geojson)
 

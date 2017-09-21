@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   resources :confirmations, only: [:new, :create]
-  # get '/confirmations', to: 'confirmations#new'
-  # post '/confirmations', to: 'confirmations#create'
 
   get '/search', to: 'search#index'
 
@@ -33,7 +31,6 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :update] do
   end
-  resources :experiences, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :messages , only: [:create]
   resources :conversations, only: [:index, :show, :create]
 end
