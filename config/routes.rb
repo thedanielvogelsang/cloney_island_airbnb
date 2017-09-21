@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'listings#index'
-
+  get '/ajax', to: 'services#index'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
