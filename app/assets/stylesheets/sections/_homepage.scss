@@ -1,9 +1,10 @@
 .container.listing-cards {
-  width: 86%;
+  width: 96%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  margin-left: 60px;
 
   .item {
     position: relative;
@@ -53,14 +54,20 @@
       }
     }
 }
-
+.col-md-5 {
+  padding-right: 40px;
+  .map-side-long {
+    width: 100%;
+  }
+}
 #map {
-  width: 34%;
+  width: 36%;
   background-color: grey;
   position: fixed !important;
   top: 110px;
   bottom: 5px;
-  right: 0px;
+  right: 30px;
+  border: 3px solid #ff5a5f;
 }
 
 h2 select {

@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   resources :confirmations, only: [:new, :create]
-  # get '/confirmations', to: 'confirmations#new'
-  # post '/confirmations', to: 'confirmations#create'
 
   get '/search', to: 'search#index'
 
