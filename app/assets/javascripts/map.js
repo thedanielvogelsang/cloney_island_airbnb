@@ -11,9 +11,8 @@ $(document).on("ready", function() {
     map.fitBounds(myLayer.getBounds());
     return marker.bindPopup(popupContent, {closeButton: false, minWidth: 300});
   });
-});
-
-  $(document).on('click', '.search-submit', function(){
+  $(document).on('click', '.search-submit', function(b){
+    b.preventDefault();
     var address = document.getElementsByClassName('search-address')[0].value
     $.ajax({
       dataType: "text",
@@ -21,10 +20,9 @@ $(document).on("ready", function() {
       data: {search_address: address},
       success:function(data) {
         var geojson = $.parseJSON(data);
-        sessionStorage.setItem('setting', JSON.stringify(geojson));
         myLayer.setGeoJSON({
           type: "FeatureCollection",
-          features: $.parseJSON(sessionStorage.getItem('setting'))
+          features: geojson
         });
       },
       error:function(error) {
@@ -32,3 +30,4 @@ $(document).on("ready", function() {
       }
     });
   });
+});
