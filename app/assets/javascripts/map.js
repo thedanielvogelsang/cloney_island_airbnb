@@ -20,12 +20,16 @@ $(document).on("ready", function() {
           var geojson = $.parseJSON(data);
           myLayer.setGeoJSON({
             type: "FeatureCollection",
-            features: geojson
+            features: geojson,
+            properties: {
+              title: 'Sample Listings',
+              'marker-color': "#ff5a5f",
+            }
           });
         },
         error:function(error) {
           alert("Could not load the listings");
         }
       });
-    }, 1000);
+    }, 300);
 });

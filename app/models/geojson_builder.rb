@@ -9,7 +9,7 @@ class GeojsonBuilder
       properties: {
         name: listing.name,
         address: listing.address,
-        :"marker-color" => "#FFFFFF",
+        :"marker-color" => "#ff5a5f",
         :"marker-symbol" => "circle",
         :"marker-size" => "medium",
       }
