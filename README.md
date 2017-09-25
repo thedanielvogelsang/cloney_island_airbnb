@@ -32,14 +32,14 @@ This project was re-developed by a group of 4 developers over a 10 day sprint.
   [Facebook Register](https://developers.facebook.com/docs/apps/register/)
 
     Once you've registered the app, store your id and secret like so:  
-    google_maps_api_key:  "https://turingschool.slack.com/files/U4MNJTWN6/F72M83WCA/Untitled.rb"
 
     `facebook_app_id: '1XXXXXXXXXXXXX'
     facebook_app_secret: '3XXXXXXXXXXXXXXXXXXXXXXXXXXX'`
 
-### Add Airbnb_key to application.yml
+### Add Airbnb_key and GoogleMaps API-key to application.yml
   * add the following code to your yml file:
     `airbnb_key: "d306zoyjsyarp7ifhu67rjxn52tv0t20"`
+    `google_maps_api_key:  "AIzaSyC3Lh_RRFtmA8eTsVlpBzP82j1BIjC80Bo"`
 
 ### Sync with MapBox:
   * Sign up for a Mapbox account and obtain your own API access token per instructions here:
