@@ -57,9 +57,9 @@ This project was re-developed by a group of 4 developers over a 10 day sprint.
 
   Set up a trial phone number on the Twilio website. Also provide a phone number that will be used as the phone to communicate with in development. Go to the console section and copy both the account SID and auth token. Inside of the config/application.yml file, (it may be hidden depending on your text editor and its current settings) enter the keys with the following environment variables:
 
-TWILIO_ACCOUNT_SID: '#############################'  
-TWILIO_AUTH_TOKEN: '############################'  
-TWILIO_NUMBER: '+1 720-###-####'
+  TWILIO_ACCOUNT_SID: '#############################'  
+  TWILIO_AUTH_TOKEN: '############################'  
+  TWILIO_NUMBER: '+1 720-###-####'
 
 Once this is complete, your application should be able to send a verification code to the phone number provided on the Twilio website.
 
@@ -73,8 +73,7 @@ Once this is complete, your application should be able to send a verification co
   * ```rails server```
   * visit ```localhost:3000```
 
-  * **To populate with unregistered, local database records:**
-
+ **To populate with unregistered, local database records:**
   * ```rake import:all```
 
 ### Built With
