@@ -29,7 +29,7 @@ This project was re-developed by a group of 4 developers over a 10 day sprint.
 ### Syncing with Facebook
 
   * In order to use Facebook Oauth to authenticate users, you must register the app with facebook, and obtain a Facebook App_Id and Secret, here:
-  https://developers.facebook.com/docs/apps/register/
+  [Facebook Register](https://developers.facebook.com/docs/apps/register/)
 
     Once you've registered the app, store your id and secret like so:  
     google_maps_api_key:  "https://turingschool.slack.com/files/U4MNJTWN6/F72M83WCA/Untitled.rb"
@@ -43,7 +43,7 @@ This project was re-developed by a group of 4 developers over a 10 day sprint.
 
 ### Sync with MapBox:
   * Sign up for a Mapbox account and obtain your own API access token per instructions here:
-    https://www.mapbox.com/help/how-access-tokens-work/
+    [MapBox-Access-Tokens](https://www.mapbox.com/help/how-access-tokens-work/)
 
     Once you have an api key, add it to the yml file like so:
 
@@ -53,7 +53,7 @@ This project was re-developed by a group of 4 developers over a 10 day sprint.
 ### Syncing with Twilio
 
   * Sign Up with a Trial Twilio Account here:
-  https://www.twilio.com/try-twilio
+  [Try-Twilio](https://www.twilio.com/try-twilio)
 
   Set up a trial phone number on the Twilio website. Also provide a phone number that will be used as the phone to communicate with in development. Go to the console section and copy both the account SID and auth token. Inside of the config/application.yml file, (it may be hidden depending on your text editor and its current settings) enter the keys with the following environment variables:
 
@@ -91,6 +91,13 @@ Once this is complete, your application should be able to send a verification co
 * **Padraic O'Neill** - [Github](https://github.com/podoglyph)
 * **Bao Nguyen** - [Github](https://github.com/rongxanh88)
 * **Benjamin Ross** - [Github](https://github.com/Benja-Ross)
+
+## Round 2 Authors
+
+* **Daniel Vogelsang** -- [Github](https://github.com/thedanielvogelsang)
+* **Chantal Justamond** -- [Github](https://github.com/chantal66)
+* **Jean-Francois Lalonde** -- [Github](https://github.com/JF-Lalonde)
+* **Jim Szalewski** -- [Github](https://github.com/jimszalew)
 
 ## License
 
