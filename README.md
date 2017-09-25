@@ -17,12 +17,54 @@ This Cloney Island repo is a brownfield development project received from a [pre
 
 This project was re-developed by a group of 4 developers over a 10 day sprint.
 
+##Getting Started
 
 ### Prerequisites to Run Locally
+Rales Engine is a Ruby on Rails application that requires both Ruby and Rails to be installed on your machine
+
+Ruby:
+From your bash run:
+  ```
+  ruby -v
+  ```
+
+You should see something similar to:
+  ```
+  ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin16]
+  ```
+  
+Rails:
+Follow a similar process for Rails:
+  ```
+  rails -v
+  ```
+
+You should see something similar to:
+  ```
+  Rails 5.1.3
+  ```
+If Ruby or Rails is not installed on your machine, consult the following links:
 
   * [Rails version 5.1.2](http://installrails.com/)
 
   * [Ruby version 2.3.1](https://www.ruby-lang.org/en/documentation/installation/)
+
+After ensuring you have Ruby and Rails installed, clone this project to your desired directory:
+
+  ```
+  git clone git@github.com:thedanielvogelsang/cloney_island_airbnb.git
+
+  ```
+
+  Change directory to rales_engine:
+  ```
+  cd rales_engine
+  ```
+
+  Bundle:
+  ```
+  bundle install
+  ```
 
 ### Install Figaro
 
