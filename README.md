@@ -58,7 +58,7 @@ After ensuring you have Ruby and Rails installed, clone this project to your des
 
   Change directory to rales_engine:
   ```
-  cd rales_engine
+  cd cloney_island_airbnb
   ```
 
   Bundle:
@@ -107,17 +107,17 @@ After ensuring you have Ruby and Rails installed, clone this project to your des
 
 Once this is complete, your application should be able to send a verification code to the phone number provided on the Twilio website.
 
+## Launching Cloney Island
+
 ### Running Locally
 
-  * Clone this repo.
-  * cd into it
-  * ```bundle install```
   * ```rake db:schema:load```
   * ```rake db:setup```
   * ```rails server```
   * visit ```localhost:3000```
 
  **To populate with unregistered, local database records:**
+ (before running the server)
   * ```rake import:all```
 
 ### Built With
