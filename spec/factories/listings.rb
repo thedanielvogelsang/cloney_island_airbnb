@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:name) do  |i|
       "Best Place on Earth #{i}"
     end
+    airbnb_id 1
     description 'Place new description here'
     address '123 Billygoat Rd. Evergreen, CO 80411'
     accomodates 3
@@ -19,9 +20,5 @@ FactoryGirl.define do
     room_type 'entire_home'
     cancellation_policy 0
     status 0
-    latitude "59.325"
-    longitude "18.070 "
   end
-
-
 end

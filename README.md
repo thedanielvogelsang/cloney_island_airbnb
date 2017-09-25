@@ -1,5 +1,7 @@
 # Cloney Island Airbnb
 
+To explore this app on Heroku:
+
 ![Alt text](https://github.com/rongxanh88/cloney_island_airbnb/blob/development/app/screen_shots/first_homepage_shot.png?raw=true "Cloney Island Airbnb Homepage").
 
 This Cloney Island repo is a brownfield development project received from a [previous Turing school project](https://github.com/rongxanh88/cloney_island_airbnb). The brownfield assignment was to fix pending bugs; mild stylization/conversion polishes and unification of code languages; and finally the addition of a few new features: a Twilio phone authenitcation method; an airbnb-api-populated listing index; a dynamic map which uses ajax/jquery to populate a MapBox map. Some of the final features included are:
@@ -125,9 +127,6 @@ Once this is complete, your application should be able to send a verification co
 
  * Rails, Ruby, ActiveRecord, HTML, CSS, Sass, ERB, Haml, Postgresql, Twilio, ActionCable, OmniAuth Facebook
 
-### To Run the Automated Rspec Test Suite
-
- * Simply input rspec from the command line
 
 ## Round 1 Authors
 
