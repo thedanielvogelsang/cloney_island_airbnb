@@ -16,6 +16,7 @@ class Host::ListingsController < ApplicationController
     listing.airbnb_id = 1
     amenities = Amenity.list_amenities(amenities_params)
     if listing.save
+      current_user.roles << Role.find_by(name: 'host')
       listing.amenities << amenities
       redirect_to listing_path(listing)
     else

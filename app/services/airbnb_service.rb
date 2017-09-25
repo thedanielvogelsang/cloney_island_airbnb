@@ -65,4 +65,3 @@ class AirbnbService
 
   attr_reader :location
 end
-

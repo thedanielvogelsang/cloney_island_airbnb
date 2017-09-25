@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   def index
-    location = params['search_address']
-    gon.search_location = location || 'denver'
+    location = params['search_address'] || 'denver'
+    gon.search_location = location
     @results = Airbnb.find_properties(location)
     @listings = Listing.all
   end
