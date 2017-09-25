@@ -110,9 +110,10 @@ Once this is complete, your application should be able to send a verification co
 ## Launching Cloney Island
 
 ### Running Locally
+(If you're running on a newer version of ruby, prepend these commands with `bundle exec`)
 
-  * ```rake db:schema:load```
-  * ```rake db:setup```
+  * ```rake db:create```
+  * ```rake db:migrate```
   * ```rails server```
   * visit ```localhost:3000```
 
